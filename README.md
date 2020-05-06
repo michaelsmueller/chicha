@@ -1,92 +1,87 @@
-# Project Name
+# Chicha
 
-## Instructions how to start
+## Instructions on how to start
 
-create `.env` file like the example `.env.sample`
+Start app with `npm start`.
 
-start with `npm run start`
-
-**http://localhost:3000**
+go to **http://localhost:3000**
 
 ## Description
 
-Describe your project in one/two lines.
+Find, share and upvote your favorite things to do in Barcelona.
 
 ## Motivation
 
-Just a litle API for educational purposes.
+Crowdsource the best local events from knowledgable locals motivated to share and also get rewards from local businesses.
 
 ## User Stories
 
-**404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
+**404** - As a user, I want to see a useful 404 page when I attempt to access a page that doesn't exist so that I have useful options for moving forward.
 
-**500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
+**500** - As a user, I want to see a clear error page when something has broken with the website so that I understand what's happened.
 
-**Homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
+**Homepage** - As a user, I want to quickly understand what the website is about so that I can decide whether I want to sign up.
 
-**Sign up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
+**Register** - As a user, I want to easily register a new account on the website so that I will be able to use the site (to find and share events and earn local rewards).
 
-**Login** - As a user I want to be able to log in on the webpage so that I can get back to my account
+**Sign in** - As a user, I want to be able to quickly sign in to the website so that I can continue using the site (to find and share events and earn local rewards).
 
-**Logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
+**Events** - As a user, I want to view, filter/search, and upvote/downvote events so that I can find things to do and earn rewards.
 
-**Events list** - As a user I want to see all the events available so that I can choose which ones I want to attend
+**Event - detail** - As a user, I want to see the event details so that I can decide if I want to attend.
 
-**Events create** - As a user I want to create an event so that I can invite others to attend
+**Events - add** - As a user, I want to create an event so that this information can be seen by others, I gain visibility and I earn rewards.
 
-**Events detail** - As a user I want to see the event details and attendee list of one event so that I can decide if I want to attend
+**Events - update** - As a user, I want to be able to update the details of an event I have loaded so that I can add or correct information.
 
-**Attend event** - As a user I want to be able to attend to event so that the organizers can count me in
+**Heavyweights** - As a user, I want to see the users who have recommended the most / best events so that I can find new sources to recommend events to me.
+
+**Heavyweights - detail** - As a user, I want to see the events being recommended by a particular user that I like / think is knowledgable / has good taste so that I can find events I'll enjoy.
+
+**Offers** - As a user, I want to see my points and a list of offers so that I can choose an offer to redeem.
+
+**Offers - detail** - As a user, I want to the details on a particular offer so that I can choose to redeem it.
+
+**Offers - my vouchers** - As a user, I want to see a list of my vouchers so that I can use the offers that I have redeemed at local businesses.
+
+**Profile** - As a user, I want to update my user profile (change my username, password and profile pic) as well as log out so that no one else can use my account.
 
 ## Backlog
 
-List of other features outside of the MVPs scope
+Other features outside of the MVP scope:
 
-User profile: - see my profile - upload my profile picture - see other users profile - list of events created by the user - list events the user is attending
+**Local business role**: local businesses can add / update offers and receive information on users who have redeemed their offers
 
-Geo Location: - add geolocation to events when creating - show event in a map in event detail page - show all events in a map in the event list page
+**Onboarding**: create a screen when user logs in to explain how the app works
 
-Homepage: - …
-
-## ROUTES Backend:
-
-### Endpoints
-
-| Method | Path         | description     | Body |
-| :----: | ------------ | --------------- | ---- |
-|  GET   | `/protected` | protected route |      |
-
-### Auth
-
-| Method | Path      | description    | Body                     |
-| :----: | --------- | -------------- | ------------------------ |
-|  GET   | `/whoami` | who am i       |                          |
-|  POST  | `/signup` | signup a user  | `{ username, password }` |
-|  POST  | `/login`  | login a user   | `{ username, password }` |
-|  GET   | `/logout` | logout session |                          |
+**Favorites**: user can save events to favorites
 
 ## Views
 
-| View (Component) | Path         | description    |
-| :--------------- | ------------ | -------------- |
-| Home             | `/`          | home           |
-| Login            | `/login`     | login page     |
-| Protected        | `/protected` | protected view |
+| View (Component)        | Path                    | Description             |
+| ----------------------- | ----------------------- | ----------------------- |
+| Home                    | `/`                     | home / register         |
+| Sign in                 | `/sign-in`              | sign in page            |
+| Events                  | `/events`               | list of events          |
+| Event details           | `/events/:id`           | details on an event     |
+| Add event               | `/events/add`           | add event               |
+| Edit event              | `/events/:id/edit`      | edit event              |
+| Heavyweights            | `/heavyweights`         | list of heavyweights    |
+| Heavyweight details     | `/heavyweights/:id`     | details on a heavyweight|
+| Offers                  | `/offers`               | list of offers          |
+| Offer details           | `/offers/:id`           | details on an offer     |
+| My vouchers             | `/offers/myvouchers`    | list of redeemed offers |
+| Profile                 | `/profile`              | user profile            |
+
 
 ## Links
 
 ### Trello
 
-Link to Trello
+[Trello board](https://trello.com/b/O8DhDgcu/chicha)
 
 ### Git
 
-The url to your repository and to your deployed project
+[GitHub repository](https://github.com/michaelsmueller/chicha)
 
-[Repository Link](http://github.com/)
-
-[Deploy Link](http://heroku.com/)
-
-### Slides
-
-[Slides Link](http://slides.com/)
+[GitHub repository - API](https://github.com/michaelsmueller/chicha-api)
