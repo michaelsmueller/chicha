@@ -1,2 +1,2 @@
-export { default as PrivateRoute } from "./PrivateRoute";
-export { default as AnonRoute } from "./AnonRoute";
+export { default as PrivateRoute } from './PrivateRoute';
+export { default as AnonRoute } from './AnonRoute';

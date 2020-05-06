@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import Login from "./views/Login";
-import Home from "./views/Home";
+import Login from './views/Login';
+import Home from './views/Home';
 
-import { AnonRoute, PrivateRoute } from "./components";
+import { AnonRoute, PrivateRoute } from './components';
 
-import apiClient from "./services/apiClient";
-import Protected from "./views/Protected";
+import apiClient from './services/apiClient';
+import Protected from './views/Protected';
 
 class App extends Component {
   state = {
@@ -58,13 +58,13 @@ class App extends Component {
       <div>
         {isLoading && <div> Loading.......</div>}
         {!isLoading && (
-          <div className="App">
+          <div className='App'>
             <Switch>
-              <Route exact path={"/"} component={Home} />
-              <AnonRoute exact path={"/login"} isLoggedIn={isLoggedIn}>
+              <Route exact path={'/'} component={Home} />
+              <AnonRoute exact path={'/login'} isLoggedIn={isLoggedIn}>
                 <Login onLogin={this.handleLogin} />
               </AnonRoute>
-              <PrivateRoute exact path={"/protected"} isLoggedIn={isLoggedIn}>
+              <PrivateRoute exact path={'/protected'} isLoggedIn={isLoggedIn}>
                 <Protected />
               </PrivateRoute>
             </Switch>

@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 function AnonRoute({ children, isLoggedIn, ...rest }) {
   return (
@@ -11,7 +11,7 @@ function AnonRoute({ children, isLoggedIn, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/protected",
+              pathname: '/protected',
               state: { from: location },
             }}
           />

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 class ApiClient {
   constructor() {
@@ -9,11 +9,11 @@ class ApiClient {
   }
 
   whoami() {
-    return this.apiClient.get("/whoami");
+    return this.apiClient.get('/whoami');
   }
 
   login(body) {
-    return this.apiClient.post("/login", body);
+    return this.apiClient.post('/login', body);
   }
 }
 

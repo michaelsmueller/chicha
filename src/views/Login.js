@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-// import apiClient from "../services/resorts";
+import React, { Component } from 'react';
+// import apiClient from '../services/resorts';
 
 export default class Login extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
     const { onLogin } = this.props;
-    if (username !== "" && password !== "") {
+    if (username !== '' && password !== '') {
       onLogin({ username, password });
     }
   };
 
   cleanForm = () => {
     this.setState({
-      username: "",
-      password: "",
+      username: '',
+      password: '',
     });
   };
 
@@ -37,22 +37,22 @@ export default class Login extends Component {
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="username"
+            type='text'
+            name='username'
+            id='username'
+            placeholder='username'
             value={username}
             onChange={this.handleChange}
           />
           <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
+            type='password'
+            name='password'
+            id='password'
+            placeholder='password'
             value={password}
             onChange={this.handleChange}
           />
-          <input type="submit" value="submit" />
+          <input type='submit' value='submit' />
         </form>
       </div>
     );
