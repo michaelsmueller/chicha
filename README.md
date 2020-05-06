@@ -54,14 +54,16 @@ Other features outside of the MVP scope:
 
 **Onboarding**: create a screen when user logs in to explain how the app works
 
+**Cloudinary**: store images (not just URLs)
+
 **Favorites**: user can save events to favorites
 
 ## Views
 
 | View (Component)        | Path                    | Description             |
 | ----------------------- | ----------------------- | ----------------------- |
-| Home                    | `/`                     | home / register         |
-| Sign in                 | `/sign-in`              | sign in page            |
+| Home                    | `/`                     | home / sign in          |
+| Register                | `/register`             | register page           |
 | Events                  | `/events`               | list of events          |
 | Event details           | `/events/:id`           | details on an event     |
 | Add event               | `/events/add`           | add event               |
