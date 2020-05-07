@@ -8,7 +8,7 @@ import Home from './views/Home';
 import { AnonRoute, PrivateRoute } from './components';
 
 import apiClient from './services/apiClient';
-import Protected from './views/Protected';
+import Events from './views/Events';
 
 class App extends Component {
   state = {
@@ -87,7 +87,7 @@ class App extends Component {
               <AnonRoute exact path={'/register'} isLoggedIn={isLoggedIn}>
                 <Register onRegister={this.handleRegister} />
               </AnonRoute>
-              <PrivateRoute exact path={'/protected'} isLoggedIn={isLoggedIn} component={Protected} />
+              <PrivateRoute exact path={'/events'} isLoggedIn={isLoggedIn} component={Events} />
             </Switch>
           </div>
         )}

@@ -17,7 +17,7 @@ class ApiClient {
   }
 
   register(body) {
-    return this.apiClient.post('/register', body);
+    return this.apiClient.post('/users', body);
   }
 }
 
