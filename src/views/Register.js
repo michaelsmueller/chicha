@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import apiClient from '../services/resorts';
 
-export default class Login extends Component {
+export default class Register extends Component {
   state = {
     username: '',
     password: '',
@@ -10,9 +9,9 @@ export default class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    const { onLogin } = this.props;
+    const { onRegister } = this.props;
     if (username !== '' && password !== '') {
-      onLogin({ username, password });
+      onRegister({ username, password });
     }
   };
 
@@ -34,7 +33,7 @@ export default class Login extends Component {
 
     return (
       <div>
-        <h1>Login</h1>
+        <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type='text'

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Login from './views/Login';
+import SignIn from './views/SignIn';
+import Register from './views/Register';
 import Home from './views/Home';
 
 import { AnonRoute, PrivateRoute } from './components';
@@ -35,9 +36,28 @@ class App extends Component {
       });
   }
 
-  handleLogin = ({ username, password }) => {
+  handleSignIn = ({ username, password }) => {
     apiClient
-      .login({ username, password })
+      .signIn({ username, password })
+      .then(({ data: user }) => {
+        this.setState({
+          isLoggedIn: true,
+          user,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          isLoggedIn: false,
+          user: null,
+        });
+      });
+  };
+
+  handleRegister = ({ username, password }) => {
+    console.log('handleRegister');
+    console.log(`username ${username} password ${password}`);
+    apiClient
+      .register({ username, password })
       .then(({ data: user }) => {
         this.setState({
           isLoggedIn: true,
@@ -61,12 +81,13 @@ class App extends Component {
           <div className='App'>
             <Switch>
               <Route exact path={'/'} component={Home} />
-              <AnonRoute exact path={'/login'} isLoggedIn={isLoggedIn}>
-                <Login onLogin={this.handleLogin} />
+              <AnonRoute exact path={'/signin'} isLoggedIn={isLoggedIn}>
+                <SignIn onSignIn={this.handleSignIn} />
               </AnonRoute>
-              <PrivateRoute exact path={'/protected'} isLoggedIn={isLoggedIn}>
-                <Protected />
-              </PrivateRoute>
+              <AnonRoute exact path={'/register'} isLoggedIn={isLoggedIn}>
+                <Register onRegister={this.handleRegister} />
+              </AnonRoute>
+              <PrivateRoute exact path={'/protected'} isLoggedIn={isLoggedIn} component={Protected} />
             </Switch>
           </div>
         )}
