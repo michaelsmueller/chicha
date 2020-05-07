@@ -50,9 +50,11 @@ Crowdsource the best local events from knowledgable locals motivated to share an
 
 Other features outside of the MVP scope:
 
-**Local business role**: local businesses can add / update offers and receive information on users who have redeemed their offers
-
 **Onboarding**: create a screen when user logs in to explain how the app works
+
+**Facebook Login**: login with Facebook, use profile photo of user
+
+**Local business role**: local businesses can add / update offers and receive information on users who have redeemed their offers
 
 **Cloudinary**: store images (not just URLs)
 
