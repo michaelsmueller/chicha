@@ -19,6 +19,10 @@ class ApiClient {
   register(body) {
     return this.apiClient.post('/users', body);
   }
+
+  logout() {
+    return this.apiClient.get('/logout');
+  }
 }
 
 const apiClient = new ApiClient();
