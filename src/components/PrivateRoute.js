@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 function PrivateRoute({ children, isLoggedIn, ...rest }) {
+  console.log('PrivateRoute');
   return (
     <Route
       {...rest}

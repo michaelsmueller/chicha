@@ -72,6 +72,23 @@ class App extends Component {
       });
   };
 
+  logout = () => {
+    console.log('logout');
+    apiClient
+      .logout()
+      .then(() => {
+        console.log('logged out');
+        this.setState({
+          isLoading: false,
+          isLoggedIn: false,
+          user: null,
+        });
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  }
+
   render() {
     const { isLoggedIn, isLoading } = this.state;
     return (
@@ -87,7 +104,9 @@ class App extends Component {
               <AnonRoute exact path={'/register'} isLoggedIn={isLoggedIn}>
                 <Register onRegister={this.handleRegister} />
               </AnonRoute>
-              <PrivateRoute exact path={'/events'} isLoggedIn={isLoggedIn} component={Events} />
+              <PrivateRoute exact path={'/events'} isLoggedIn={isLoggedIn}>
+                <Events logout={this.logout} />
+              </PrivateRoute>
             </Switch>
           </div>
         )}
