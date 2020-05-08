@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import SignIn from './views/SignIn';
 import Register from './views/Register';
 import Home from './views/Home';
 
@@ -9,6 +8,8 @@ import { AnonRoute, PrivateRoute } from './components';
 
 import apiClient from './services/apiClient';
 import Events from './views/Events';
+
+import './App.css';
 
 class App extends Component {
   state = {
@@ -92,14 +93,13 @@ class App extends Component {
   render() {
     const { isLoggedIn, isLoading } = this.state;
     return (
-      <div>
+      <div className='App'>
         {isLoading && <div> Loading.......</div>}
         {!isLoading && (
           <div className='App'>
             <Switch>
-              <Route exact path={'/'} component={Home} />
-              <AnonRoute exact path={'/signin'} isLoggedIn={isLoggedIn}>
-                <SignIn onSignIn={this.handleSignIn} />
+              <AnonRoute exact path={'/'} isLoggedIn={isLoggedIn}>
+                <Home onSignIn={this.handleSignIn} />
               </AnonRoute>
               <AnonRoute exact path={'/register'} isLoggedIn={isLoggedIn}>
                 <Register onRegister={this.handleRegister} />
