@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-function AnonRoute({ children, status, ...rest }) {
+const AnonRoute = ({ children, status, ...rest }) => {
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        ! (status === 'loggedIn') ? (
+        status !== 'loggedIn' ? (
           children
         ) : (
           <Redirect

@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
-
-import Register from './views/Register';
-import Home from './views/Home';
-
-import { AnonRoute, PrivateRoute } from './components';
-
 import apiClient from './services/apiClient';
+import { AnonRoute, PrivateRoute } from './components';
+import Home from './views/Home';
+import Register from './views/Register';
 import Events from './views/Events';
-
 import './App.css';
 
 class App extends Component {
   state = {
-    user: null,
     status: 'loading',
+    user: null,
   };
 
   componentDidMount() {
@@ -22,14 +18,14 @@ class App extends Component {
       .whoami()
       .then((user) => {
         this.setState({
+          status: 'loggedIn',
           user,
-          status: 'loggedIn'
         });
       })
       .catch((error) => {
         this.setState({
+          status: 'error',
           user: null,
-          status: 'error'
         });
       });
   }
@@ -80,6 +76,7 @@ class App extends Component {
       .catch((error) => {
         this.setState({
           status: 'error',
+          user: null,
         });
       });
   }
@@ -89,7 +86,7 @@ class App extends Component {
     return (
       <div className='App'>
         {status === 'loading' && <div> Loading.......</div>}
-        {! (status === 'loading') && (
+        {status !== 'loading' && (
           <div className='App'>
             <Switch>
               <AnonRoute exact path={'/'} status={status}>
