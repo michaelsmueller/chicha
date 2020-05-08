@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-function PrivateRoute({ children, isLoggedIn, ...rest }) {
+function PrivateRoute({ children, status, ...rest }) {
   console.log('PrivateRoute');
   return (
     <Route
       {...rest}
       render={(props) =>
-        isLoggedIn ? (
+        status === 'loggedIn' ? (
           children
         ) : (
           <Redirect

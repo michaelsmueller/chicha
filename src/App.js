@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import Register from './views/Register';
 import Home from './views/Home';
@@ -13,9 +13,8 @@ import './App.css';
 
 class App extends Component {
   state = {
-    isLoggedIn: false,
     user: null,
-    isLoading: true,
+    status: 'loading',
   };
 
   componentDidMount() {
@@ -23,16 +22,14 @@ class App extends Component {
       .whoami()
       .then((user) => {
         this.setState({
-          isLoading: false,
-          isLoggedIn: true,
           user,
+          status: 'loggedIn'
         });
       })
       .catch((error) => {
         this.setState({
-          isLoading: false,
-          isLoggedIn: false,
           user: null,
+          status: 'error'
         });
       });
   }
@@ -42,69 +39,66 @@ class App extends Component {
       .signIn({ username, password })
       .then(({ data: user }) => {
         this.setState({
-          isLoggedIn: true,
+          status: 'loggedIn',
           user,
         });
       })
       .catch((error) => {
         this.setState({
-          isLoggedIn: false,
+          status: 'error',
           user: null,
         });
       });
   };
 
   handleRegister = ({ username, password }) => {
-    console.log('handleRegister');
-    console.log(`username ${username} password ${password}`);
     apiClient
       .register({ username, password })
       .then(({ data: user }) => {
         this.setState({
-          isLoggedIn: true,
+          status: 'loggedIn',
           user,
         });
       })
       .catch((error) => {
         this.setState({
-          isLoggedIn: false,
+          status: 'error',
           user: null,
         });
       });
   };
 
   logout = () => {
-    console.log('logout');
     apiClient
       .logout()
       .then(() => {
-        console.log('logged out');
         this.setState({
-          isLoading: false,
-          isLoggedIn: false,
+          status: 'loggedOut',
           user: null,
         });
       })
       .catch((error) => {
-        console.log('error', error);
+        this.setState({
+          status: 'error',
+        });
       });
   }
 
   render() {
-    const { isLoggedIn, isLoading } = this.state;
+    const { status } = this.state;
     return (
       <div className='App'>
-        {isLoading && <div> Loading.......</div>}
-        {!isLoading && (
+        {status === 'loading' && <div> Loading.......</div>}
+        {! (status === 'loading') && (
           <div className='App'>
             <Switch>
-              <AnonRoute exact path={'/'} isLoggedIn={isLoggedIn}>
+              <AnonRoute exact path={'/'} status={status}>
                 <Home onSignIn={this.handleSignIn} />
               </AnonRoute>
-              <AnonRoute exact path={'/register'} isLoggedIn={isLoggedIn}>
+              <AnonRoute exact path={'/register'} status={status}>
                 <Register onRegister={this.handleRegister} />
               </AnonRoute>
-              <PrivateRoute exact path={'/events'} isLoggedIn={isLoggedIn}>
+              <PrivateRoute exact path={'/events'} status={status}>
                 <Events logout={this.logout} />
               </PrivateRoute>
             </Switch>
