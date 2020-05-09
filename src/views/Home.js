@@ -17,9 +17,7 @@ class Home extends Component {
 
   cleanForm = () => this.setState({ username: '', password: '' });
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     const { username, password } = this.state;

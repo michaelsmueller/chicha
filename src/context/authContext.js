@@ -35,16 +35,32 @@ class AuthProvider extends Component {
     .whoami()
     .then((user) => this.setState({ status: 'loggedIn', user }))
     .catch(({ response }) => {
-      if (response.status === 401) this.setState({ status: 'loggedOut', user: null, error: null });
-      else this.setState({ status: 'error', user: null, error: response.statusText });
-    });
+      switch (response.status) {
+        case 401:
+          this.setState({ status: 'loggedOut', user: null, error: null });
+          break;
+        default:
+          this.setState({ status: 'error', user: null, error: response.statusText });
+      }
+    })
   }
 
   handleRegister = ({ username, password }) => {
     apiClient
       .register({ username, password })
       .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
-      .catch(({ response }) => this.setState({ status: 'error', user: null, error: response.statusText }));
+      .catch(({ response }) => {
+        switch (response.status) {
+          case 409:
+            this.setState({ status: 'loggedOut', user: null, error: 'username already exists' });
+            break;
+          case 422:
+            this.setState({ status: 'loggedOut', user: null, error: 'problem validating form data' });
+            break;
+          default:
+            this.setState({ status: 'error', user: null, error: response.statusText });
+        }
+      })
   };
 
   handleSignIn = ({ username, password }) => {
@@ -54,13 +70,10 @@ class AuthProvider extends Component {
       .catch(({ response }) => {
         switch (response.status) {
           case 401:
-            this.setState({ status: 'loggedOut', user: null, error: 'wrong password' });
-            break;
-          case 404:
-            this.setState({ status: 'loggedOut', user: null, error: 'unknown user' });
+            this.setState({ status: 'loggedOut', user: null, error: 'wrong username or password' });
             break;
           default:
-            this.setState({ status: 'loggedOut', user: null, error: response.statusText });
+            this.setState({ status: 'error', user: null, error: response.statusText });
         }
       })
   };
