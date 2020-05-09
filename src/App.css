@@ -1,5 +1,5 @@
 .App {
-  padding: 20px 30px;
+  padding: 10px 20px;
 }
 
 a {
@@ -12,4 +12,12 @@ button, input {
   background-color: white;
   border: 1px solid gray;
   border-radius: 20px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  font-size: 14px;
+  font-weight: 200;
 }

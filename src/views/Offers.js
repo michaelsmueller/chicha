@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Events = () => {
+const Offers = () => {
   return (
     <div>
-      <h1>Events</h1>
+      <h1>Offers</h1>
     </div>
   );
 }
 
-export default Events;
+export default Offers;
