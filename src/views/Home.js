@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../context/authContext';
-// import { Error } from './'
+import { Error } from './'
 
 class Home extends Component {
   state = { username: '', password: '' };
@@ -23,7 +23,7 @@ class Home extends Component {
 
   render() {
     const { username, password } = this.state;
-    const { errorMessage } = this.props;
+    const { error } = this.props;
     return (
       <div>
         <h1>Home</h1>
@@ -47,8 +47,7 @@ class Home extends Component {
           />
           <input type='submit' value='submit' />
         </form>
-        {errorMessage}
-        {/* {error && <Error error={error} />} */}
+        {error && <Error error={error} />}
         <p>
           Don't have an account? <Link to='/register'>Register here</Link>
         </p>

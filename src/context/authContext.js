@@ -8,12 +8,12 @@ export const withAuth = (Comp) => {
     render() {
       return (
         <AuthContext.Consumer>
-          {({ status, user, errorMessage, handleRegister, handleSignIn, handleLogout }) => {
+          {({ status, user, error, handleRegister, handleSignIn, handleLogout }) => {
             return (
               <Comp
                 status={status}
                 user={user}
-                errorMessage={errorMessage}
+                error={error}
                 onRegister={handleRegister}
                 onSignIn={handleSignIn}
                 onLogout={handleLogout}
@@ -28,16 +28,15 @@ export const withAuth = (Comp) => {
 };
 
 class AuthProvider extends Component {
-  state = { status: 'loading', user: null, errorMessage: null };
+  state = { status: 'loading', user: null, error: null };
 
   componentDidMount() {
     apiClient
     .whoami()
     .then((user) => this.setState({ status: 'loggedIn', user }))
     .catch(({ response }) => {
-      console.log('response in component did mount', response);
-      if (response.status === 401) this.setState({ status: 'loggedOut', user: null });
-      else this.setState({ status: 'error', user: null });
+      if (response.status === 401) this.setState({ status: 'loggedOut', user: null, error: null });
+      else this.setState({ status: 'error', user: null, error: response.statusText });
     });
   }
 
@@ -45,7 +44,7 @@ class AuthProvider extends Component {
     apiClient
       .register({ username, password })
       .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
-      .catch((error) => this.setState({ status: 'error', user: null }));
+      .catch(({ response }) => this.setState({ status: 'error', user: null, error: response.statusText }));
   };
 
   handleSignIn = ({ username, password }) => {
@@ -55,13 +54,13 @@ class AuthProvider extends Component {
       .catch(({ response }) => {
         switch (response.status) {
           case 401:
-            this.setState({ status: 'loggedOut', user: null, errorMessage: 'wrong password' });
+            this.setState({ status: 'loggedOut', user: null, error: 'wrong password' });
             break;
           case 404:
-            this.setState({ status: 'loggedOut', user: null, errorMessage: 'unknown user' });
+            this.setState({ status: 'loggedOut', user: null, error: 'unknown user' });
             break;
           default:
-            this.setState({ status: 'loggedOut', user: null, errorMessage: 'login error' });
+            this.setState({ status: 'loggedOut', user: null, error: response.statusText });
         }
       })
   };
@@ -69,19 +68,19 @@ class AuthProvider extends Component {
   handleLogout = () => {
     apiClient
       .logout()
-      .then(() => this.setState({ status: 'loggedOut', user: null }))
-      .catch((error) => this.setState({ status: 'error', user: null }));
+      .then(() => this.setState({ status: 'loggedOut', user: null, error: null }))
+      .catch(({ response }) => this.setState({ status: 'error', user: null, error: response.statusText }));
   };
 
   render() {
     const { children } = this.props;
-    const { status, user, errorMessage } = this.state;
+    const { status, user, error } = this.state;
     return (
       <AuthContext.Provider
         value={{
           status,
           user,
-          errorMessage,
+          error,
           handleRegister: this.handleRegister,
           handleSignIn: this.handleSignIn,
           handleLogout: this.handleLogout,
