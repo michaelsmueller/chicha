@@ -5,10 +5,10 @@ import { withAuth } from '../context/authContext';
 const PrivateRoute = ({ component: Comp, status, ...rest }) => {
   return (
     <Route
-      {...rest}
-      render={(props) =>
+      { ...rest }
+      render={ (props) =>
         status === 'loggedIn' ? (
-          <Comp {...props} />
+          <Comp { ...props } />
         ) : (
           <Redirect
             to={{

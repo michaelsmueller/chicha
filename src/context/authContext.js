@@ -8,11 +8,12 @@ export const withAuth = (Comp) => {
     render() {
       return (
         <AuthContext.Consumer>
-          {({ status, user, handleRegister, handleSignIn, handleLogout }) => {
+          {({ status, user, errorMessage, handleRegister, handleSignIn, handleLogout }) => {
             return (
               <Comp
                 status={status}
                 user={user}
+                errorMessage={errorMessage}
                 onRegister={handleRegister}
                 onSignIn={handleSignIn}
                 onLogout={handleLogout}
@@ -27,7 +28,7 @@ export const withAuth = (Comp) => {
 };
 
 class AuthProvider extends Component {
-  state = { status: 'loading', user: null };
+  state = { status: 'loading', user: null, errorMessage: null };
 
   componentDidMount() {
     apiClient
@@ -51,7 +52,18 @@ class AuthProvider extends Component {
     apiClient
       .signIn({ username, password })
       .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
-      .catch((error) => this.setState({ status: 'error', user: null }));
+      .catch(({ response }) => {
+        switch (response.status) {
+          case 401:
+            this.setState({ status: 'loggedOut', user: null, errorMessage: 'wrong password' });
+            break;
+          case 404:
+            this.setState({ status: 'loggedOut', user: null, errorMessage: 'unknown user' });
+            break;
+          default:
+            this.setState({ status: 'loggedOut', user: null, errorMessage: 'login error' });
+        }
+      })
   };
 
   handleLogout = () => {
@@ -63,12 +75,13 @@ class AuthProvider extends Component {
 
   render() {
     const { children } = this.props;
-    const { status, user } = this.state;
+    const { status, user, errorMessage } = this.state;
     return (
       <AuthContext.Provider
         value={{
           status,
           user,
+          errorMessage,
           handleRegister: this.handleRegister,
           handleSignIn: this.handleSignIn,
           handleLogout: this.handleLogout,
