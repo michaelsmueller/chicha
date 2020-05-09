@@ -1,19 +1,20 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
+import { withAuth } from '../context/authContext';
 
-const AnonRoute = ({ children, status, ...rest }) => {
+const AnonRoute = ({ component: Comp, status, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={({ location }) =>
-        status !== 'loggedIn' ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/events',
-              state: { from: location },
-            }}
+        render={(props) =>
+          status !== 'loggedIn' ? (
+            <Comp {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: '/events',
+                state: { from: props.location },
+              }}
           />
         )
       }
@@ -21,4 +22,4 @@ const AnonRoute = ({ children, status, ...rest }) => {
   );
 }
 
-export default AnonRoute;
+export default withAuth(AnonRoute);

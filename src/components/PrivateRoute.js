@@ -1,13 +1,14 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { withAuth } from '../context/authContext';
 
-const PrivateRoute = ({ children, status, ...rest }) => {
+const PrivateRoute = ({ component: Comp, status, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) =>
         status === 'loggedIn' ? (
-          children
+          <Comp {...props} />
         ) : (
           <Redirect
             to={{
@@ -21,4 +22,4 @@ const PrivateRoute = ({ children, status, ...rest }) => {
   );
 }
 
-export default PrivateRoute;
+export default withAuth(PrivateRoute);

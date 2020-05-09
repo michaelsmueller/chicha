@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withAuth } from '../context/authContext';
 
-export default class Register extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+class Register extends Component {
+  state = { username: '', password: '' };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -16,17 +14,10 @@ export default class Register extends Component {
     }
   };
 
-  cleanForm = () => {
-    this.setState({
-      username: '',
-      password: '',
-    });
-  };
+  cleanForm = () => this.setState({ username: '', password: '' });
 
   handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
@@ -61,3 +52,5 @@ export default class Register extends Component {
     );
   }
 }
+
+export default withAuth(Register);
