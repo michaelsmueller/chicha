@@ -4,7 +4,6 @@ import { withAuth } from '../context/authContext';
 
 const AnonRoute = (props) => {
   const { component: Comp, status, ...rest } = props;
-  console.log('AnonRoute props', props);
   return (
     <Route
       { ...rest }

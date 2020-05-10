@@ -1,5 +1,6 @@
 export { default as AddEvent } from './AddEvent';
 export { default as Error } from './Error';
+export { default as EventDetail } from './EventDetail';
 export { default as Events } from './Events';
 export { default as Heavyweights } from './Heavyweights';
 export { default as Home } from './Home';

@@ -28,6 +28,10 @@ class ApiClient {
     return this.apiClient.post('/events', body);
   }
 
+  getEvent(id) {
+    return this.apiClient.get(`/events/${id}`);
+  }
+
   getEvents() {
     return this.apiClient.get('/events');
   }
