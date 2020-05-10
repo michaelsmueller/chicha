@@ -42,7 +42,7 @@ class Register extends Component {
             value={password}
             onChange={this.handleChange}
           />
-          <input type='submit' value='submit' />
+          <button type='submit' value='submit'>Register</button>
         </form>
         {error && <Error error={error} />}
         <p>

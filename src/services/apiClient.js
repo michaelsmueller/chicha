@@ -12,16 +12,24 @@ class ApiClient {
     return this.apiClient.get('/whoami');
   }
 
-  signIn(body) {
-    return this.apiClient.post('/signin', body);
-  }
-
   register(body) {
     return this.apiClient.post('/users', body);
   }
 
+  signIn(body) {
+    return this.apiClient.post('/signin', body);
+  }
+
   logout() {
     return this.apiClient.get('/logout');
+  }
+
+  addEvent(body) {
+    return this.apiClient.post('/events', body);
+  }
+
+  getEvents() {
+    return this.apiClient.get('/events');
   }
 }
 

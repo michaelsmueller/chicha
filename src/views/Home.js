@@ -43,7 +43,7 @@ class Home extends Component {
             value={password}
             onChange={this.handleChange}
           />
-          <input type='submit' value='submit' />
+          <button type='submit' value='submit'>Sign in</button>
         </form>
         {error && <Error error={error} />}
         <p>

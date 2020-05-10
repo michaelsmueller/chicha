@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import apiClient from '../services/apiClient';
 
-const AddEvent = () => {
-  return (
-    <div>
-      <h1>Add Event</h1>
-    </div>
-  );
+export default class AddEvent extends Component {
+  state = { url: '' };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { url } = this.state;
+    console.log('submitting event URL:', url);
+    apiClient
+      .addEvent({ url })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error))
+  };
+
+  cleanForm = () => this.setState({ url: '' });
+
+  handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+  render() {
+    const { url } = this.state;
+    return (
+      <div className='add-event'>
+        <h1>Add Event</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor='event-url'>Facebook event link</label>
+          <input
+            type='text'
+            name='url'
+            id='event-url'
+            placeholder='https://www.facebook.com/events/1652513591570864/'
+            value={url}
+            onChange={this.handleChange}
+          />
+          <button type='submit' value='submit'>Add event</button>
+        </form>
+      </div>
+    );
+  }
 }
-
-export default AddEvent;

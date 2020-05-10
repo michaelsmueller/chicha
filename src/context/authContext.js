@@ -32,17 +32,17 @@ class AuthProvider extends Component {
 
   componentDidMount() {
     apiClient
-    .whoami()
-    .then((user) => this.setState({ status: 'loggedIn', user }))
-    .catch(({ response }) => {
-      switch (response.status) {
-        case 401:
-          this.setState({ status: 'loggedOut', user: null, error: null });
-          break;
-        default:
-          this.setState({ status: 'error', user: null, error: response.statusText });
-      }
-    })
+      .whoami()
+      .then((user) => this.setState({ status: 'loggedIn', user }))
+      .catch(({ response }) => {
+        switch (response.status) {
+          case 401:
+            this.setState({ status: 'loggedOut', user: null, error: null });
+            break;
+          default:
+            this.setState({ status: 'error', user: null, error: response.statusText });
+        }
+      })
   }
 
   handleRegister = ({ username, password }) => {

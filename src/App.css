@@ -21,3 +21,17 @@ nav ul {
   font-size: 14px;
   font-weight: 200;
 }
+
+.add-event form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-preview {
+  margin-top: 10px;
+}
+
+.event-preview img {
+  width: 100%;
+}

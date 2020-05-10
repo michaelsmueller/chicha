@@ -80,12 +80,16 @@ Other features outside of the MVP scope:
 
 ## Links
 
+### Deployment
+
+[Netlify](https://chicha.netlify.app)
+
 ### Trello
 
 [Trello board](https://trello.com/b/O8DhDgcu/chicha)
 
 ### Git
 
-[GitHub repository](https://github.com/michaelsmueller/chicha)
+[GitHub repository - frontend](https://github.com/michaelsmueller/chicha)
 
 [GitHub repository - API](https://github.com/michaelsmueller/chicha-api)
