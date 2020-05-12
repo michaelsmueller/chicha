@@ -33,7 +33,7 @@ class AuthProvider extends Component {
   componentDidMount() {
     apiClient
       .whoami()
-      .then((user) => this.setState({ status: 'loggedIn', user }))
+      .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
       .catch(({ response }) => {
         switch (response.status) {
           case 401:

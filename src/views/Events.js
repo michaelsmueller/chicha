@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import apiClient from '../services/apiClient';
-import EventPreview from './EventPreview';
+import { EventPreview } from './';
 
 export default class Events extends Component {
   state = { events: [] };
