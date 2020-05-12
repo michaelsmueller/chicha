@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 
 class EventPreview extends Component {
   render() {
-    console.log('props', this.props);
     const { event, user } = this.props;
     const { _id, creator, data: { name, cover, start_time, place } } = event;
-    console.log('creator', creator);
-    console.log('user', user);
     return (
       <div>
-        {/* {creator === user._id ? <EditLinks /> : '' } */}
+        {creator === user._id ? <EditLinks /> : '' }
         <Link to={`/events/${_id}`}>
           <div className='event-preview'>
             <div className='event-image-container'>
@@ -29,13 +26,13 @@ class EventPreview extends Component {
   }
 }
 
-// const EditLinks = () => {
-//   return (
-//     <div>
-//       edit
-//       delete
-//     </div>
-//   )
-// }
+const EditLinks = () => {
+  return (
+    <div>
+      edit
+      delete
+    </div>
+  )
+}
 
 export default withAuth(EventPreview);
