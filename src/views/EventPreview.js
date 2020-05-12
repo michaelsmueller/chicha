@@ -3,12 +3,23 @@ import { withAuth } from '../context/authContext';
 import { Link } from 'react-router-dom';
 
 class EventPreview extends Component {
+  
+  editAndDeleteLinks = ({ _id }) => {
+    const handleDelete = () => this.props.deleteEvent(_id);
+    return (
+      <div>
+        <button>edit</button>
+        <button onClick={handleDelete}>delete</button>
+      </div>
+    )
+  }
+
   render() {
     const { event, user } = this.props;
     const { _id, creator, data: { name, cover, start_time, place } } = event;
     return (
       <div>
-        {creator === user._id ? <EditLinks /> : '' }
+        {creator === user._id ? this.editAndDeleteLinks({ _id }) : null }
         <Link to={`/events/${_id}`}>
           <div className='event-preview'>
             <div className='event-image-container'>
@@ -21,18 +32,10 @@ class EventPreview extends Component {
             </div>
           </div>
         </Link>
+        <hr />
       </div>
     );
   }
-}
-
-const EditLinks = () => {
-  return (
-    <div>
-      edit
-      delete
-    </div>
-  )
 }
 
 export default withAuth(EventPreview);

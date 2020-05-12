@@ -5,6 +5,12 @@ import { EventPreview } from './';
 export default class Events extends Component {
   state = { events: [] };
 
+  deleteEvent = (_id) => {
+    apiClient.deleteEvent(_id);
+    const { events } = this.state;
+    this.setState({ events: events.filter((event) => event._id !== _id) });
+  }
+
   componentDidMount = () => {
     apiClient
       .getEvents()
@@ -15,21 +21,21 @@ export default class Events extends Component {
       .catch((error) => console.log(error))
   }
 
-  render() {
+  eventPreviews = () => {
     const { events } = this.state;
     return (
       <div>
+        {events.map((event, i) => <EventPreview key={event.data.name + i} event={event} deleteEvent={this.deleteEvent} />)}
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
         <h1>Events</h1>
-        <EventPreviews events={events} />
+        {this.eventPreviews()}
       </div>
     );
   }
-}
-
-const EventPreviews = ({ events }) => {
-  return (
-    <div>
-      {events.map((event, i) => <EventPreview key={event.data.name + i} event={event} />)}
-    </div>
-  )
 }

@@ -32,6 +32,10 @@ class ApiClient {
     return this.apiClient.get(`/events/${id}`);
   }
 
+  deleteEvent(id) {
+    return this.apiClient.delete(`/events/${id}`);
+  }
+
   getEvents() {
     return this.apiClient.get('/events');
   }
