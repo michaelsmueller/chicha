@@ -11,6 +11,11 @@ export default class Events extends Component {
     this.setState({ events: events.filter((event) => event._id !== _id) });
   }
 
+  editEvent = (_id) => {
+    console.log('editEvent');
+    apiClient.editEvent(_id);
+  }
+
   componentDidMount = () => {
     apiClient
       .getEvents()
@@ -25,7 +30,8 @@ export default class Events extends Component {
     const { events } = this.state;
     return (
       <div>
-        {events.map((event, i) => <EventPreview key={event.data.name + i} event={event} deleteEvent={this.deleteEvent} />)}
+        {events.map((event, i) =>
+          <EventPreview key={event.data.name + i} event={event} deleteEvent={this.deleteEvent} editEvent={this.editEvent} />)}
       </div>
     )
   }
@@ -39,3 +45,4 @@ export default class Events extends Component {
     );
   }
 }
+
