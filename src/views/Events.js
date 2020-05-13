@@ -28,6 +28,7 @@ export default class Events extends Component {
 
   eventPreviews = () => {
     const { events } = this.state;
+    console.log('props', this.props);
     return (
       <div>
         {events.map((event, i) =>
