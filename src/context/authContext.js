@@ -35,12 +35,16 @@ class AuthProvider extends Component {
       .whoami()
       .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
       .catch(({ response }) => {
-        switch (response.status) {
-          case 401:
-            this.setState({ status: 'loggedOut', user: null, error: null });
-            break;
-          default:
-            this.setState({ status: 'error', user: null, error: response.statusText });
+        if (response !== undefined) {
+          switch (response.status) {
+            case 401:
+              this.setState({ status: 'loggedOut', user: null, error: null });
+              break;
+            default:
+              this.setState({ status: 'error', user: null, error: response.statusText });
+          }
+        } else {
+          this.setState({ status: 'error', user: null, error: 'cannot connect to server' });
         }
       })
   }
@@ -50,15 +54,19 @@ class AuthProvider extends Component {
       .register({ username, password })
       .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
       .catch(({ response }) => {
-        switch (response.status) {
-          case 409:
-            this.setState({ status: 'loggedOut', user: null, error: 'username already exists' });
-            break;
-          case 422:
-            this.setState({ status: 'loggedOut', user: null, error: 'problem validating form data' });
-            break;
-          default:
-            this.setState({ status: 'error', user: null, error: response.statusText });
+        if (response !== undefined) {
+          switch (response.status) {
+            case 409:
+              this.setState({ status: 'loggedOut', user: null, error: 'username already exists' });
+              break;
+            case 422:
+              this.setState({ status: 'loggedOut', user: null, error: 'problem validating form data' });
+              break;
+            default:
+              this.setState({ status: 'error', user: null, error: response.statusText });
+          }
+        } else {
+          this.setState({ status: 'error', user: null, error: 'cannot connect to server' });
         }
       })
   };
@@ -68,12 +76,16 @@ class AuthProvider extends Component {
       .signIn({ username, password })
       .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
       .catch(({ response }) => {
-        switch (response.status) {
-          case 401:
-            this.setState({ status: 'loggedOut', user: null, error: 'wrong username or password' });
-            break;
-          default:
-            this.setState({ status: 'error', user: null, error: response.statusText });
+        if (response !== undefined) {
+          switch (response.status) {
+            case 401:
+              this.setState({ status: 'loggedOut', user: null, error: 'wrong username or password' });
+              break;
+            default:
+              this.setState({ status: 'error', user: null, error: response.statusText });
+          }
+        } else {
+          this.setState({ status: 'error', user: null, error: 'cannot connect to server' });
         }
       })
   };

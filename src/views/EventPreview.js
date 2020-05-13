@@ -2,13 +2,14 @@ import React from 'react';
 import { withAuth } from '../context/authContext';
 import { Link } from 'react-router-dom';
 
-const EventPreview = ({ event, user, deleteEvent }) => {
+const EventPreview = ({ event, user, deleteEvent, editEvent }) => {
 
   const editAndDeleteLinks = ({ _id }) => {
+    const handleEdit = () => editEvent(_id);
     const handleDelete = () => deleteEvent(_id);
     return (
       <div>
-        <button>edit</button>
+        <button onclick={handleEdit}>edit</button>
         <button onClick={handleDelete}>delete</button>
       </div>
     )
