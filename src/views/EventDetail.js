@@ -13,11 +13,14 @@ export default class EventDetail extends Component {
         const { event } = data;
         this.setState({ event, status: 'loaded' });
       })
-      .catch((error) => this.setState({ status: 'error', error }))
+      .catch((error) => {
+        console.log('caught error EventDetail', error);
+        this.setState({ status: 'error', error: error.message });
+        })
   }
 
   render() {
-    const { event, status } = this.state;
-    return <EventPage status={status} event={event} />
+    const { event, status, error } = this.state;
+    return <EventPage event={event} status={status} error={error} />
   }
 }

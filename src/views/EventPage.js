@@ -1,5 +1,5 @@
 import React from 'react';
-import WithLoading from '../components/WithLoading';
+import withLoading from '../components/withLoading';
 
 const EventPage = ({ event }) => {
   const { data: { name, description, cover, start_time, end_time, ticket_uri, place } } = event;
@@ -20,4 +20,4 @@ const EventPage = ({ event }) => {
   );
 }
 
-export default WithLoading(EventPage);
+export default withLoading(EventPage);

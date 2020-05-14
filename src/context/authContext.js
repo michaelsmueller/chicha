@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apiClient from '../services/apiClient';
+import withLoading from '../components/withLoading';
 
 export const AuthContext = React.createContext();
 

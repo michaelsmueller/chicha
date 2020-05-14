@@ -1,10 +1,18 @@
 import React from 'react';
+import Error from '../views/Error';
+import Loading from '../views/Loading';
 
-const WithLoading = (Comp) => {
-  return ({ status, ...props }) => {
-    if (status !== 'loading') return (<Comp {...props} />);
-    return (<p>Loading...</p>);
+const withLoading = (Comp) => {
+  return ({ status, error, ...props }) => {
+    switch (status) {
+      case 'loading':
+        return <Loading />;
+      case 'error':
+        return <Error error={error} />;
+      default:
+        return <Comp {...props} />;
+    }
   }
 }
 
-export default WithLoading;
+export default withLoading;
