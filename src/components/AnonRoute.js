@@ -6,10 +6,10 @@ const AnonRoute = (props) => {
   const { component: Comp, status, ...rest } = props;
   return (
     <Route
-      { ...rest }
+      {...rest}
       render={ (props) =>
         status !== 'loggedIn' ? (
-          <Comp { ...props } />
+          <Comp {...props} />
         ) : (
           <Redirect
             to={{

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { EditEventForm } from '/';
 import apiClient from '../services/apiClient';
-import { EventPage } from './';
 
-export default class EventDetail extends Component {
+export default class EditEvent extends Component {
   state = { event: {}, status: 'loading', error: null };
 
   componentDidMount = () => {
@@ -17,7 +17,8 @@ export default class EventDetail extends Component {
   }
 
   render() {
-    const { event, status, error } = this.state;
-    return <EventPage event={event} status={status} error={error} />
+    const { event: { data }, status, error } = this.state;
+    const { id } = this.props.match.params;
+    return <EditEventForm data={data} id={id} status={status} error={error} />
   }
 }

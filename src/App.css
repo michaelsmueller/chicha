@@ -7,7 +7,7 @@ a {
   font-weight: 600;
 }
 
-button, input {
+button, input, textarea {
   padding: 10px;
   background-color: white;
   border: 1px solid gray;
@@ -22,10 +22,15 @@ nav ul {
   font-weight: 200;
 }
 
-.add-event form {
+.add-event form,
+.edit-event form {
   padding: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.edit-event textarea {
+  height: 100px;
 }
 
 .event-preview {

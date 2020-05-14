@@ -25,7 +25,8 @@ export default class Events extends Component {
     const { events } = this.state;
     return (
       <div>
-        {events.map((event, i) => <EventPreview key={event.data.name + i} event={event} deleteEvent={this.deleteEvent} />)}
+        {events.map((event, i) =>
+          <EventPreview key={event.data.name + i} event={event} deleteEvent={this.deleteEvent} />)}
       </div>
     )
   }
@@ -39,3 +40,4 @@ export default class Events extends Component {
     );
   }
 }
+
