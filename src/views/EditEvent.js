@@ -17,7 +17,8 @@ export default class EditEvent extends Component {
   }
 
   render() {
-    const { event, status, error } = this.state;
-    return <EditEventForm event={event} status={status} error={error} />
+    const { event: { data }, status, error } = this.state;
+    const { id } = this.props.match.params;
+    return <EditEventForm data={data} id={id} status={status} error={error} />
   }
 }
