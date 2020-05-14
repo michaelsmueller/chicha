@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import withLoading from '../components/withLoading';
 
-export default class EditEventForm extends Component {
+class EditEventForm extends Component {
   state = {};
 
   componentDidMount = () => {
@@ -46,3 +47,5 @@ export default class EditEventForm extends Component {
     );
   }  
 }
+
+export default withLoading(EditEventForm);

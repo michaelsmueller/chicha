@@ -3,7 +3,7 @@ import apiClient from '../services/apiClient';
 import { EventPage } from './';
 
 export default class EventDetail extends Component {
-  state = { event: {}, status: 'loading', error: ''};
+  state = { event: {}, status: 'loading', error: null };
 
   componentDidMount = () => {
     const { id } = this.props.match.params;
@@ -11,12 +11,9 @@ export default class EventDetail extends Component {
       .getEvent(id)
       .then(({ data }) => {
         const { event } = data;
-        this.setState({ event, status: 'loaded' });
+        this.setState({ event, status: 'loaded', error: null });
       })
-      .catch((error) => {
-        console.log('caught error EventDetail', error);
-        this.setState({ status: 'error', error: error.message });
-        })
+      .catch((error) => this.setState({ status: 'error', error: error.message }))
   }
 
   render() {

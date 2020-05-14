@@ -3,10 +3,7 @@ import { EditEventForm } from '/';
 import apiClient from '../services/apiClient';
 
 export default class EditEvent extends Component {
-  state = {
-    event: {},
-    isLoading: true,   // to do: refactor by creating content loader
-  };
+  state = { event: {}, status: 'loading', error: null };
 
   componentDidMount = () => {
     const { id } = this.props.match.params;
@@ -14,18 +11,13 @@ export default class EditEvent extends Component {
       .getEvent(id)
       .then(({ data }) => {
         const { event } = data;
-        this.setState({ event, isLoading: false });
+        this.setState({ event, status: 'loaded', error: null });
       })
-      .catch((error) => console.log(error))
+      .catch((error) => this.setState({ status: 'error', error: error.message }))
   }
 
   render() {
-    const { event, isLoading } = this.state;
-    console.log('props', this.props);
-    if (isLoading) {
-      return <div>Loading....</div>
-    } else {
-      return <EditEventForm event={event} />
-    }
+    const { event, status, error } = this.state;
+    return <EditEventForm event={event} status={status} error={error} />
   }
 }
