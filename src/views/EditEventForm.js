@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import withLoading from '../components/withLoading';
 import apiClient from '../services/apiClient';
 
@@ -166,4 +167,4 @@ class EditEventForm extends Component {
   }  
 }
 
-export default withLoading(EditEventForm);
+export default withRouter(withLoading(EditEventForm));
