@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AnonRoute, PrivateRoute } from './components';
 import AuthProvider from './context/authContext';
-import { AddEvent, EventDetail, Events, Heavyweights, Home, Nav, Offers, Profile, Register } from './views';
+import { AddEvent, EditEvent, EventDetail, Events, Heavyweights, Home, Nav, Offers, Profile, Register } from './views';
 import './App.css';
 
 const App = () => {
@@ -24,6 +24,7 @@ const Layout = () => {
     <Nav />
     <Route exact path='/events' component={Events} />
     <Route exact path='/events/:id' component={EventDetail} />
+    <Route exact path='/events/:id/edit' component={EditEvent} />
     <Route exact path='/add-event' component={AddEvent} />
     <Route exact path='/heavyweights' component={Heavyweights} />
     <Route exact path='/offers' component={Offers} />

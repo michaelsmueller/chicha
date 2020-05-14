@@ -1,10 +1,14 @@
 export { default as AddEvent } from './AddEvent';
+export { default as EditEvent } from './EditEvent';
+export { default as EditEventForm } from './EditEventForm';
 export { default as Error } from './Error';
 export { default as EventDetail } from './EventDetail';
+export { default as EventPage } from './EventPage';
 export { default as EventPreview } from './EventPreview';
 export { default as Events } from './Events';
 export { default as Heavyweights } from './Heavyweights';
 export { default as Home } from './Home';
+export { default as Loading } from './Loading';
 export { default as Nav } from './Nav';
 export { default as Offers } from './Offers';
 export { default as Profile } from './Profile';
