@@ -8,17 +8,15 @@ class ApiClient {
     });
   }
 
-  // auth
   whoami = () => this.apiClient.get('/whoami');
   signIn = (body) => this.apiClient.post('/signin', body);
   logout = () => this.apiClient.get('/logout');
 
-  // user
   register = (body) => this.apiClient.post('/users', body);
   getUser = (id) => this.apiClient.get(`/users/${id}`);
   editUser = (id, body) => this.apiClient.put(`/users/${id}`, body);
+  deleteUser = (id) => this.apiClient.delete(`/users/${id}`);
 
-  // event
   addEvent = (body) => this.apiClient.post('/events', body);
   getEvent = (id) => this.apiClient.get(`/events/${id}`);
   getEvents = () => this.apiClient.get('/events');

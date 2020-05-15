@@ -17,6 +17,15 @@ class Profile extends Component {
       .catch((error) => this.setState({ status: 'error', error: error.message }))
   }
 
+  deleteUser = () => {
+    const { user: { _id } } = this.state;
+    const { onLogout } = this.props;
+    apiClient
+      .deleteUser(_id)
+        .then(() => onLogout())
+        .catch((error) => this.setState({ status: 'error', error: error.message }))
+  }
+
   render() {
     const { onLogout } = this.props;
     const { user: { username, image, bio, url } } = this.state;
@@ -29,6 +38,7 @@ class Profile extends Component {
         {url && <a href={url}>{url}</a>}
         <br />
         <Link to='/profile/edit'><button>Edit profile</button></Link>
+        <button onClick={this.deleteUser}>Delete profile</button>
         <button onClick={onLogout}>Logout</button>
       </div>
     );

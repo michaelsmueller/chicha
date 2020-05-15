@@ -8,7 +8,6 @@ class ProfileUpdate extends Component {
 
   componentDidMount = () => {
     const { user } = this.props;
-    // this.setState({ user, status: 'loaded', error: null });
     apiClient
       .getUser(user._id)
       .then(({ data }) => {
