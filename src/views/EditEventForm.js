@@ -41,8 +41,6 @@ class EditEventForm extends Component {
       .catch((error) => console.log(error))
   };
 
-  cleanForm = () => this.setState({ event: {} });
-
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {

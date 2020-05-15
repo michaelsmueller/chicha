@@ -12,6 +12,7 @@ class Register extends Component {
     const { onRegister } = this.props;
     if (username !== '' && password !== '') {
       onRegister({ username, password });
+      this.cleanForm();
     }
   };
 

@@ -8,41 +8,22 @@ class ApiClient {
     });
   }
 
-  whoami() {
-    return this.apiClient.get('/whoami');
-  }
+  // auth
+  whoami = () => this.apiClient.get('/whoami');
+  signIn = (body) => this.apiClient.post('/signin', body);
+  logout = () => this.apiClient.get('/logout');
 
-  register(body) {
-    return this.apiClient.post('/users', body);
-  }
+  // user
+  register = (body) => this.apiClient.post('/users', body);
+  getUser = (id) => this.apiClient.get(`/users/${id}`);
+  editUser = (id, body) => this.apiClient.put(`/users/${id}`, body);
 
-  signIn(body) {
-    return this.apiClient.post('/signin', body);
-  }
-
-  logout() {
-    return this.apiClient.get('/logout');
-  }
-
-  addEvent(body) {
-    return this.apiClient.post('/events', body);
-  }
-
-  getEvent(id) {
-    return this.apiClient.get(`/events/${id}`);
-  }
-
-  editEvent(id, body) {
-    return this.apiClient.put(`/events/${id}`, body);
-  }
-
-  deleteEvent(id) {
-    return this.apiClient.delete(`/events/${id}`);
-  }
-
-  getEvents() {
-    return this.apiClient.get('/events');
-  }
+  // event
+  addEvent = (body) => this.apiClient.post('/events', body);
+  getEvent = (id) => this.apiClient.get(`/events/${id}`);
+  getEvents = () => this.apiClient.get('/events');
+  editEvent = (id, body) => this.apiClient.put(`/events/${id}`, body);
+  deleteEvent = (id) => this.apiClient.delete(`/events/${id}`);
 }
 
 const apiClient = new ApiClient();

@@ -23,7 +23,8 @@ nav ul {
 }
 
 .add-event form,
-.edit-event form {
+.edit-event form,
+.profile-update form {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -39,4 +40,8 @@ nav ul {
 
 .event-preview img {
   width: 100%;
+}
+
+.profile img {
+  width: 100%
 }

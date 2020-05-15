@@ -12,4 +12,6 @@ export { default as Loading } from './Loading';
 export { default as Nav } from './Nav';
 export { default as Offers } from './Offers';
 export { default as Profile } from './Profile';
+export { default as ProfileUpdate } from './ProfileUpdate';
+export { default as ProfileUpdateForm } from './ProfileUpdateForm';
 export { default as Register } from './Register';

@@ -12,6 +12,7 @@ class Home extends Component {
     const { onSignIn } = this.props;
     if (username !== '' && password !== '') {
       onSignIn({ username, password });
+      this.cleanForm();
     }
   };
 
