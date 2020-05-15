@@ -28,20 +28,24 @@ class Profile extends Component {
 
   render() {
     const { onLogout } = this.props;
-    const { user: { username, image, bio, url } } = this.state;
-    return (
-      // need to use a loader here
-      <div className='profile'>
-        {image && <img alt='portrait' src={image} />}
-        <h1>{username}</h1>
-        {bio && <p className='bio'>{bio}</p>}
-        {url && <a href={url}>{url}</a>}
-        <br />
-        <Link to='/profile/edit'><button>Edit profile</button></Link>
-        <button onClick={this.deleteUser}>Delete profile</button>
-        <button onClick={onLogout}>Logout</button>
-      </div>
-    );
+    const { user } = this.state;
+    if (!user) return <div>Loading...</div>
+    else {
+      const { username, image, bio, url } = user;
+      return (
+        // need to use a loader here
+        <div className='profile'>
+          {image && <img alt='portrait' src={image} />}
+          <h1>{username}</h1>
+          {bio && <p className='bio'>{bio}</p>}
+          {url && <a href={url}>{url}</a>}
+          <br />
+          <Link to='/profile/edit'><button>Edit profile</button></Link>
+          <button onClick={this.deleteUser}>Delete profile</button>
+          <button onClick={onLogout}>Logout</button>
+        </div>
+      );
+    }
   }
 }
 
