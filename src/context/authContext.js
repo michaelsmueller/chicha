@@ -7,11 +7,11 @@ export const withAuth = (Comp) => {
     render() {
       return (
         <AuthContext.Consumer>
-          {({ status, user, error, handleRegister, handleSignIn, handleLogout }) => {
+          {({ status, userId, error, handleRegister, handleSignIn, handleLogout }) => {
             return (
               <Comp
                 status={status}
-                user={user}
+                userId={userId}
                 error={error}
                 onRegister={handleRegister}
                 onSignIn={handleSignIn}
@@ -27,23 +27,23 @@ export const withAuth = (Comp) => {
 };
 
 class AuthProvider extends Component {
-  state = { status: 'loading', user: null, error: null };
+  state = { status: 'loading', userId: null, error: null };
 
   componentDidMount() {
     apiClient
       .whoami()
-      .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
+      .then(({ data: { _id } }) => this.setState({ status: 'loggedIn', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
           switch (response.status) {
             case 401:
-              this.setState({ status: 'loggedOut', user: null, error: null });
+              this.setState({ status: 'loggedOut', userId: null, error: null });
               break;
             default:
-              this.setState({ status: 'error', user: null, error: response.statusText });
+              this.setState({ status: 'error', userId: null, error: response.statusText });
           }
         } else {
-          this.setState({ status: 'error', user: null, error: 'cannot connect to server' });
+          this.setState({ status: 'error', userId: null, error: 'cannot connect to server' });
         }
       })
   }
@@ -51,21 +51,21 @@ class AuthProvider extends Component {
   handleRegister = ({ username, password }) => {
     apiClient
       .register({ username, password })
-      .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
+      .then(({ data: { _id } }) => this.setState({ status: 'loggedIn', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
           switch (response.status) {
             case 409:
-              this.setState({ status: 'loggedOut', user: null, error: 'username already exists' });
+              this.setState({ status: 'loggedOut', userId: null, error: 'username already exists' });
               break;
             case 422:
-              this.setState({ status: 'loggedOut', user: null, error: 'problem validating form data' });
+              this.setState({ status: 'loggedOut', userId: null, error: 'problem validating form data' });
               break;
             default:
-              this.setState({ status: 'error', user: null, error: response.statusText });
+              this.setState({ status: 'error', userId: null, error: response.statusText });
           }
         } else {
-          this.setState({ status: 'error', user: null, error: 'cannot connect to server' });
+          this.setState({ status: 'error', userId: null, error: 'cannot connect to server' });
         }
       })
   };
@@ -73,18 +73,18 @@ class AuthProvider extends Component {
   handleSignIn = ({ username, password }) => {
     apiClient
       .signIn({ username, password })
-      .then(({ data: user }) => this.setState({ status: 'loggedIn', user }))
+      .then(({ data: { _id } }) => this.setState({ status: 'loggedIn', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
           switch (response.status) {
             case 401:
-              this.setState({ status: 'loggedOut', user: null, error: 'wrong username or password' });
+              this.setState({ status: 'loggedOut', userId: null, error: 'wrong username or password' });
               break;
             default:
-              this.setState({ status: 'error', user: null, error: response.statusText });
+              this.setState({ status: 'error', userId: null, error: response.statusText });
           }
         } else {
-          this.setState({ status: 'error', user: null, error: 'cannot connect to server' });
+          this.setState({ status: 'error', userId: null, error: 'cannot connect to server' });
         }
       })
   };
@@ -92,18 +92,18 @@ class AuthProvider extends Component {
   handleLogout = () => {
     apiClient
       .logout()
-      .then(() => this.setState({ status: 'loggedOut', user: null, error: null }))
-      .catch(({ response }) => this.setState({ status: 'error', user: null, error: response.statusText }));
+      .then(() => this.setState({ status: 'loggedOut', userId: null, error: null }))
+      .catch(({ response }) => this.setState({ status: 'error', userId: null, error: response.statusText }));
   };
 
   render() {
     const { children } = this.props;
-    const { status, user, error } = this.state;
+    const { status, userId, error } = this.state;
     return (
       <AuthContext.Provider
         value={{
           status,
-          user,
+          userId,
           error,
           handleRegister: this.handleRegister,
           handleSignIn: this.handleSignIn,

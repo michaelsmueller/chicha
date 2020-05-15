@@ -7,9 +7,9 @@ class Profile extends Component {
   state = { user: {}, status: 'loading', error: null };
 
   componentDidMount = () => {
-    const { user } = this.props;
+    const { userId } = this.props;
     apiClient
-      .getUser(user._id)
+      .getUser(userId)
       .then(({ data }) => {
         const { user } = data;
         this.setState({ user, status: 'loaded', error: null });

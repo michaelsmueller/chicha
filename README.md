@@ -76,6 +76,8 @@ Other features outside of the MVP scope:
 | Offer details           | `/offers/:id`           | details on an offer     |
 | My vouchers             | `/offers/myvouchers`    | list of redeemed offers |
 | Profile                 | `/profile`              | user profile            |
+| Profile                 | `/profile/edit`         | update user profile     |
+
 
 
 ## Links
