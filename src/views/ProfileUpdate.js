@@ -19,7 +19,6 @@ class ProfileUpdate extends Component {
 
   render() {
     const { user, status, error } = this.state;
-    console.log('user data', user);
     return <ProfileUpdateForm user={user} status={status} error={error} />
   }
 }

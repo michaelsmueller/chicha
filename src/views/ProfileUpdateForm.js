@@ -17,9 +17,6 @@ class ProfileUpdateForm extends Component {
     const { username, password, image, bio, url } = this.state;
     const user = { username, password, image, bio, url };    
     const id = this.props.user._id;
-    console.log('the fucker props.user', this.props.user)
-    console.log('id', id);
-    console.log('user info', user);
     apiClient
       .editUser(id, user)
       .then((response) => {
