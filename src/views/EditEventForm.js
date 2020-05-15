@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import withLoading from '../components/withLoading';
 import apiClient from '../services/apiClient';
+import dateTime from '../helpers/dateTime';
 
 class EditEventForm extends Component {
   state = {
     name: this.props.data.name,
     source: this.props.data.cover.source,
     start_time: this.props.data.start_time,
+    start_time_local: '',
     end_time: this.props.data.end_time,
+    end_time_local: '',
     description: this.props.data.description,
     ticket_uri: this.props.data.ticket_uri,
     place: this.props.data.place.name,
@@ -20,7 +23,10 @@ class EditEventForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { name, source, start_time, end_time, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
+    // this.setUtcDateTimes();
+    const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
+    const start_time = dateTime.getUtcDateTime(start_time_local);
+    const end_time = dateTime.getUtcDateTime(end_time_local);
     const event = {
       data: {
         name,
@@ -31,20 +37,34 @@ class EditEventForm extends Component {
         ticket_uri,
         place: { name: place, location: { street, city, country: 'Spain', latitude, longitude } },
      },
-    };    
+    };
     const { id } = this.props;
     apiClient
       .editEvent(id, event)
-      .then((response) => {
-        this.props.history.push(`/events/${id}`);
-      })
+      .then((response) => this.props.history.push(`/events/${id}`))
       .catch((error) => console.log(error))
   };
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
+  componentDidMount = () => this.setLocalDateTimes();
+
+  setLocalDateTimes = () => {
+    const { start_time, end_time } = this.state;
+    const start_time_local = dateTime.getLocalDateTime(start_time);
+    const end_time_local = dateTime.getLocalDateTime(end_time);
+    this.setState({ start_time_local, end_time_local });
+  }
+
+  // setUtcDateTimes = () => {
+  //   const { start_time_local, end_time_local } = this.state;
+  //   const start_time = dateTime.getUtcDateTime(start_time_local);
+  //   const end_time = dateTime.getUtcDateTime(end_time_local);
+  //   this.setState({ start_time, end_time });
+  // }
+
   render() {
-    const { name, source, start_time, end_time, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
+    const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
     return (
       <div className='edit-event'>
         <h1>Edit Event</h1>
@@ -70,21 +90,21 @@ class EditEventForm extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor='start_time'>Start date & time</label>
+          <label htmlFor='start_time_local'>Start date & time</label>
           <input
-            type='datetime'
-            name='start_time'
-            id='start_time'
-            value={start_time || ''}
+            type='datetime-local'
+            name='start_time_local'
+            id='start_time_local'
+            value={start_time_local || ''}
             onChange={this.handleChange}
           />
 
-          <label htmlFor='end_time'>End date & time</label>
+          <label htmlFor='end_time_local'>End date & time</label>
           <input
-            type='datetime'
-            name='end_time'
-            id='end_time'
-            value={end_time || ''}
+            type='datetime-local'
+            name='end_time_local'
+            id='end_time_local'
+            value={end_time_local || ''}
             onChange={this.handleChange}
           />
 
