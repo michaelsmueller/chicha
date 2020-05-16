@@ -11,8 +11,9 @@ const formatToString = (date) => {
 
 export const getLocalDateTime = (utcDateTime) => {
   try {
-    const dateObject = new Date(utcDateTime);
-    return formatToString(dateObject);
+    const date = new Date(utcDateTime);
+    if (isValidDate(date)) return formatToString(date);
+    else return '';
   } catch (error) {
     return error;
   }
@@ -20,9 +21,24 @@ export const getLocalDateTime = (utcDateTime) => {
 
 export const getUtcDateTime = (localDateTime) => {
   try {
-    const dateObject = new Date(localDateTime);
-    return dateObject.toISOString();
+    const date = new Date(localDateTime);
+    if (isValidDate(date)) return date.toISOString();
+    else return '';
   } catch (error) {
     return error;
   }
+}
+
+export const showLocalDateTime = (utcDateTime) => {
+  try {
+    const date = new Date(utcDateTime);
+    if (isValidDate(date)) return date.toString().replace(/:\d{2}\sGMT.*/g, '');
+    else return '';
+  } catch (error) {
+    return error;
+  }
+}
+
+const isValidDate = (date) => {
+  return date instanceof Date && !isNaN(date);
 }

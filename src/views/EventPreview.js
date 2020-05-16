@@ -1,6 +1,7 @@
 import React from 'react';
 import { withAuth } from '../context/authContext';
 import { Link } from 'react-router-dom';
+import { showLocalDateTime } from '../helpers/dateTime';
 
 const EventPreview = ({ event, userId, deleteEvent }) => {
 
@@ -24,7 +25,7 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
             <img alt={name} src={cover.source} />
           </div>
           <div className='event-info'>
-            <p className='start-time'>{start_time}</p>
+            <p className='start-time'>{showLocalDateTime(start_time)}</p>
             <h2 className='name'>{name}</h2>
             <p className='place'>{place.name}</p>
           </div>
