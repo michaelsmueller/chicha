@@ -9,7 +9,7 @@ const formatToString = (date) => {
   }
 }
 
-const getLocalDateTime = (utcDateTime) => {
+export const getLocalDateTime = (utcDateTime) => {
   try {
     const dateObject = new Date(utcDateTime);
     return formatToString(dateObject);
@@ -18,7 +18,7 @@ const getLocalDateTime = (utcDateTime) => {
   }
 }
 
-const getUtcDateTime = (localDateTime) => {
+export const getUtcDateTime = (localDateTime) => {
   try {
     const dateObject = new Date(localDateTime);
     return dateObject.toISOString();
@@ -26,8 +26,3 @@ const getUtcDateTime = (localDateTime) => {
     return error;
   }
 }
-
-module.exports = {
-  getLocalDateTime,
-  getUtcDateTime,
-};

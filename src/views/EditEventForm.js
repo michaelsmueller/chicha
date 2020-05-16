@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import withLoading from '../components/withLoading';
 import apiClient from '../services/apiClient';
-import dateTime from '../helpers/dateTime';
+import { getLocalDateTime, getUtcDateTime } from '../helpers/dateTime';
 
 class EditEventForm extends Component {
   state = {
@@ -49,15 +49,15 @@ class EditEventForm extends Component {
 
   setLocalDateTimes = () => {
     const { start_time, end_time } = this.state;
-    const start_time_local = dateTime.getLocalDateTime(start_time);
-    const end_time_local = dateTime.getLocalDateTime(end_time);
+    const start_time_local = getLocalDateTime(start_time);
+    const end_time_local = getLocalDateTime(end_time);
     this.setState({ start_time_local, end_time_local });
   }
 
   setUtcDateTimes = () => {
     const { start_time_local, end_time_local } = this.state;
-    const start_time = dateTime.getUtcDateTime(start_time_local);
-    const end_time = dateTime.getUtcDateTime(end_time_local);
+    const start_time = getUtcDateTime(start_time_local);
+    const end_time = getUtcDateTime(end_time_local);
     this.setState({ start_time, end_time });
   }
 
