@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EventPage = ({ event }) => {
+const EventDetailContent = ({ event }) => {
   const { data: { name, description, cover, start_time, end_time, ticket_uri, place } } = event;
   return (
     <div className='event-preview'>
@@ -19,4 +19,4 @@ const EventPage = ({ event }) => {
   );
 }
 
-export default EventPage;
+export default EventDetailContent;

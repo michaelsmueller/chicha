@@ -3,7 +3,7 @@ export { default as EditEvent } from './EditEvent';
 export { default as EditEventForm } from './EditEventForm';
 export { default as Error } from './Error';
 export { default as EventDetail } from './EventDetail';
-export { default as EventPage } from './EventPage';
+export { default as EventDetailContent } from './EventDetailContent';
 export { default as EventPreview } from './EventPreview';
 export { default as Events } from './Events';
 export { default as Heavyweights } from './Heavyweights';
