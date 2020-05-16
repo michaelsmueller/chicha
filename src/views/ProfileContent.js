@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withAuth } from '../context/authContext';
 
 const ProfileContent = ({ user, deleteUser, onLogout }) => {
   const { username, image, bio, url } = user;
@@ -18,4 +17,4 @@ const ProfileContent = ({ user, deleteUser, onLogout }) => {
   );
 }
 
-export default withAuth(ProfileContent);
+export default ProfileContent;

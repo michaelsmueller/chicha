@@ -9,9 +9,7 @@ export default class AddEvent extends Component {
     const { url } = this.state;
     apiClient
       .addEvent({ url })
-      .then((response) => {
-        this.props.history.push('/events');
-      })
+      .then((response) => this.props.history.push('/events'))
       .catch((error) => console.log(error))
   };
 

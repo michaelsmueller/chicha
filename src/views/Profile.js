@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ContentLoader } from '../components';
 import { ProfileContent } from './';
 import { withAuth } from '../context/authContext';
 import apiClient from '../services/apiClient';
 
-class Profile extends Component {
-  deleteUser = () => {
-    const { userId, onLogout } = this.props;
+const Profile = ({ userId, onLogout }) => {
+  const deleteUser = () => {
     apiClient
       .deleteUser(userId)
         .then(() => onLogout())
         .catch((error) => console.log(error))
   }
 
-  render() {
-    const { userId } = this.props;
-    return (
-      <ContentLoader asyncFunc={apiClient.getUser} params={userId} >
-        {(data) => <ProfileContent user={data.user} deleteUser={this.deleteUser} />}
-      </ContentLoader>
-    );
-  }
+  return (
+    <ContentLoader asyncFunc={apiClient.getUser} params={userId} >
+      {(data) => <ProfileContent user={data.user} deleteUser={deleteUser} onLogout={onLogout} />}
+    </ContentLoader>
+  );
 }
 
 export default withAuth(Profile);
