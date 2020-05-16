@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import withLoading from '../components/withLoading';
 import apiClient from '../services/apiClient';
 import { getLocalDateTime, getUtcDateTime } from '../helpers/dateTime';
 
@@ -62,6 +61,7 @@ class EditEventForm extends Component {
   }
 
   render() {
+    console.log('EditEventForm props', this.props);
     const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
     return (
       <div className='edit-event'>
@@ -183,4 +183,4 @@ class EditEventForm extends Component {
   }  
 }
 
-export default withRouter(withLoading(EditEventForm));
+export default withRouter(EditEventForm);

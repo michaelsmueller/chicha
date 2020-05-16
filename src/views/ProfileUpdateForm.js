@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import withLoading from '../components/withLoading';
 import apiClient from '../services/apiClient';
 
 class ProfileUpdateForm extends Component {
@@ -91,4 +90,4 @@ class ProfileUpdateForm extends Component {
   }  
 }
 
-export default withRouter(withLoading(ProfileUpdateForm));
+export default withRouter(ProfileUpdateForm);
