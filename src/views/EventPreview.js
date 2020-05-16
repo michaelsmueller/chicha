@@ -4,36 +4,20 @@ import { Link } from 'react-router-dom';
 import { showLocalDateTime } from '../helpers/dateTime';
 
 const EventPreview = ({ event, userId, deleteEvent }) => {
-
-  const editAndDeleteLinks = ({ _id }) => {
-    const handleDelete = () => deleteEvent(_id);
-    const confirmDelete = () => {
-      const confirmed = window.confirm('Ok to delete?');
-      if (confirmed) handleDelete();
-    }
-    return (
-      <div>
-        <Link to={`/events/${_id}/edit`}><button>edit</button></Link>
-        <button onClick={confirmDelete}>delete</button>
-      </div>
-    )
-  };
-
-  console.log('event data', event);
-  const { _id, creator, upvotes, downvotes, data: { name, cover, start_time, place } } = event;
+  const { _id: eventId, creator, upvotes, downvotes, data: { name, cover, start_time, place } } = event;
   return (
     <div className='event-preview'>
-      {creator === userId ? editAndDeleteLinks({ _id }) : null }
-      <Link to={`/events/${_id}`}>
+      {creator === userId ? <EditAndDelete eventId={eventId} deleteEvent={deleteEvent} /> : null }
+      <Link to={`/events/${eventId}`}>
         <div>
           <div className='event-image-container'>
             <img alt={name} src={cover.source} />
           </div>
           <div className='event-text-container'>
             <div className='votes'>
-              <div>↑</div>
+              <button>↑</button>
               <div>{upvotes - downvotes}</div>
-              <div>↓</div>
+              <button>↓</button>
             </div>
             <div className='event-info'>
               <p className='start-time'>{showLocalDateTime(start_time)}</p>
@@ -43,6 +27,20 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
           </div>
         </div>
       </Link>
+    </div>
+  );
+};
+
+const EditAndDelete = ({ eventId, deleteEvent }) => {
+  const handleDelete = () => deleteEvent(eventId);
+  const confirmDelete = () => {
+    const confirmed = window.confirm('Ok to delete?');
+    if (confirmed) handleDelete();
+  };
+  return (
+    <div>
+      <Link to={`/events/${eventId}/edit`}><button>edit</button></Link>
+      <button onClick={confirmDelete}>delete</button>
     </div>
   );
 };
