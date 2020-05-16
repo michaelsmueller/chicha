@@ -1,9 +1,10 @@
 import React from 'react';
 import { withAuth } from '../context/authContext';
 import { Link } from 'react-router-dom';
+import { UpAndDownvoteButtons } from './';
 import { showLocalDateTime } from '../helpers/dateTime';
 
-const EventPreview = ({ event, userId, deleteEvent }) => {
+const EventPreview = ({ event, userId, deleteEvent, upvoteEvent, downvoteEvent }) => {
   const { _id: eventId, creator, upvotes, downvotes, data, data: { name, start_time } } = event;
   const source = data.cover?.source;
   const place = data.place?.name;
@@ -11,18 +12,10 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
     <div className='event-preview'>
       {creator === userId ? <EditAndDeleteButtons eventId={eventId} deleteEvent={deleteEvent} /> : null }
       <Link to={`/events/${eventId}`}>
-        <div>
-          <div className='event-image-container'>
-            <img alt={name} src={source} />
-          </div>
-          <div className='event-text-container'>
-            <UpAndDownVoteButtons eventId={eventId} upvotes={upvotes} downvotes={downvotes} />
-            <div className='event-info'>
-              <p className='start-time'>{showLocalDateTime(start_time)}</p>
-              <h2 className='event-name'>{name}</h2>
-              <p className='place'>{place}</p>
-            </div>
-          </div>
+        <div className='event-image-container'><img alt={name} src={source} /></div>
+        <div className='event-text-container'>
+          <UpAndDownvoteButtons eventId={eventId} upvotes={upvotes} downvotes={downvotes} />
+          <EventInfo start_time={start_time} name={name} place={place} />
         </div>
       </Link>
     </div>
@@ -43,22 +36,12 @@ const EditAndDeleteButtons = ({ eventId, deleteEvent }) => {
   );
 };
 
-const UpAndDownVoteButtons = ({ eventId, upvotes, downvotes }) => {
-  const handleUpvote = (e) => {
-    e.preventDefault();
-    console.log('upvote');
-  }
-
-  const handleDownvote = (e) => {
-    e.preventDefault();
-    console.log('downvote')
-  }
-
+const EventInfo = ({ start_time, name, place }) => {
   return (
-    <div className='votes'>
-      <button onClick={handleUpvote}>↑</button>
-      <div>{upvotes - downvotes}</div>
-      <button onClick={handleDownvote}>↓</button>
+    <div className='event-info'>
+      <p className='start-time'>{showLocalDateTime(start_time)}</p>
+      <h2 className='event-name'>{name}</h2>
+      <p className='place'>{place}</p>
     </div>
   );
 };

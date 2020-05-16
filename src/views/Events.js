@@ -11,14 +11,6 @@ export default class Events extends Component {
     this.setState({ events: events.filter((event) => event._id !== eventId) });
   }
 
-  upvoteEvent = (eventId) => {
-    console.log('UPVOTING', eventId);
-  }
-
-  downvoteEvent = (eventId) => {
-    console.log('DOWNVOTING', eventId)
-  }
-
   componentDidMount = () => {
     apiClient
       .getEvents()
@@ -34,28 +26,17 @@ export default class Events extends Component {
     return (
       <div>
         <h1>Events</h1>
-        <EventPreviews
-          events={events}
-          deleteEvent={this.deleteEvent}
-          upvoteEvent={this.upvoteEvent}
-          downvoteEvent={this.downvoteEvent}
-        />
+        <EventPreviews events={events} deleteEvent={this.deleteEvent} />
       </div>
     );
   }
 }
 
-const EventPreviews = ({ events, deleteEvent, upvoteEvent, downvoteEvent }) => {
+const EventPreviews = ({ events, deleteEvent }) => {
   return (
     <div className='event-previews'>
       {events.map((event, i) =>
-        <EventPreview
-          key={event.data.name + i}
-          event={event}
-          deleteEvent={deleteEvent}
-          upvoteEvent={upvoteEvent}
-          downvoteEvent={downvoteEvent}
-        />)}
+        <EventPreview key={event.data.name + i} event={event} deleteEvent={deleteEvent} />)}
     </div>
   )
 };

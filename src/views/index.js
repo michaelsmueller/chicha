@@ -16,3 +16,4 @@ export { default as ProfileContent } from './ProfileContent';
 export { default as ProfileUpdate } from './ProfileUpdate';
 export { default as ProfileUpdateForm } from './ProfileUpdateForm';
 export { default as Register } from './Register';
+export { default as UpAndDownvoteButtons } from './UpAndDownvoteButtons';
