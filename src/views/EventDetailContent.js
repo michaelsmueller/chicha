@@ -14,8 +14,8 @@ const EventDetailContent = ({ event }) => {
         <h1 className='event-name'>{name}</h1>
         <h2 className='times'>{showLocalDateTime(start_time)} – {showLocalDateTime(end_time)}</h2>
         <h2 className='place'>{place}</h2>
-        {ticket_uri && <h2 className='tickets'><a href={ticket_uri}>Tickets</a></h2>}
         <p className='street'>{street}</p>
+        <h2 className='ticket-link'><a href={ticket_uri}>Tickets</a></h2>
         <p className='description'>{description}</p>
       </div>
     </div>

@@ -19,7 +19,8 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
     )
   };
 
-  const { _id, creator, data: { name, cover, start_time, place } } = event;
+  console.log('event data', event);
+  const { _id, creator, upvotes, downvotes, data: { name, cover, start_time, place } } = event;
   return (
     <div className='event-preview'>
       {creator === userId ? editAndDeleteLinks({ _id }) : null }
@@ -28,10 +29,17 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
           <div className='event-image-container'>
             <img alt={name} src={cover.source} />
           </div>
-          <div className='event-info'>
-            <p className='start-time'>{showLocalDateTime(start_time)}</p>
-            <h2 className='event-name'>{name}</h2>
-            <p className='place'>{place.name}</p>
+          <div className='event-text-container'>
+            <div className='votes'>
+              <div>↑</div>
+              <div>{upvotes - downvotes}</div>
+              <div>↓</div>
+            </div>
+            <div className='event-info'>
+              <p className='start-time'>{showLocalDateTime(start_time)}</p>
+              <h2 className='event-name'>{name}</h2>
+              <p className='place'>{place.name}</p>
+            </div>
           </div>
         </div>
       </Link>

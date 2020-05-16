@@ -57,6 +57,19 @@ nav ul {
   border-radius: 10px;
 }
 
+.event-text-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.event-preview .votes {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+  font-size: 16px;
+}
+
 .event-preview .start-time {
   font-size: 10px;
   font-weight: 600;
@@ -84,6 +97,12 @@ nav ul {
 }
 
 .event-detail .times,
+.event-detail .ticket-link {
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .event-detail .place {
   margin: 10px 0 0 0;
   font-size: 16px;
