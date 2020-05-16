@@ -5,10 +5,18 @@ import { EventPreview } from './';
 export default class Events extends Component {
   state = { events: [] };
 
-  deleteEvent = (_id) => {
-    apiClient.deleteEvent(_id);
+  deleteEvent = (eventId) => {
+    apiClient.deleteEvent(eventId);
     const { events } = this.state;
-    this.setState({ events: events.filter((event) => event._id !== _id) });
+    this.setState({ events: events.filter((event) => event._id !== eventId) });
+  }
+
+  upvoteEvent = (eventId) => {
+    console.log('UPVOTING', eventId);
+  }
+
+  downvoteEvent = (eventId) => {
+    console.log('DOWNVOTING', eventId)
   }
 
   componentDidMount = () => {
@@ -21,22 +29,33 @@ export default class Events extends Component {
       .catch((error) => console.log(error))
   }
 
-  eventPreviews = () => {
-    const { events } = this.state;
-    return (
-      <div className='event-previews'>
-        {events.map((event, i) =>
-          <EventPreview key={event.data.name + i} event={event} deleteEvent={this.deleteEvent} />)}
-      </div>
-    )
-  }
-
   render() {
+    const { events } = this.state;
     return (
       <div>
         <h1>Events</h1>
-        {this.eventPreviews()}
+        <EventPreviews
+          events={events}
+          deleteEvent={this.deleteEvent}
+          upvoteEvent={this.upvoteEvent}
+          downvoteEvent={this.downvoteEvent}
+        />
       </div>
     );
   }
 }
+
+const EventPreviews = ({ events, deleteEvent, upvoteEvent, downvoteEvent }) => {
+  return (
+    <div className='event-previews'>
+      {events.map((event, i) =>
+        <EventPreview
+          key={event.data.name + i}
+          event={event}
+          deleteEvent={deleteEvent}
+          upvoteEvent={upvoteEvent}
+          downvoteEvent={downvoteEvent}
+        />)}
+    </div>
+  )
+};

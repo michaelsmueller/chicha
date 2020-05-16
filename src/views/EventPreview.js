@@ -4,25 +4,23 @@ import { Link } from 'react-router-dom';
 import { showLocalDateTime } from '../helpers/dateTime';
 
 const EventPreview = ({ event, userId, deleteEvent }) => {
-  const { _id: eventId, creator, upvotes, downvotes, data: { name, cover, start_time, place } } = event;
+  const { _id: eventId, creator, upvotes, downvotes, data, data: { name, start_time } } = event;
+  const source = data.cover?.source;
+  const place = data.place?.name;
   return (
     <div className='event-preview'>
-      {creator === userId ? <EditAndDelete eventId={eventId} deleteEvent={deleteEvent} /> : null }
+      {creator === userId ? <EditAndDeleteButtons eventId={eventId} deleteEvent={deleteEvent} /> : null }
       <Link to={`/events/${eventId}`}>
         <div>
           <div className='event-image-container'>
-            <img alt={name} src={cover.source} />
+            <img alt={name} src={source} />
           </div>
           <div className='event-text-container'>
-            <div className='votes'>
-              <button>↑</button>
-              <div>{upvotes - downvotes}</div>
-              <button>↓</button>
-            </div>
+            <UpAndDownVoteButtons eventId={eventId} upvotes={upvotes} downvotes={downvotes} />
             <div className='event-info'>
               <p className='start-time'>{showLocalDateTime(start_time)}</p>
               <h2 className='event-name'>{name}</h2>
-              <p className='place'>{place.name}</p>
+              <p className='place'>{place}</p>
             </div>
           </div>
         </div>
@@ -31,7 +29,7 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
   );
 };
 
-const EditAndDelete = ({ eventId, deleteEvent }) => {
+const EditAndDeleteButtons = ({ eventId, deleteEvent }) => {
   const handleDelete = () => deleteEvent(eventId);
   const confirmDelete = () => {
     const confirmed = window.confirm('Ok to delete?');
@@ -41,6 +39,26 @@ const EditAndDelete = ({ eventId, deleteEvent }) => {
     <div>
       <Link to={`/events/${eventId}/edit`}><button>edit</button></Link>
       <button onClick={confirmDelete}>delete</button>
+    </div>
+  );
+};
+
+const UpAndDownVoteButtons = ({ eventId, upvotes, downvotes }) => {
+  const handleUpvote = (e) => {
+    e.preventDefault();
+    console.log('upvote');
+  }
+
+  const handleDownvote = (e) => {
+    e.preventDefault();
+    console.log('downvote')
+  }
+
+  return (
+    <div className='votes'>
+      <button onClick={handleUpvote}>↑</button>
+      <div>{upvotes - downvotes}</div>
+      <button onClick={handleDownvote}>↓</button>
     </div>
   );
 };

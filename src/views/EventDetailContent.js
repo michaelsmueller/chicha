@@ -2,13 +2,14 @@ import React from 'react';
 import { showLocalDateTime } from '../helpers/dateTime';
 
 const EventDetailContent = ({ event }) => {
-  const { data, data: { name, description, cover, start_time, end_time, ticket_uri } } = event;
+  const { data, data: { name, description, start_time, end_time, ticket_uri } } = event;
+  const source = data.cover?.source;
   const place = data.place?.name;
   const street = data.place?.location?.street;
   return (
     <div className='event-detail'>
       <div className='event-image-container'>
-        <img alt={name} src={cover.source} />
+        <img alt={name} src={source} />
       </div>
       <div className='event-info'>
         <h1 className='event-name'>{name}</h1>
