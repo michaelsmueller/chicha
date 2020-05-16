@@ -11,9 +11,9 @@ const ProfileContent = ({ user, deleteUser, onLogout }) => {
   return (
     <div className='profile'>
       {image && <img alt='portrait' src={image} />}
-      <h1>{username}</h1>
+      <h1 className='username'>{username}</h1>
       {bio && <p className='bio'>{bio}</p>}
-      {url && <a href={url}>{url}</a>}
+      {url && <div className='link'><a href={url}>{url}</a></div>}
       <br />
       <Link to='/profile/edit'><button>Edit profile</button></Link>
       <button onClick={confirmDelete}>Delete profile</button>

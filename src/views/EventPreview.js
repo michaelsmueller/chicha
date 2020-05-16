@@ -21,21 +21,20 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
 
   const { _id, creator, data: { name, cover, start_time, place } } = event;
   return (
-    <div>
+    <div className='event-preview'>
       {creator === userId ? editAndDeleteLinks({ _id }) : null }
       <Link to={`/events/${_id}`}>
-        <div className='event-preview'>
+        <div>
           <div className='event-image-container'>
             <img alt={name} src={cover.source} />
           </div>
           <div className='event-info'>
             <p className='start-time'>{showLocalDateTime(start_time)}</p>
-            <h2 className='name'>{name}</h2>
+            <h2 className='event-name'>{name}</h2>
             <p className='place'>{place.name}</p>
           </div>
         </div>
       </Link>
-      <hr />
     </div>
   );
 };

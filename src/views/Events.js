@@ -24,7 +24,7 @@ export default class Events extends Component {
   eventPreviews = () => {
     const { events } = this.state;
     return (
-      <div>
+      <div className='event-previews'>
         {events.map((event, i) =>
           <EventPreview key={event.data.name + i} event={event} deleteEvent={this.deleteEvent} />)}
       </div>

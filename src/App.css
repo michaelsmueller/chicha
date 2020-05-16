@@ -5,6 +5,7 @@
 a {
   text-decoration: none;
   font-weight: 600;
+  color: black;
 }
 
 a:visited {
@@ -21,6 +22,7 @@ button, input, textarea {
 nav ul {
   display: flex;
   justify-content: space-between;
+  margin: 20px 0;
   list-style-type: none;
   font-size: 14px;
   font-weight: 200;
@@ -38,14 +40,84 @@ nav ul {
   height: 100px;
 }
 
-.event-preview {
-  margin-top: 10px;
+.event-previews {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
-.event-preview img {
+.event-preview {
+  width: 160px;
+  margin: 10px 0;
+}
+
+.event-preview img,
+.event-detail img {
   width: 100%;
+  border-radius: 10px;
+}
+
+.event-preview .start-time {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.event-preview .event-name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.event-preview .place {
+  font-size: 11px;
+  line-height: 18px;
+  color: #666;
+}
+
+.event-detail .event-name {
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.event-detail .times,
+.event-detail .place {
+  margin: 10px 0 0 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.event-detail .street {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #333;
+}
+
+.event-detail .description {
+  color: #333;
 }
 
 .profile img {
   width: 100%
+}
+
+.profile .username {
+  margin: 15px 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.profile .bio {
+  margin: 10px 0;
+  color: #333;
+}
+
+.profile .link {
+  margin: 5px 0;
 }
