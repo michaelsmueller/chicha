@@ -1,26 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { ContentLoader } from '../components/';
 import { ProfileUpdateForm } from '/';
 import { withAuth } from '../context/authContext';
 import apiClient from '../services/apiClient';
 
-class ProfileUpdate extends Component {
-  state = { user: {}, status: 'loading', error: null };
-
-  componentDidMount = () => {
-    const { userId } = this.props;
-    apiClient
-      .getUser(userId)
-      .then(({ data }) => {
-        const { user } = data;
-        this.setState({ user, status: 'loaded', error: null });
-      })
-      .catch((error) => this.setState({ status: 'error', error: error.message }))
-  }
-
-  render() {
-    const { user, status, error } = this.state;
-    return <ProfileUpdateForm user={user} status={status} error={error} />
-  }
+const ProfileUpdate = (props) => {
+  const { userId } = props;
+  return (
+    <ContentLoader asyncFunc={apiClient.getUser} params={userId} >
+      {(data) => <ProfileUpdateForm user={data.user} />}
+    </ContentLoader>
+  )
 }
 
 export default withAuth(ProfileUpdate);

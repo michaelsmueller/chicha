@@ -29,7 +29,10 @@ class Profile extends Component {
   render() {
     const { onLogout } = this.props;
     const { user } = this.state;
-    if (!user) return <div>Loading...</div>
+    if (!user) {
+      console.log('this', this.state);
+      return <div>Loading...</div>
+    }
     else {
       const { username, image, bio, url } = user;
       return (
