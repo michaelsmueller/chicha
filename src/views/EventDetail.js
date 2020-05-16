@@ -1,23 +1,16 @@
-import React, { Component } from 'react';
-import apiClient from '../services/apiClient';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { ContentLoader } from '../components/';
 import { EventPage } from './';
+import apiClient from '../services/apiClient';
 
-export default class EventDetail extends Component {
-  state = { event: {}, status: 'loading', error: null };
-
-  componentDidMount = () => {
-    const { id } = this.props.match.params;
-    apiClient
-      .getEvent(id)
-      .then(({ data }) => {
-        const { event } = data;
-        this.setState({ event, status: 'loaded', error: null });
-      })
-      .catch((error) => this.setState({ status: 'error', error: error.message }))
-  }
-
-  render() {
-    const { event, status, error } = this.state;
-    return <EventPage event={event} status={status} error={error} />
-  }
+const EventDetail = (props) => {
+  const { id } = props.match.params;
+  return (
+    <ContentLoader asyncFunc={apiClient.getEvent} params={id} >
+      {(data) => <EventPage event={data.event} />}
+    </ContentLoader>
+  )
 }
+
+export default withRouter(EventDetail);
