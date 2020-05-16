@@ -7,10 +7,14 @@ const EventPreview = ({ event, userId, deleteEvent }) => {
 
   const editAndDeleteLinks = ({ _id }) => {
     const handleDelete = () => deleteEvent(_id);
+    const confirmDelete = () => {
+      const confirmed = window.confirm('Ok to delete?');
+      if (confirmed) handleDelete();
+    }
     return (
       <div>
         <Link to={`/events/${_id}/edit`}><button>edit</button></Link>
-        <button onClick={handleDelete}>delete</button>
+        <button onClick={confirmDelete}>delete</button>
       </div>
     )
   };

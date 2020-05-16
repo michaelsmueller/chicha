@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ProfileContent = ({ user, deleteUser, onLogout }) => {
+  const confirmDelete = () => {
+    const confirmed = window.confirm('Ok to delete?');
+    if (confirmed) deleteUser();
+  }
+
   const { username, image, bio, url } = user;
   return (
     <div className='profile'>
@@ -11,7 +16,7 @@ const ProfileContent = ({ user, deleteUser, onLogout }) => {
       {url && <a href={url}>{url}</a>}
       <br />
       <Link to='/profile/edit'><button>Edit profile</button></Link>
-      <button onClick={deleteUser}>Delete profile</button>
+      <button onClick={confirmDelete}>Delete profile</button>
       <button onClick={onLogout}>Logout</button>
     </div>
   );
