@@ -21,12 +21,10 @@ class EditEventForm extends Component {
     longitude: this.props.data.place.location.longitude,
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    // this.setUtcDateTimes();
-    const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
-    const start_time = dateTime.getUtcDateTime(start_time_local);
-    const end_time = dateTime.getUtcDateTime(end_time_local);
+    await this.setUtcDateTimes();
+    const { name, source, start_time, end_time, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
     const event = {
       data: {
         name,
@@ -56,12 +54,12 @@ class EditEventForm extends Component {
     this.setState({ start_time_local, end_time_local });
   }
 
-  // setUtcDateTimes = () => {
-  //   const { start_time_local, end_time_local } = this.state;
-  //   const start_time = dateTime.getUtcDateTime(start_time_local);
-  //   const end_time = dateTime.getUtcDateTime(end_time_local);
-  //   this.setState({ start_time, end_time });
-  // }
+  setUtcDateTimes = () => {
+    const { start_time_local, end_time_local } = this.state;
+    const start_time = dateTime.getUtcDateTime(start_time_local);
+    const end_time = dateTime.getUtcDateTime(end_time_local);
+    this.setState({ start_time, end_time });
+  }
 
   render() {
     const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
