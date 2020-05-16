@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { ContentLoader } from '../components/';
+import { ContentLoader } from '../components';
 import { EventDetailContent } from './';
 import apiClient from '../services/apiClient';
 

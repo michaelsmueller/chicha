@@ -61,7 +61,6 @@ class EditEventForm extends Component {
   }
 
   render() {
-    console.log('EditEventForm props', this.props);
     const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
     return (
       <div className='edit-event'>

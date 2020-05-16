@@ -1,54 +1,25 @@
 import React, { Component } from 'react';
-import apiClient from '../services/apiClient';
-import { Link } from 'react-router-dom';
+import { ContentLoader } from '../components';
+import { ProfileContent } from './';
 import { withAuth } from '../context/authContext';
+import apiClient from '../services/apiClient';
 
 class Profile extends Component {
-  state = { user: {}, status: 'loading', error: null };
-
-  componentDidMount = () => {
-    const { userId } = this.props;
-    apiClient
-      .getUser(userId)
-      .then(({ data }) => {
-        const { user } = data;
-        this.setState({ user, status: 'loaded', error: null });
-      })
-      .catch((error) => this.setState({ status: 'error', error: error.message }))
-  }
-
   deleteUser = () => {
-    const { user: { _id } } = this.state;
-    const { onLogout } = this.props;
+    const { userId, onLogout } = this.props;
     apiClient
-      .deleteUser(_id)
+      .deleteUser(userId)
         .then(() => onLogout())
-        .catch((error) => this.setState({ status: 'error', error: error.message }))
+        .catch((error) => console.log(error))
   }
 
   render() {
-    const { onLogout } = this.props;
-    const { user } = this.state;
-    if (!user) {
-      console.log('this', this.state);
-      return <div>Loading...</div>
-    }
-    else {
-      const { username, image, bio, url } = user;
-      return (
-        // need to use a loader here
-        <div className='profile'>
-          {image && <img alt='portrait' src={image} />}
-          <h1>{username}</h1>
-          {bio && <p className='bio'>{bio}</p>}
-          {url && <a href={url}>{url}</a>}
-          <br />
-          <Link to='/profile/edit'><button>Edit profile</button></Link>
-          <button onClick={this.deleteUser}>Delete profile</button>
-          <button onClick={onLogout}>Logout</button>
-        </div>
-      );
-    }
+    const { userId } = this.props;
+    return (
+      <ContentLoader asyncFunc={apiClient.getUser} params={userId} >
+        {(data) => <ProfileContent user={data.user} deleteUser={this.deleteUser} />}
+      </ContentLoader>
+    );
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { ContentLoader } from '../components/';
-import { ProfileUpdateForm } from '/';
+import { ContentLoader } from '../components';
+import { ProfileUpdateForm } from './';
 import { withAuth } from '../context/authContext';
 import apiClient from '../services/apiClient';
 
