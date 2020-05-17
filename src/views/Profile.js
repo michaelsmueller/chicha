@@ -6,10 +6,9 @@ import apiClient from '../services/apiClient';
 
 const Profile = ({ userId, onLogout }) => {
   const deleteUser = () => {
-    apiClient
-      .deleteUser(userId)
-        .then(() => onLogout())
-        .catch((error) => console.log(error))
+    apiClient.deleteUser(userId)
+      .then(() => onLogout())
+      .catch((error) => console.log(error))
   }
 
   return (

@@ -30,8 +30,7 @@ class AuthProvider extends Component {
   state = { status: 'loading', userId: null, error: null };
 
   componentDidMount() {
-    apiClient
-      .whoami()
+    apiClient.whoami()
       .then(({ data: { _id } }) => this.setState({ status: 'loggedIn', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
@@ -49,8 +48,7 @@ class AuthProvider extends Component {
   }
 
   handleRegister = ({ username, password }) => {
-    apiClient
-      .register({ username, password })
+    apiClient.register({ username, password })
       .then(({ data: { _id } }) => this.setState({ status: 'loggedIn', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
@@ -71,8 +69,7 @@ class AuthProvider extends Component {
   };
 
   handleSignIn = ({ username, password }) => {
-    apiClient
-      .signIn({ username, password })
+    apiClient.signIn({ username, password })
       .then(({ data: { _id } }) => this.setState({ status: 'loggedIn', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
@@ -90,8 +87,7 @@ class AuthProvider extends Component {
   };
 
   handleLogout = () => {
-    apiClient
-      .logout()
+    apiClient.logout()
       .then(() => this.setState({ status: 'loggedOut', userId: null, error: null }))
       .catch(({ response }) => this.setState({ status: 'error', userId: null, error: response.statusText }));
   };

@@ -36,8 +36,7 @@ class EditEventForm extends Component {
      },
     };
     const { id } = this.props;
-    apiClient
-      .editEvent(id, event)
+    apiClient.editEvent(id, event)
       .then((response) => this.props.history.push(`/events/${id}`))
       .catch((error) => console.log(error))
   };

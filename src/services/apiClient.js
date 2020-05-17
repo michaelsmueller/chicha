@@ -22,6 +22,7 @@ class ApiClient {
   getEvents = () => this.apiClient.get('/events');
   editEvent = (id, body) => this.apiClient.put(`/events/${id}`, body);
   deleteEvent = (id) => this.apiClient.delete(`/events/${id}`);
+  vote = (body) => this.apiClient.patch(`/events/vote`, body);
 }
 
 const apiClient = new ApiClient();

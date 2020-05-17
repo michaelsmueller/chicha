@@ -7,8 +7,7 @@ export default class AddEvent extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { url } = this.state;
-    apiClient
-      .addEvent({ url })
+    apiClient.addEvent({ url })
       .then((response) => this.props.history.push('/events'))
       .catch((error) => console.log(error))
   };
