@@ -14,8 +14,12 @@ export default class VoteButtons extends Component {
       switch (direction) {
         case -1:
           const { _id: id } = vote;
-          await apiClient.changeVote(id, { eventId, direction: 1 });
-          // this.setState({ direction: 1 });
+          await apiClient.changeVote(id, { direction: 1 });
+          this.setState((prevState) => {
+            const vote = {...prevState.vote}
+            vote.direction = 1;
+            return { vote };
+          });
           break;
         case 0:
           const createVoteResponse = await apiClient.createVote({ eventId, direction: 1 });
@@ -51,8 +55,12 @@ export default class VoteButtons extends Component {
           break;
         case 1:
           const { _id: id } = vote;
-          await apiClient.changeVote(id, { eventId, direction: -1 });
-          // this.setState({ direction: 1 });
+          await apiClient.changeVote(id, { direction: -1 });
+          this.setState((prevState) => {
+            const vote = {...prevState.vote}
+            vote.direction = -1;
+            return { vote };
+          });
           break;
         default:
           throw new Error('error in vote state');
