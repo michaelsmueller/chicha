@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import { VoteButtons } from './';
 import { showLocalDateTime } from '../helpers/dateTime';
 
-const EventPreview = ({ event, user, vote, deleteEvent }) => {
+const EventPreview = ({ event, userId, vote, deleteEvent }) => {
   const { _id: eventId, creator, data, data: { name, start_time } } = event;
   const source = data.cover?.source;
   const place = data.place?.name;
-  const { _id: userId } = user;
   return (
     <div className='event-preview'>
       {creator === userId ? <EditDeleteButtons eventId={eventId} deleteEvent={deleteEvent} /> : null }
       <Link to={`/events/${eventId}`}>
         <div className='event-image-container'><img alt={name} src={source} /></div>
         <div className='event-text-container'>
-          <VoteButtons event={event} user={user} vote={vote} />
+          <VoteButtons event={event} vote={vote} />
           <EventInfo start_time={start_time} name={name} place={place} />
         </div>
       </Link>

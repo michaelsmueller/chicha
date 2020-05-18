@@ -2,10 +2,7 @@ import axios from 'axios';
 
 class ApiClient {
   constructor() {
-    this.apiClient = axios.create({
-      baseURL: process.env.REACT_APP_BACKEND_URI,
-      withCredentials: true,
-    });
+    this.apiClient = axios.create({ baseURL: process.env.REACT_APP_BACKEND_URI, withCredentials: true });
   }
 
   whoami = () => this.apiClient.get('/whoami');
@@ -27,9 +24,6 @@ class ApiClient {
   createVote = (body) => this.apiClient.post('/votes', body);
   changeVote = (id, body) => this.apiClient.put(`/votes/${id}`, body);
   removeVote = (id) => this.apiClient.delete(`/votes/${id}`);
-
-  // vote = (body) => this.apiClient.post(`/votes/vote`, body);
-  // vote = (body) => this.apiClient.post('/votes', body);
 }
 
 const apiClient = new ApiClient();

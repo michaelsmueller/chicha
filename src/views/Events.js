@@ -4,7 +4,7 @@ import { withAuth } from '../context/authContext';
 import { EventPreview } from './';
 
 class Events extends Component {
-  state = { events: [], user: {}, votes: [] };
+  state = { events: [], votes: [] };
 
   deleteEvent = (eventId) => {
     apiClient.deleteEvent(eventId)
@@ -17,40 +17,35 @@ class Events extends Component {
 
   componentDidMount = async () => {
     try {
-      const eventsResponse = await apiClient.getEvents();
-      const { events } = eventsResponse.data;
-
       const { userId } = this.props;
-      const userResponse = await apiClient.getUser(userId);
-      const { user } = userResponse.data;
-
+      const eventsResponse = await apiClient.getEvents();
       const voteResponse = await apiClient.getVotes(userId);
+      const { events } = eventsResponse.data;
       const { votes } = voteResponse.data;
-
-      console.log('Events, votes received', votes);
-      this.setState({ events, user, votes });
+      this.setState({ events, votes });
     } catch(error) {
       console.log(error);
     }
   }
 
   render() {
-    const { events, user, votes } = this.state;
+    const { events, votes } = this.state;
+    const { userId } = this.props;
     return (
       <div>
         <h1>Events</h1>
-        <EventPreviews events={events} user={user} votes={votes} deleteEvent={this.deleteEvent} />
+        <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
       </div>
     );
   }
 }
 
-const EventPreviews = ({ events, user, votes, deleteEvent }) => {
+const EventPreviews = ({ events, userId, votes, deleteEvent }) => {
   return (
     <div className='event-previews'>
       {events.map((event, i) => {
         const vote = votes.find((vote) => vote.event === event._id);
-        return <EventPreview key={event.data.name + i} event={event} user={user} vote={vote} deleteEvent={deleteEvent} />
+        return <EventPreview key={event.data.name + i} event={event} userId={userId} vote={vote} deleteEvent={deleteEvent} />
       })}
     </div>
   )

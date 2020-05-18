@@ -20,7 +20,7 @@ export default class VoteButtons extends Component {
     const direction = vote?.direction || 0;
     try {
       if (!direction) this.createVote(eventId, newDirection);
-      else if (direction === newDirection ) this.removeVote(vote);
+      else if (direction === newDirection) this.removeVote(vote);
       else this.changeVote(vote, newDirection);
     } catch(error) {
       console.log(error);
