@@ -4,70 +4,47 @@ import apiClient from '../services/apiClient';
 export default class VoteButtons extends Component {
   state = { vote: undefined, total: 0 };
 
-  handleUpvote = async (e) => {
-    console.log('upvoting');
+  handleUpvote = (e) => {
     e.preventDefault();
+    this.handleVote(1);
+  }
+
+  handleDownvote = (e) => {
+    e.preventDefault();
+    this.handleVote(-1);
+  }
+
+  handleVote = (newDirection) => {
     const { event: { _id: eventId } } = this.props;
     const { vote } = this.state;
     const direction = vote?.direction || 0;
     try {
-      switch (direction) {
-        case -1:
-          const { _id: id } = vote;
-          await apiClient.changeVote(id, { direction: 1 });
-          this.setState((prevState) => {
-            const vote = {...prevState.vote}
-            vote.direction = 1;
-            return { vote };
-          });
-          break;
-        case 0:
-          const createVoteResponse = await apiClient.createVote({ eventId, direction: 1 });
-          this.setState({ vote: createVoteResponse.data.newVote });
-          break;
-        case 1:
-          await apiClient.removeVote(vote._id);
-          this.setState({ vote: undefined });
-          break;
-        default:
-          throw new Error('error in vote state');
-      };
+      if (!direction) this.createVote(eventId, newDirection);
+      else if (direction === newDirection ) this.removeVote(vote);
+      else this.changeVote(vote, newDirection);
     } catch(error) {
       console.log(error);
     }
   }
 
-  handleDownvote = async (e) => {
-    console.log('downvoting');
-    e.preventDefault();
-    const { event: { _id: eventId } } = this.props;
-    const { vote } = this.state;
-    const direction = vote?.direction || 0;
-    try {
-      switch (direction) {
-        case -1:
-          await apiClient.removeVote(vote._id);
-          this.setState({ vote: undefined });
-          break;
-        case 0:
-          const createVoteResponse = await apiClient.createVote({ eventId, direction: -1 });
-          this.setState({ vote: createVoteResponse.data.newVote });
-          break;
-        case 1:
-          const { _id: id } = vote;
-          await apiClient.changeVote(id, { direction: -1 });
-          this.setState((prevState) => {
-            const vote = {...prevState.vote}
-            vote.direction = -1;
-            return { vote };
-          });
-          break;
-        default:
-          throw new Error('error in vote state');
-      };
-    } catch(error) {
-      console.log(error);
-    }
+  createVote = async (eventId, newDirection) => {
+    const createResponse = await apiClient.createVote({ eventId, direction: newDirection });
+    this.setState({ vote: createResponse.data.newVote });
+  }
+
+  removeVote = async (vote) => {
+    await apiClient.removeVote(vote._id);
+    this.setState({ vote: undefined });
+  }
+
+  changeVote = async (vote, newDirection) => {
+    const { _id: id } = vote;
+    await apiClient.changeVote(id, { direction: newDirection });
+    this.setState((prevState) => {
+      const vote = {...prevState.vote}
+      vote.direction = newDirection;
+      return { vote };
+    });
   }
 
   componentDidMount = () => this.setState({ vote: this.props.vote });
