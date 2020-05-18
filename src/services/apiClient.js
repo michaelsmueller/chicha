@@ -23,7 +23,7 @@ class ApiClient {
   getVotes = () => this.apiClient.get(`/votes`);
   createVote = (body) => this.apiClient.post('/votes', body);
   changeVote = (id, body) => this.apiClient.put(`/votes/${id}`, body);
-  removeVote = (id) => this.apiClient.delete(`/votes/${id}`);
+  removeVote = (id, eventId, direction) => this.apiClient.delete(`/votes/${id}?eventid=${eventId}&direction=${direction}`);
 }
 
 const apiClient = new ApiClient();

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import apiClient from '../services/apiClient';
 
 export default class VoteButtons extends Component {
-  state = { vote: undefined, total: 0 };
+  state = { vote: undefined, votes: undefined };
 
   handleUpvote = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ export default class VoteButtons extends Component {
     const direction = vote?.direction || 0;
     try {
       if (!direction) this.createVote(eventId, newDirection);
-      else if (direction === newDirection) this.removeVote(vote);
+      else if (direction === newDirection) this.removeVote(vote, newDirection);
       else this.changeVote(vote, newDirection);
     } catch(error) {
       console.log(error);
@@ -28,36 +28,44 @@ export default class VoteButtons extends Component {
   }
 
   createVote = async (eventId, newDirection) => {
+    const { votes } = this.state;
     const createResponse = await apiClient.createVote({ eventId, direction: newDirection });
-    this.setState({ vote: createResponse.data.newVote });
+    this.setState({ vote: createResponse.data.newVote, votes: votes + newDirection });
   }
 
-  removeVote = async (vote) => {
-    await apiClient.removeVote(vote._id);
-    this.setState({ vote: undefined });
+  removeVote = async (vote, newDirection) => {
+    const { votes } = this.state;
+    const { _id: id, event: eventId } = vote;
+    await apiClient.removeVote(id, eventId, -1 * newDirection);
+    this.setState({ vote: undefined, votes: votes - newDirection });
   }
 
   changeVote = async (vote, newDirection) => {
-    const { _id: id } = vote;
-    await apiClient.changeVote(id, { direction: newDirection });
+    const { votes } = this.state;
+    const { _id: id, event: eventId } = vote;
+    await apiClient.changeVote(id, { eventId, direction: newDirection });
     this.setState((prevState) => {
       const vote = {...prevState.vote}
       vote.direction = newDirection;
-      return { vote };
+      return { vote, votes: votes + 2 * newDirection };
     });
   }
 
-  componentDidMount = () => this.setState({ vote: this.props.vote });
+  componentDidMount = () => {
+    const { vote, event: { votes } } = this.props;
+    this.setState({ vote, votes })
+  }
 
   render() {
-    const { vote } = this.state;
+    const { vote, votes } = this.state;
     const direction = vote?.direction || 0;
+    const upvoteStyle = { color: direction === 1 ? 'red' : 'black' };
+    const downvoteStyle = { color: direction === -1 ? 'red' : 'black' };
     return (
       <div className='votes'>
-        <div>vote direction {direction} </div>
-        <button onClick={this.handleUpvote}>↑</button>
-        {/* <div>{upvotes || 0 - downvotes || 0}</div> */}
-        <button onClick={this.handleDownvote}>↓</button>
+        <button style={upvoteStyle} onClick={this.handleUpvote}>↑</button>
+        <div>{votes || 0}</div>
+        <button style={downvoteStyle} onClick={this.handleDownvote}>↓</button>
       </div>
     );
   }
