@@ -22,7 +22,14 @@ class ApiClient {
   getEvents = () => this.apiClient.get('/events');
   editEvent = (id, body) => this.apiClient.put(`/events/${id}`, body);
   deleteEvent = (id) => this.apiClient.delete(`/events/${id}`);
-  vote = (body) => this.apiClient.patch(`/events/vote`, body);
+
+  getVotes = () => this.apiClient.get(`/votes`);
+  createVote = (body) => this.apiClient.post('/votes', body);
+  changeVote = (id, body) => this.apiClient.put(`/votes/${id}`, body);
+  removeVote = (id) => this.apiClient.delete(`/votes/${id}`);
+
+  // vote = (body) => this.apiClient.post(`/votes/vote`, body);
+  // vote = (body) => this.apiClient.post('/votes', body);
 }
 
 const apiClient = new ApiClient();
