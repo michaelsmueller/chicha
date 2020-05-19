@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withAuth } from '../context/authContext';
+import apiClient from '../services/apiClient';
 
-const Offers = () => {
-  return (
-    <div>
-      <h1>Offers</h1>
-    </div>
-  );
+class Offers extends Component {
+  state = { user: undefined };
+
+  componentDidMount = async () => {
+    const { userId } = this.props;
+    try {
+      const userResponse = await apiClient.getUser(userId);
+      const { user } = userResponse.data;
+      this.setState({ user });
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  render() {
+    const { user } = this.state;
+    const { balance } = user || 0;
+    return (
+      <div>
+        <h1>Offers</h1>
+        <h2>
+          {balance} point balance
+        </h2>
+      </div>
+    );
+  }
 }
 
-export default Offers;
+export default withAuth(Offers);

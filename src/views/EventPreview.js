@@ -4,9 +4,13 @@ import { VoteButtons } from './';
 import { showLocalDateTime } from '../helpers/dateTime';
 
 const EventPreview = ({ event, userId, vote, deleteEvent }) => {
-  const { _id: eventId, creator, data, data: { name, start_time } } = event;
-  const source = data.cover?.source;
-  const place = data.place?.name;
+  const {
+    _id: eventId, creator,
+    data: {
+      name, start_time, cover: { source },
+      place: { name: place },
+    }
+  } = event || '';
   return (
     <div className='event-preview'>
       {creator === userId ? <EditDeleteButtons eventId={eventId} deleteEvent={deleteEvent} /> : null }

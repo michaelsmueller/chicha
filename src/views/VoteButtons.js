@@ -17,7 +17,7 @@ export default class VoteButtons extends Component {
   handleVote = (newDirection) => {
     const { event: { _id: eventId } } = this.props;
     const { vote } = this.state;
-    const direction = vote?.direction || 0;
+    const { direction } = vote || 0;
     try {
       if (!direction) this.createVote(eventId, newDirection);
       else if (direction === newDirection) this.removeVote(vote, newDirection);
@@ -58,13 +58,13 @@ export default class VoteButtons extends Component {
 
   render() {
     const { vote, votes } = this.state;
-    const direction = vote?.direction || 0;
+    const { direction } = vote || 0;
     const upvoteStyle = { color: direction === 1 ? 'red' : 'black' };
     const downvoteStyle = { color: direction === -1 ? 'red' : 'black' };
     return (
       <div className='votes'>
         <button style={upvoteStyle} onClick={this.handleUpvote}>↑</button>
-        <div>{votes || 0}</div>
+        <div>{votes}</div>
         <button style={downvoteStyle} onClick={this.handleDownvote}>↓</button>
       </div>
     );

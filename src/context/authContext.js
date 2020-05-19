@@ -29,7 +29,7 @@ export const withAuth = (Comp) => {
 class AuthProvider extends Component {
   state = { status: 'loading', userId: null, error: null };
 
-  componentDidMount() {
+  componentDidMount = () => {
     apiClient.whoami()
       .then(({ data: { _id } }) => this.setState({ status: 'loggedIn', userId: _id }))
       .catch(({ response }) => {
