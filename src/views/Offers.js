@@ -18,12 +18,12 @@ class Offers extends Component {
 
   render() {
     const { user } = this.state;
-    const { balance } = user || 0;
+    const { points } = user || 0;
     return (
       <div>
         <h1>Offers</h1>
         <h2>
-          {balance} point balance
+          {points} points
         </h2>
       </div>
     );
