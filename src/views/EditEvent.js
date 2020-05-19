@@ -7,7 +7,7 @@ import apiClient from '../services/apiClient';
 const EditEvent = (props) => {
   const { id } = props.match.params;
   return (
-    <ContentLoader asyncFunc={apiClient.getEvent} params={id} >
+    <ContentLoader asyncFunc={apiClient.getEvent} params={id}>
       {(data) => <EditEventForm data={data.event.data} id={id} />}
     </ContentLoader>
   )

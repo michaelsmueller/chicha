@@ -13,6 +13,7 @@ class ApiClient {
   getUser = (id) => this.apiClient.get(`/users/${id}`);
   editUser = (id, body) => this.apiClient.put(`/users/${id}`, body);
   deleteUser = (id) => this.apiClient.delete(`/users/${id}`);
+  getHeavyweights = () => this.apiClient.get('/users/heavyweights');
 
   addEvent = (body) => this.apiClient.post('/events', body);
   getEvent = (id) => this.apiClient.get(`/events/${id}`);

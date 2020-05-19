@@ -7,6 +7,7 @@ export { default as EventDetailContent } from './EventDetailContent';
 export { default as EventPreview } from './EventPreview';
 export { default as Events } from './Events';
 export { default as Heavyweights } from './Heavyweights';
+export { default as HeavyweightsList } from './HeavyweightsList';
 export { default as Home } from './Home';
 export { default as Loading } from './Loading';
 export { default as Nav } from './Nav';

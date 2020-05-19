@@ -130,7 +130,7 @@ nav ul {
 }
 
 .profile img {
-  width: 100%
+  width: 100%;
 }
 
 .profile .username {
@@ -147,4 +147,58 @@ nav ul {
 
 .profile .link {
   margin: 5px 0;
+}
+
+.heavyweight-previews {
+  display: flex;
+  flex-direction: column;
+  counter-reset: rank;
+}
+
+.heavyweight-preview {
+  display: flex;
+  height: 120px;
+  align-items: center;
+}
+
+.heavyweight-previews .rank::before {
+  counter-increment: rank;
+  content: counter(rank) '.';
+}
+
+.heavyweight-previews .rank {
+  width: 5%;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.heavyweight-preview img {
+  width: 25%;
+  margin: 0 5px;
+}
+
+.heavyweight-info {
+  width: 50%;
+  padding: 5px;
+}
+
+.heavyweight-info .username {
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.heavyweight-info .bio {
+  margin: 10px 0;
+  color: #333;
+}
+
+.heavyweight-info .link {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.heavyweight-preview .points {
+  width: 10%;
+  text-align: right;
 }
