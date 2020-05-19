@@ -3,12 +3,12 @@ import { Redirect, Route } from 'react-router-dom';
 import { withAuth } from '../context/authContext';
 
 const AnonRoute = (props) => {
-  const { component: Comp, status, ...rest } = props;
+  const { component: Comp, STATUS, ...rest } = props;
   return (
     <Route
       {...rest}
       render={ (props) =>
-        status !== 'loggedIn' ? (
+        STATUS !== 'LOGGED_IN' ? (
           <Comp {...props} />
         ) : (
           <Redirect

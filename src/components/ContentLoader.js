@@ -3,22 +3,22 @@ import Error from '../views/Error';
 import Loading from '../views/Loading';
 
 export default class ContentLoader extends Component {
-  state = { data: {}, status: 'loading', error: null };
+  state = { data: {}, STATUS: 'LOADING', error: null };
 
   componentDidMount = () => {
     const { asyncFunc, params } = this.props;
     asyncFunc(params)
-      .then(({ data }) => this.setState({ data, status: 'loaded', error: null }))
-      .catch((error) => this.setState({ status: 'error', error: error.message }))
+      .then(({ data }) => this.setState({ data, STATUS: 'LOADED', error: null }))
+      .catch((error) => this.setState({ STATUS: 'ERROR', error: error.message }))
   }
 
   render() {
-    const { data, status, error } = this.state;
+    const { data, STATUS, error } = this.state;
     const { children } = this.props;
-    switch (status) {
-      case 'loading':
+    switch (STATUS) {
+      case 'LOADING':
         return <Loading />;
-      case 'error':
+      case 'ERROR':
         return <Error error={error} />;
       default:
         return children(data);

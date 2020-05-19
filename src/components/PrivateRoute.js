@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { withAuth } from '../context/authContext';
 
-const PrivateRoute = ({ component: Comp, status, ...rest }) => {
+const PrivateRoute = ({ component: Comp, STATUS, ...rest }) => {
   return (
     <Route
       {...rest}
       render={ (props) =>
-        status === 'loggedIn' ? (
+        STATUS === 'LOGGED_IN' ? (
           <Comp {...props} />
         ) : (
           <Redirect
