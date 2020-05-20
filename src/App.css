@@ -1,3 +1,5 @@
+/* general */
+
 .App {
   position: relative;
   padding: 10px 20px;
@@ -24,6 +26,8 @@ button, input, textarea {
   border-radius: 20px;
 }
 
+/* navigation */
+
 nav { 
   position: fixed;
   width: 90vw;
@@ -42,6 +46,8 @@ nav ul {
   font-weight: 200;
 }
 
+/* forms */
+
 .add-event form,
 .edit-event form,
 .profile-update form {
@@ -58,6 +64,8 @@ nav ul {
   position: relative;
 }
 
+/* map */
+
 .mapContainer {
   position: fixed;
   height: 50%;
@@ -66,6 +74,26 @@ nav ul {
   left: 0;
   bottom: 0;
 }
+
+.marker {
+  background-image: url('/marker-editor.svg');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* events */
 
 .events {
   margin-top: 50vh;
@@ -129,6 +157,8 @@ nav ul {
   color: #666;
 }
 
+/* event detail */
+
 .event-detail .event-name {
   margin: 10px 0;
   font-size: 24px;
@@ -160,25 +190,7 @@ nav ul {
   color: #333;
 }
 
-.profile img {
-  width: 100%;
-}
-
-.profile .username {
-  margin: 15px 0;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 20px;
-}
-
-.profile .bio {
-  margin: 10px 0;
-  color: #333;
-}
-
-.profile .link {
-  margin: 5px 0;
-}
+/* heavyweight */
 
 .heavyweight-previews {
   display: flex;
@@ -232,4 +244,26 @@ nav ul {
 .heavyweight-preview .points {
   width: 10%;
   text-align: right;
+}
+
+/* profile */
+
+.profile img {
+  width: 100%;
+}
+
+.profile .username {
+  margin: 15px 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.profile .bio {
+  margin: 10px 0;
+  color: #333;
+}
+
+.profile .link {
+  margin: 5px 0;
 }

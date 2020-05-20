@@ -33,7 +33,7 @@ class Events extends Component {
     const { userId } = this.props;
     return (
       <div className='events-container'>
-        <EventsMap />
+        <EventsMap events={events} />
         <div className='events'>
           <h1>Events in Barcelona</h1>
           <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
