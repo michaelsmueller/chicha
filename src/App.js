@@ -20,7 +20,7 @@ const App = () => {
 }
 
 const Layout = () => {
-  return <div>
+  return <div className='layout'>
     <Nav />
     <Route exact path='/events' component={Events} />
     <Route exact path='/events/:id' component={EventDetail} />

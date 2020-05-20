@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import apiClient from '../services/apiClient';
 import { withAuth } from '../context/authContext';
-import { EventPreview } from './';
+import { EventsMap, EventPreview } from './';
 
 class Events extends Component {
   state = { events: [], votes: [] };
@@ -32,9 +32,12 @@ class Events extends Component {
     const { events, votes } = this.state;
     const { userId } = this.props;
     return (
-      <div>
-        <h1>Events</h1>
-        <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
+      <div className='events-container'>
+        <EventsMap />
+        <div className='events'>
+          <h1>Events in Barcelona</h1>
+          <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
+        </div>
       </div>
     );
   }

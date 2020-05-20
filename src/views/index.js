@@ -4,6 +4,7 @@ export { default as EditEventForm } from './EditEventForm';
 export { default as Error } from './Error';
 export { default as EventDetail } from './EventDetail';
 export { default as EventDetailContent } from './EventDetailContent';
+export { default as EventsMap } from './EventsMap';
 export { default as EventPreview } from './EventPreview';
 export { default as Events } from './Events';
 export { default as Heavyweights } from './Heavyweights';

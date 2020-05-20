@@ -1,5 +1,10 @@
 .App {
+  position: relative;
   padding: 10px 20px;
+}
+
+.layout {
+  position: relative;
 }
 
 a {
@@ -19,10 +24,19 @@ button, input, textarea {
   border-radius: 20px;
 }
 
+nav { 
+  position: fixed;
+  width: 90vw;
+  bottom: 0;
+  z-index: 10;
+  height: 30px;
+  padding-top: 10px;
+  background-color: white;
+}
+
 nav ul {
   display: flex;
   justify-content: space-between;
-  margin: 20px 0;
   list-style-type: none;
   font-size: 14px;
   font-weight: 200;
@@ -38,6 +52,23 @@ nav ul {
 
 .edit-event textarea {
   height: 100px;
+}
+
+.events-container {
+  position: relative;
+}
+
+.mapContainer {
+  position: fixed;
+  height: 50%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.events {
+  margin-top: 50vh;
 }
 
 .event-previews {
