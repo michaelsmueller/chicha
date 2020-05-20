@@ -8,7 +8,7 @@ export default class AddEvent extends Component {
     e.preventDefault();
     const { url } = this.state;
     apiClient.addEvent({ url })
-      .then((response) => this.props.history.push('/events'))
+      .then(({ data: { _id } }) => this.props.history.push(`/events/${_id}`))
       .catch((error) => console.log(error))
   };
 

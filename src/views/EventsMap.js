@@ -73,7 +73,7 @@ export default class EventsMap extends Component {
 
   render() {
     const { events } = this.props;
-    console.log('received events', events);
+    // console.log('received events', events);
     return (
       <div className='events-map'>
         <div ref={(el) => this.mapContainer = el} className='mapContainer' />

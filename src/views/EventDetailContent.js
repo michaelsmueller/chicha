@@ -5,9 +5,10 @@ const EventDetailContent = ({ event }) => {
   const {
     data: {
       name, description, start_time, end_time, ticket_uri, cover: { source },
-      place: { name: place, location: { street } },
+      place: { name: place, location },
     }
   } = event || '';
+  const { street } = location || '';
   return (
     <div className='event-detail'>
       <div className='event-image-container'>
