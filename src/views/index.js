@@ -2,6 +2,7 @@ export { default as AddEvent } from './AddEvent';
 export { default as EditEvent } from './EditEvent';
 export { default as EditEventForm } from './EditEventForm';
 export { default as Error } from './Error';
+export { default as EventsContainer } from './EventsContainer';
 export { default as EventDetail } from './EventDetail';
 export { default as EventDetailContent } from './EventDetailContent';
 export { default as EventsMap } from './EventsMap';

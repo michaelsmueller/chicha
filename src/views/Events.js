@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import apiClient from '../services/apiClient';
-import { withAuth } from '../context/authContext';
 import { EventsMap, EventPreview } from './';
 
-class Events extends Component {
+export default class Events extends Component {
   state = { events: [], votes: [] };
 
   deleteEvent = (eventId) => {
@@ -17,10 +16,8 @@ class Events extends Component {
 
   componentDidMount = async () => {
     try {
-      const { userId } = this.props;
-      const eventsResponse = await apiClient.getEvents();
+      const { events, userId } = this.props;
       const voteResponse = await apiClient.getVotes(userId);
-      const { events } = eventsResponse.data;
       const { votes } = voteResponse.data;
       this.setState({ events, votes });
     } catch(error) {
@@ -32,14 +29,14 @@ class Events extends Component {
     const { events, votes } = this.state;
     const { userId } = this.props;
     return (
-      <div className='events-container'>
+      <div className='events-map-and-listings'>
         <EventsMap events={events} />
         <div className='events'>
           <h1>Events in Barcelona</h1>
           <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
-        </div>
+        </div> 
       </div>
-    );
+    )
   }
 }
 
@@ -53,5 +50,3 @@ const EventPreviews = ({ events, userId, votes, deleteEvent }) => {
     </div>
   )
 };
-
-export default withAuth(Events);
