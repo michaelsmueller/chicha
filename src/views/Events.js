@@ -30,7 +30,7 @@ export default class Events extends Component {
     const { userId } = this.props;
     return (
       <div className='events-map-and-listings'>
-        <EventsMap events={events} />
+        <EventsMap events={events} key={events.length} />
         <div className='events'>
           <h1>Events in Barcelona</h1>
           <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />

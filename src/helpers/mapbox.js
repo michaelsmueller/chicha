@@ -1,4 +1,27 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import { Link } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
+
+mapboxgl.accessToken=process.env.REACT_APP_MAPBOX_TOKEN;
+
+export const addMarkers = (markers, map) => {
+  markers.features.forEach((marker) => {
+    const el = document.createElement('div');
+    el.className = 'marker';
+    // const { _id, name, place } = marker.properties;
+    const { name, place } = marker.properties;
+    const markerDiv = document.createElement('div');
+    // const markerContents = <div><Link to={`/events/${_id}`}><h3>{name}</h3></Link><p>{place}</p></div>;
+    const markerContents = <div><h3>{name}</h3><p>{place}</p></div>;
+    ReactDOM.render(markerContents, markerDiv);
+    new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .setPopup(new mapboxgl.Popup({ offset: 25 })
+      .setDOMContent(markerDiv))
+      .addTo(map);
+  })
+};
 
 export const initalizeMap = (lng, lat, zoom, container) => {
   return new mapboxgl.Map({
@@ -9,8 +32,13 @@ export const initalizeMap = (lng, lat, zoom, container) => {
     minZoom: 10,
     maxZoom: 18,
     logoPosition: 'top-right',
+    compact: true,
   });
 };
+
+export const getCenter = (geo, map) => map.getCenter()[geo].toFixed(4);
+
+export const getZoom = (map) => map.getZoom().toFixed(2);
 
 export const addGeolocateButton = (map) => {
   map.addControl(
@@ -21,14 +49,25 @@ export const addGeolocateButton = (map) => {
   )
 };
 
-export const addMarkers = (markers, map) => {
-  markers.features.forEach((marker) => {
-    const el = document.createElement('div');
-    el.className = 'marker';
-    new mapboxgl.Marker(el)
-      .setLngLat(marker.geometry.coordinates)
-      .setPopup(new mapboxgl.Popup({ offset: 25 })
-      .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
-      .addTo(map);
-  })
+export const getMarkers = (events) => {
+  const features = [];
+  events.forEach((event) => {
+    if (hasLatAndLng(event)) {
+      const feature = createFeature(event);
+      features.push(feature);
+    }
+  });
+  return { type: 'FeatureCollection', features };
+}
+
+const hasLatAndLng = (event) => event.data?.place?.location?.latitude && event.data?.place?.location?.longitude;
+
+const createFeature = (event) => {
+  const { _id, data: { name, place: { name: place, location } } } = event || '';
+  const { latitude, longitude } = location || 0;
+  return {
+    type: 'Feature',
+    geometry: { type: 'Point', coordinates: [longitude, latitude] },
+    properties: { _id, name, place }
+  };
 };
