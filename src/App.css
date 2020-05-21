@@ -54,6 +54,7 @@ nav ul {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 }
 
 .edit-event textarea {
@@ -76,27 +77,29 @@ nav ul {
 }
 
 .marker {
-  background-image: url('/marker-editor.svg');
-  background-size: cover;
-  width: 30px;
-  height: 30px;
+  background-size: 15px 18px;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: center;
+  border: 1px solid black;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.mapboxgl-popup {
-  max-width: 200px;
-}
-
 .mapboxgl-popup-content {
+  max-width: 200px;
+  padding: 15px 20px;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  border-radius: 25px;
 }
 
 /* events */
 
 .events {
   margin-top: 50vh;
+  margin-bottom: 40px;
 }
 
 .event-previews {
@@ -247,6 +250,10 @@ nav ul {
 }
 
 /* profile */
+
+.profile {
+  margin-bottom: 50px;
+}
 
 .profile img {
   width: 100%;

@@ -43,9 +43,9 @@ export default class Events extends Component {
 const EventPreviews = ({ events, userId, votes, deleteEvent }) => {
   return (
     <div className='event-previews'>
-      {events.map((event, i) => {
+      {events.map((event, index) => {
         const vote = votes.find((vote) => vote.event === event._id);
-        return <EventPreview key={event.data.name + i} event={event} userId={userId} vote={vote} deleteEvent={deleteEvent} />
+        return <EventPreview key={event._id} rank={index} event={event} userId={userId} vote={vote} deleteEvent={deleteEvent} />
       })}
     </div>
   )
