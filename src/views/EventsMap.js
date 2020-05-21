@@ -19,8 +19,10 @@ export default class EventsMap extends Component {
     addMarkers(markers, this.map);
   }
 
-  componentDidMount = () => this.renderMap();
-
+  componentDidMount = () => {
+    if (this.props.events.length) this.renderMap();
+  }
+ 
   render() {
     return (
       <div className='events-map'>
