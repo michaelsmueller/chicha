@@ -141,8 +141,7 @@ nav ul {
   margin: 10px 0;
 }
 
-.event-preview img,
-.event-detail img {
+.event-preview img {
   width: 100%;
   border-radius: 10px;
 }
@@ -189,6 +188,11 @@ nav ul {
 }
 
 /* event detail */
+
+.event-detail img {
+  width: 100%;
+  border-radius: 10px;
+}
 
 .event-detail .event-name {
   margin: 10px 0;
@@ -320,6 +324,30 @@ nav ul {
 .offer-preview .cost {
   width: 10%;
   text-align: right;
+}
+
+
+/* offer detail */
+
+.offer-detail img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.offer-detail .offer-partner {
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.offer-detail .cost {
+  margin: 10px 0 0 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.offer-detail .description {
+  color: #333;
 }
 
 /* profile */

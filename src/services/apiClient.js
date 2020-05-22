@@ -26,6 +26,7 @@ class ApiClient {
   changeVote = (id, body) => this.apiClient.put(`/votes/${id}`, body);
   removeVote = (id, eventId, direction) => this.apiClient.delete(`/votes/${id}?eventid=${eventId}&direction=${direction}`);
 
+  getOffer = (id) => this.apiClient.get(`/offers/${id}`);
   getOffers = () => this.apiClient.get('/offers');
 }
 

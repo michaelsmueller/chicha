@@ -13,6 +13,8 @@ export { default as HeavyweightsList } from './HeavyweightsList';
 export { default as Home } from './Home';
 export { default as Loading } from './Loading';
 export { default as Nav } from './Nav';
+export { default as OfferDetail } from './OfferDetail';
+export { default as OfferDetailContent } from './OfferDetailContent';
 export { default as Offers } from './Offers';
 export { default as OffersList } from './OffersList';
 export { default as Profile } from './Profile';

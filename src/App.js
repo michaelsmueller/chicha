@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AnonRoute, PrivateRoute } from './components';
 import AuthProvider from './context/authContext';
-import { AddEvent, EditEvent, EventsContainer, EventDetail, Heavyweights, Home, Nav, Offers, Profile, ProfileUpdate, Register } from './views';
+import { AddEvent, EditEvent, EventsContainer, EventDetail, Heavyweights, Home, Nav, OfferDetail, Offers, Profile, ProfileUpdate, Register } from './views';
 import './App.css';
 
 const App = () => {
@@ -28,6 +28,7 @@ const Layout = () => {
     <Route exact path='/add-event' component={AddEvent} />
     <Route exact path='/heavyweights' component={Heavyweights} />
     <Route exact path='/offers' component={Offers} />
+    <Route exact path='/offers/:id' component={OfferDetail} />
     <Route exact path='/profile' component={Profile} />
     <Route exact path='/profile/edit' component={ProfileUpdate} />
   </div>
