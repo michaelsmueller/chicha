@@ -277,6 +277,51 @@ nav ul {
   text-align: right;
 }
 
+
+/* offers */
+
+.offers {
+  margin-bottom: 30px;
+}
+
+.offer-previews {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-preview {
+  display: flex;
+  height: 120px;
+  align-items: center;
+}
+
+.offer-preview img {
+  width: 30%;
+  margin: 0 5px;
+  border-radius: 10px;
+}
+
+.offer-info {
+  width: 50%;
+  padding: 5px;
+}
+
+.offer-info .partner {
+  margin: 5px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.offer-info .description {
+  margin: 10px 0;
+  color: #333;
+}
+
+.offer-preview .cost {
+  width: 10%;
+  text-align: right;
+}
+
 /* profile */
 
 .profile {

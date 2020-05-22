@@ -15,8 +15,8 @@ export default class Events extends Component {
   }
 
   componentDidMount = async () => {
+    const { events, userId } = this.props;
     try {
-      const { events, userId } = this.props;
       const voteResponse = await apiClient.getVotes(userId);
       const { votes } = voteResponse.data;
       this.setState({ events, votes });

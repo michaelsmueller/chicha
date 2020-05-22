@@ -21,10 +21,12 @@ class ApiClient {
   editEvent = (id, body) => this.apiClient.put(`/events/${id}`, body);
   deleteEvent = (id) => this.apiClient.delete(`/events/${id}`);
 
-  getVotes = () => this.apiClient.get(`/votes`);
+  getVotes = () => this.apiClient.get('/votes');
   createVote = (body) => this.apiClient.post('/votes', body);
   changeVote = (id, body) => this.apiClient.put(`/votes/${id}`, body);
   removeVote = (id, eventId, direction) => this.apiClient.delete(`/votes/${id}?eventid=${eventId}&direction=${direction}`);
+
+  getOffers = () => this.apiClient.get('/offers');
 }
 
 const apiClient = new ApiClient();

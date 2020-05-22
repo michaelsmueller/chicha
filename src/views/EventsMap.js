@@ -17,7 +17,6 @@ class EventsMap extends Component {
     this.map.on('move', () => this.onMapMove());
     addGeolocateButton(this.map);
     const markers = getMarkers(this.props.events);
-    console.log('this.props', this.props);
     addMarkers(markers, this.map, this.props.history);
   }
 
