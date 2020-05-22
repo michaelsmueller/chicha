@@ -25,6 +25,7 @@ class Home extends Component {
     const { error } = this.props;
     return (
       <div>
+        <img className='logo' alt='chicha logo' src='/chicha-logo.svg' />
         <h1>Home</h1>
         <p>Please sign in</p>
         <form onSubmit={this.handleSubmit}>

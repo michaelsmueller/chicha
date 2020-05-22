@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Link } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken=process.env.REACT_APP_MAPBOX_TOKEN;
 
-export const addMarkers = (markers, map) => {
+export const addMarkers = (markers, map, history) => {
   markers.features.forEach((marker) => {
+    const onClick = (e) => history.push(`/events/${marker.properties._id}`);
     const el = document.createElement('div');
     el.className = 'marker';
-    const { name, place, rank } = marker.properties;
+    const { name, source, place, rank } = marker.properties;
     el.style.backgroundImage = `url(/markers/${rank + 1}.svg)`;
     const popupContainer = document.createElement('div');
-    // const popupContainer = <div><Link to={`/events/${_id}`}><h3>{name}</h3></Link><p>{place}</p></div>;
-    const popupContents = <div><h3>{name}</h3><p>{place}</p></div>;
+    const popupContents = <button onClick={onClick}><img alt={name} src={source} /><h3>{name}</h3><p>{place}</p></button>;
     ReactDOM.render(popupContents, popupContainer);
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)
@@ -63,11 +62,11 @@ export const getMarkers = (events) => {
 const hasLatAndLng = (event) => event.data?.place?.location?.latitude && event.data?.place?.location?.longitude;
 
 const createFeature = (event, rank) => {
-  const { _id, data: { name, place: { name: place, location } } } = event || '';
+  const { _id, data: { name, cover: { source }, place: { name: place, location } } } = event || '';
   const { latitude, longitude } = location || 0;
   return {
     type: 'Feature',
     geometry: { type: 'Point', coordinates: [longitude, latitude] },
-    properties: { _id, name, place, rank }
+    properties: { _id, source, name, place, rank }
   };
 };

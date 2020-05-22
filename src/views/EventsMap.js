@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { initalizeMap, getCenter, getZoom, addGeolocateButton, addMarkers, getMarkers } from '../helpers/mapbox';
 
-export default class EventsMap extends Component {
+class EventsMap extends Component {
   state = { lng: 2.1700556, lat: 41.3869959, zoom: 11 };
 
   onMapMove = () => this.setState({
@@ -16,7 +17,8 @@ export default class EventsMap extends Component {
     this.map.on('move', () => this.onMapMove());
     addGeolocateButton(this.map);
     const markers = getMarkers(this.props.events);
-    addMarkers(markers, this.map);
+    console.log('this.props', this.props);
+    addMarkers(markers, this.map, this.props.history);
   }
 
   componentDidMount = () => {
@@ -31,3 +33,5 @@ export default class EventsMap extends Component {
     );
   }
 }
+
+export default withRouter(EventsMap);
