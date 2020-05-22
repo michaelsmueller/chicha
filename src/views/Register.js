@@ -25,6 +25,7 @@ class Register extends Component {
     const { error } = this.props;
     return (
       <div>
+        <img className='logo' alt='chicha logo' src='/chicha-logo.svg' />
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
           <input

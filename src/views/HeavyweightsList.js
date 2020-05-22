@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeavyweightsList = ({ heavyweights }) => {
   return (
-    <div className='heavyweights'>
+    <div className='heavyweights-list'>
       <HeavyweightPreviews heavyweights={heavyweights} />
     </div>
   );

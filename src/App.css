@@ -2,7 +2,8 @@
 
 .App {
   position: relative;
-  padding: 10px 20px;
+  padding: 20px;
+  margin-bottom: 60px;
 }
 
 .layout {
@@ -39,6 +40,7 @@ nav {
   z-index: 10;
   height: 30px;
   padding-top: 10px;
+  /* padding: 20px 20px 10px 20px; */
   background-color: white;
 }
 
@@ -52,13 +54,21 @@ nav ul {
 
 /* forms */
 
+[data-testid='wrapper'] {
+  height: 100vh;
+  margin: -20px;
+}
+
+.add-event {
+  padding: 20px;
+}
+
 .add-event form,
 .edit-event form,
 .profile-update form {
-  padding: 10px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
 }
 
 .edit-event textarea {
@@ -127,7 +137,6 @@ nav ul {
 
 .events {
   margin-top: 50vh;
-  margin-bottom: 40px;
 }
 
 .event-previews {
@@ -227,6 +236,10 @@ nav ul {
 
 /* heavyweight */
 
+.heavyweights-list {
+  margin-top: 20px;
+}
+
 .heavyweight-previews {
   display: flex;
   flex-direction: column;
@@ -281,12 +294,7 @@ nav ul {
   text-align: right;
 }
 
-
 /* offers */
-
-.offers {
-  margin-bottom: 30px;
-}
 
 .offer-previews {
   display: flex;
@@ -326,7 +334,6 @@ nav ul {
   text-align: right;
 }
 
-
 /* offer detail */
 
 .offer-detail img {
@@ -351,10 +358,6 @@ nav ul {
 }
 
 /* profile */
-
-.profile {
-  margin-bottom: 50px;
-}
 
 .profile img {
   width: 100%;
