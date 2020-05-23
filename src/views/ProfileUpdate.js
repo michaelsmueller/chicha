@@ -7,7 +7,7 @@ import apiClient from '../services/apiClient';
 const ProfileUpdate = ({ userId }) => {
   return (
     <ContentLoader asyncFunc={apiClient.getUser} params={userId} >
-      {(data) => <ProfileUpdateForm user={data.user} />}
+      {({ user }) => <ProfileUpdateForm user={user} />}
     </ContentLoader>
   );
 }

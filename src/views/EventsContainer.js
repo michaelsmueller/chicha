@@ -4,11 +4,10 @@ import { ContentLoader } from '../components';
 import { Events } from '.'
 import apiClient from '../services/apiClient';
 
-const EventsContainer = (props) => {
-  const { userId } = props;
+const EventsContainer = ({ userId }) => {
   return (
     <ContentLoader asyncFunc={apiClient.getEvents}>
-      {(data) => <Events events={data.events} userId={userId} />}
+      {({ events }) => <Events events={events} userId={userId} />}
     </ContentLoader>
   );
 };

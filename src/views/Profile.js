@@ -13,7 +13,7 @@ const Profile = ({ userId, onLogout }) => {
 
   return (
     <ContentLoader asyncFunc={apiClient.getUser} params={userId} >
-      {(data) => <ProfileContent user={data.user} deleteUser={deleteUser} onLogout={onLogout} />}
+      {({ user }) => <ProfileContent user={user} deleteUser={deleteUser} onLogout={onLogout} />}
     </ContentLoader>
   );
 }

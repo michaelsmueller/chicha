@@ -62,8 +62,9 @@ export const getMarkers = (events) => {
 const hasLatAndLng = (event) => event.data?.place?.location?.latitude && event.data?.place?.location?.longitude;
 
 const createFeature = (event, rank) => {
-  const { _id, data: { name, cover: { source }, place: { name: place, location } } } = event || '';
+  const { _id, data: { name, place: { name: place, location } } } = event || '';
   const { latitude, longitude } = location || 0;
+  const source = event.data.cover?.source;
   return {
     type: 'Feature',
     geometry: { type: 'Point', coordinates: [longitude, latitude] },

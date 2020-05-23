@@ -8,7 +8,7 @@ const Heavyweights = () => {
     <div className='heavyweights'>
     <h1>Heavyweights</h1>
     <ContentLoader asyncFunc={apiClient.getHeavyweights}>
-      {(data) => <HeavyweightsList heavyweights={data.heavyweights} />}
+      {({ heavyweights }) => <HeavyweightsList heavyweights={heavyweights} />}
     </ContentLoader>
     </div>
   )

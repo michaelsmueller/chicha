@@ -1,16 +1,14 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { ContentLoader } from '../components';
 import { OfferDetailContent } from '.';
 import apiClient from '../services/apiClient';
 
-const OfferDetail = (props) => {
-  const { id } = props.match.params;
+const OfferDetail = ({ match: { params: { id }}}) => {
   return (
     <ContentLoader asyncFunc={apiClient.getOffer} params={id} >
-      {(data) => <OfferDetailContent offer={data.offer} />}
+      {({ offer }) => <OfferDetailContent offer={offer} />}
     </ContentLoader>
   )
 }
 
-export default withRouter(OfferDetail);
+export default OfferDetail;

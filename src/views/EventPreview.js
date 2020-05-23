@@ -7,10 +7,11 @@ const EventPreview = ({ rank, event, userId, vote, deleteEvent }) => {
   const {
     _id: eventId, creator,
     data: {
-      name, start_time, cover: { source },
+      name, start_time,
       place: { name: place },
     }
   } = event || '';
+  const source = event.data.cover?.source;
   return (
     <div className='event-preview'>
       {creator === userId ? <EditDeleteButtons eventId={eventId} deleteEvent={deleteEvent} /> : null }
