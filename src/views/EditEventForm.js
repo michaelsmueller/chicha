@@ -5,7 +5,7 @@ import { getLocalDateTime, getUtcDateTime } from '../helpers/dateTime';
 
 class EditEventForm extends Component {
   state = {
-    name: '',
+    name: this.props.data.name,
     source: this.props.data.cover.source,
     start_time: this.props.data.start_time,
     start_time_local: '',
@@ -60,8 +60,7 @@ class EditEventForm extends Component {
   }
 
   render() {
-    const { source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
-    // to do: refactor props out of state
+    const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
     return (
       <div className='edit-event'>
         <h1>Edit Event</h1>
@@ -72,8 +71,8 @@ class EditEventForm extends Component {
             type='text'
             name='name'
             id='name'
-            placeholder={this.props.data.name}
-            value={this.props.data.name || ''}
+            placeholder={name}
+            value={name || ''}
             onChange={this.handleChange}
           />
 
