@@ -1,5 +1,5 @@
 import React from 'react';
-import { showLocalDateTime } from '../helpers/dateTime';
+import { showLocalDateTime } from '../../helpers/dateTime';
 
 const EventDetailContent = ({ event }) => {
   const {

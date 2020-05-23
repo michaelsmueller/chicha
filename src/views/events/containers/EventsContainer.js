@@ -1,8 +1,8 @@
 import React from 'react';
-import { withAuth } from '../context/authContext';
-import { ContentLoader } from '../components';
-import { Events } from '.'
-import apiClient from '../services/apiClient';
+import { withAuth } from '../../../context/authContext';
+import { ContentLoader } from '../../../components';
+import { Events } from '../../'
+import apiClient from '../../../services/apiClient';
 
 const EventsContainer = ({ userId }) => {
   return (

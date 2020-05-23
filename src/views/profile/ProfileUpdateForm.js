@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import apiClient from '../services/apiClient';
+import apiClient from '../../services/apiClient';
 
 class ProfileUpdateForm extends Component {
   state = {

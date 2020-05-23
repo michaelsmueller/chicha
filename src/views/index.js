@@ -1,25 +1,33 @@
-export { default as AddEvent } from './AddEvent';
-export { default as EditEvent } from './EditEvent';
-export { default as EditEventForm } from './EditEventForm';
 export { default as Error } from './Error';
-export { default as EventsContainer } from './EventsContainer';
-export { default as EventDetail } from './EventDetail';
-export { default as EventDetailContent } from './EventDetailContent';
-export { default as EventsMap } from './EventsMap';
-export { default as EventPreview } from './EventPreview';
-export { default as Events } from './Events';
-export { default as Heavyweights } from './Heavyweights';
-export { default as HeavyweightsList } from './HeavyweightsList';
 export { default as Home } from './Home';
 export { default as Loading } from './Loading';
-export { default as Nav } from './Nav';
-export { default as OfferDetail } from './OfferDetail';
-export { default as OfferDetailContent } from './OfferDetailContent';
-export { default as Offers } from './Offers';
-export { default as OffersList } from './OffersList';
-export { default as Profile } from './Profile';
-export { default as ProfileContent } from './ProfileContent';
-export { default as ProfileUpdate } from './ProfileUpdate';
-export { default as ProfileUpdateForm } from './ProfileUpdateForm';
 export { default as Register } from './Register';
-export { default as VoteButtons } from './VoteButtons';
+export { default as Nav } from './Nav';
+
+// events
+export { default as EditEvent } from './events/containers/EditEvent';
+export { default as EventDetail } from './events/containers/EventDetail';
+export { default as EventsContainer } from './events/containers/EventsContainer';
+export { default as AddEvent } from './events/AddEvent';
+export { default as EditEventForm } from './events/EditEventForm';
+export { default as EventDetailContent } from './events/EventDetailContent';
+export { default as EventsMap } from './events/EventsMap';
+export { default as EventPreview } from './events/EventPreview';
+export { default as Events } from './events/Events';
+export { default as VoteButtons } from './events/VoteButtons';
+
+// heavyweights
+export { default as Heavyweights } from './heavyweights/containers/Heavyweights';
+export { default as HeavyweightsList } from './heavyweights/HeavyweightsList';
+
+// offers
+export { default as OfferDetail } from './offers/containers/OfferDetail';
+export { default as OfferDetailContent } from './offers/OfferDetailContent';
+export { default as Offers } from './offers/Offers';
+export { default as OffersList } from './offers/OffersList';
+
+// profile
+export { default as Profile } from './profile/containers/Profile';
+export { default as ProfileUpdate } from './profile/containers/ProfileUpdate';
+export { default as ProfileContent } from './profile/ProfileContent';
+export { default as ProfileUpdateForm } from './profile/ProfileUpdateForm';

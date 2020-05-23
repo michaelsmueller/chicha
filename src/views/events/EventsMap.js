@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { initalizeMap, getCenter, getZoom, addGeolocateButton, addMarkers, getMarkers } from '../helpers/mapbox';
+import { initalizeMap, getCenter, getZoom, addGeolocateButton, addMarkers, getMarkers } from '../../helpers/mapbox';
 
 class EventsMap extends Component {
   state = { lng: 2.1700556, lat: 41.3869959, zoom: 11 };

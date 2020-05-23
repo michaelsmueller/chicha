@@ -1,8 +1,8 @@
 import React from 'react';
-import { ContentLoader } from '../components';
-import { ProfileContent } from './';
-import { withAuth } from '../context/authContext';
-import apiClient from '../services/apiClient';
+import { ContentLoader } from '../../../components';
+import { ProfileContent } from '../../';
+import { withAuth } from '../../../context/authContext';
+import apiClient from '../../../services/apiClient';
 
 const Profile = ({ userId, onLogout }) => {
   const deleteUser = () => {

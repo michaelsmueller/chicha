@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiClient from '../services/apiClient';
+import apiClient from '../../services/apiClient';
 
 export default class VoteButtons extends Component {
   state = { vote: undefined, votes: undefined };

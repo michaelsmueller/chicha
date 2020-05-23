@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import apiClient from '../services/apiClient';
-import { EventsMap, EventPreview } from './';
+import apiClient from '../../services/apiClient';
+import { EventsMap, EventPreview } from '../';
 
 export default class Events extends Component {
   state = { events: [], votes: [] };

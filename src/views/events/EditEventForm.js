@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import apiClient from '../services/apiClient';
-import { getLocalDateTime, getUtcDateTime } from '../helpers/dateTime';
+import apiClient from '../../services/apiClient';
+import { getLocalDateTime, getUtcDateTime } from '../../helpers/dateTime';
 
 class EditEventForm extends Component {
   state = {

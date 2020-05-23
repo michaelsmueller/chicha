@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiClient from '../services/apiClient';
+import apiClient from '../../services/apiClient';
 import LoadingOverlay from 'react-loading-overlay';
 
 const LOADING_MESSAGES = [

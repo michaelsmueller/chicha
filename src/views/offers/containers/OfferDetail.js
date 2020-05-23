@@ -1,7 +1,7 @@
 import React from 'react';
-import { ContentLoader } from '../components';
-import { OfferDetailContent } from '.';
-import apiClient from '../services/apiClient';
+import { ContentLoader } from '../../../components';
+import { OfferDetailContent } from '../../';
+import apiClient from '../../../services/apiClient';
 
 const OfferDetail = ({ match: { params: { id }}}) => {
   return (

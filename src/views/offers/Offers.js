@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { withAuth } from '../context/authContext';
-import { ContentLoader } from '../components';
-import { OffersList } from '.'
-import apiClient from '../services/apiClient';
+import { withAuth } from '../../context/authContext';
+import { ContentLoader } from '../../components';
+import { OffersList } from '../'
+import apiClient from '../../services/apiClient';
 
 class Offers extends Component {
   state = { user: undefined };

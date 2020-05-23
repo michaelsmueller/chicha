@@ -1,7 +1,7 @@
 import React from 'react';
-import { ContentLoader } from '../components';
-import { EditEventForm } from './';
-import apiClient from '../services/apiClient';
+import { ContentLoader } from '../../../components';
+import { EditEventForm } from '../../';
+import apiClient from '../../../services/apiClient';
 
 const EditEvent = ({ match: { params: { id }}}) => {
   return (

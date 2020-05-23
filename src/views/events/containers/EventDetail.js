@@ -1,7 +1,7 @@
 import React from 'react';
-import { ContentLoader } from '../components';
-import { EventDetailContent } from './';
-import apiClient from '../services/apiClient';
+import { ContentLoader } from '../../../components';
+import { EventDetailContent } from '../../';
+import apiClient from '../../../services/apiClient';
 
 const EventDetail = ({ match: { params: { id }}}) => {
   return (

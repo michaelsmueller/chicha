@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { VoteButtons } from './';
-import { showLocalDateTime } from '../helpers/dateTime';
+import { VoteButtons } from '../';
+import { showLocalDateTime } from '../../helpers/dateTime';
 
 const EventPreview = ({ rank, event, userId, vote, deleteEvent }) => {
   const {
