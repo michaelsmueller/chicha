@@ -1,67 +1,35 @@
 import React, { Component } from 'react';
 import apiClient from '../../services/apiClient';
-import LoadingOverlay from 'react-loading-overlay';
-
-const LOADING_MESSAGES = [
-  'cleaning up',
-  'cleaning up',
-  'cleaning up',
-  'saving event data',
-  'saving event data',
-  'saving event data',
-  'processing event data',
-  'processing event data',
-  'processing event data',
-  'retrieving event data',
-  'retrieving event data',
-  'retrieving event data',
-  'connecting to Facebook',
-  'connecting to Facebook',
-  'connecting to Facebook',
-];
+import LoadingOverlayWithTimer from '../../components/LoadingOverlayWithTimer';
 
 export default class AddEvent extends Component {
-  state = { url: '', waiting: false, seconds: 0, intervalId: undefined };
+  state = { url: '', isWaiting: false };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.startCountdown();
+    this.setState({ isWaiting: true });
     const { url } = this.state;
     apiClient.addEvent({ url })
       .then(({ data: { _id } }) => {
-        this.stopCountdown();
+        console.log('successful response');
+        this.setState({ isWaiting: false });
         this.props.history.push(`/events/${_id}`);
       })
       .catch((error) => {
-        this.stopCountdown();
+        console.log('error');
+        this.setState({ isWaiting: false });
         console.log(error);
       })
   };
-
-  timer = () => {
-    if (this.state.seconds > 1) this.setState((prevState) => {
-      return { seconds: prevState.seconds - 1 }
-    })
-    else this.stopCountdown();
-  }
-
-  startCountdown = () => {
-    this.setState({ seconds: LOADING_MESSAGES.length - 1, waiting: true, intervalId: setInterval(this.timer, 1000) })
-  }
-
-  stopCountdown = () => {
-    clearInterval(this.state.intervalId);
-    this.setState({ intervalId: undefined, waiting: false })
-  }
 
   cleanForm = () => this.setState({ url: '' });
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { url, waiting: isActive, seconds } = this.state;
+    const { url, isWaiting } = this.state;
     return (
-      <LoadingOverlay active={isActive} spinner text={LOADING_MESSAGES[seconds]}>
+      <LoadingOverlayWithTimer isActive={isWaiting} key={isWaiting}>
         <div className='add-event'>
           <h1>Add Event</h1>
           <form onSubmit={this.handleSubmit}>
@@ -77,7 +45,7 @@ export default class AddEvent extends Component {
             <button type='submit' value='submit'>Add event</button>
           </form>
         </div>
-      </LoadingOverlay>
+      </LoadingOverlayWithTimer>
     );
   }
 }
