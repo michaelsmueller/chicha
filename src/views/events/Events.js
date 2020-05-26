@@ -22,7 +22,7 @@ export default class Events extends Component {
         sortedEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
         break;
       default:
-        throw new Error('error in parameter passed to sort function');
+        return;
     }
     this.setState({ events: sortedEvents, sortBy, modalIsOpen: false });
   }

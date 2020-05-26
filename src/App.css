@@ -277,6 +277,7 @@ input[type=text], textarea {
 
 .sort-filter-search button {
   margin-bottom: 5px;
+  padding: 8px;
   width: 33.33%;
   font-size: 13px;
   font-weight: 600;
@@ -298,6 +299,18 @@ input[type=text], textarea {
   height: 100vh;
   padding: 20px;
   z-index: 100;
+  animation-duration: 0.4s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+  }
+
+  to {
+    margin-top: 0%;
+  }
 }
 
 .modal .header {
@@ -307,7 +320,7 @@ input[type=text], textarea {
   margin: -20px;
   padding: 20px;
   height: 50px;
-  border-bottom: 1px #CCC solid;
+  border-bottom: 0.5px #EEE solid;
 }
 
 .modal .close {
@@ -327,6 +340,7 @@ input[type=text], textarea {
 .modal .clear {
   padding: 0;
   font-size: 18px;
+  font-weight: 600;
   text-decoration: underline;
 }
 
