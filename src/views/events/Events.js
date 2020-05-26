@@ -7,9 +7,13 @@ export default class Events extends Component {
 
   toggleModal = () => this.setState({ modalIsOpen: !this.state.modalIsOpen })
 
+  onClear = () => {
+    console.log('clear');
+    this.setState({ sortBy: null });
+  }
+
   sort = (sortBy) => {
     const sortedEvents = [...this.state.events];
-    console.log(this.state.events);
     switch (sortBy) {
       case 'start-date':
         sortedEvents.sort((a, b) => new Date(a.data.start_time) - new Date(b.data.start_time));
@@ -54,8 +58,8 @@ export default class Events extends Component {
         <EventsMap events={events} key={events.length} />
         <div className='events'>
           <h1 className='title'>Events in Barcelona</h1>
-          <Modal show={modalIsOpen} title={sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort by'} onClose={this.toggleModal} >
-            <SortOptions sort={this.sort} sortBy={sortBy} />
+          <Modal show={modalIsOpen} title={sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort by'} onClear={this.onClear} onClose={this.toggleModal} >
+            <SortOptions sort={this.sort} sortBy={sortBy} onClear={this.onClear} />
           </Modal>
           <SortFilterSearchButtons sortBy={sortBy} toggleModal={this.toggleModal} />
           <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
@@ -66,9 +70,10 @@ export default class Events extends Component {
 }
 
 const SortFilterSearchButtons = ({ sortBy, toggleModal }) => {
+  const sortButtonStyle = { backgroundColor: sortBy ? '#ccfcff' : 'white' };
   return (
     <div className='sort-filter-search'>
-      <button onClick={toggleModal}>{ sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort' }</button>
+      <button style={sortButtonStyle} onClick={toggleModal}>{ sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort' }</button>
       <button>Dates</button>
       <button>Search</button>
     </div>

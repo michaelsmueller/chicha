@@ -10,6 +10,10 @@ class SortOptions extends Component {
     this.props.sort(this.state.selectedOption);
   }
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.sortBy !== this.props.sortBy) this.setState({ selectedOption: null });
+  }
+
   render() {
     const { selectedOption } = this.state;
     return (
