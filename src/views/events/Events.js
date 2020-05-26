@@ -3,24 +3,23 @@ import apiClient from '../../services/apiClient';
 import { EventsMap, EventPreview, Modal, SortOptions } from '../';
 
 export default class Events extends Component {
-  state = { events: [], votes: [], sorted: null, modalIsOpen: false,  };
+  state = { events: [], votes: [], sortBy: null, modalIsOpen: false,  };
 
   toggleModal = () => this.setState({ modalIsOpen: !this.state.modalIsOpen })
 
-  sortByDate = () => {
-    console.log('sort by date');
-    const { events } = this.state;
-    const sortedEvents = [...events];
-    sortedEvents.sort((a, b) => new Date(a.data.start_time) - new Date(b.data.start_time));
-    this.setState({ events: sortedEvents, sorted: 'by-date', modalIsOpen: false });
-  }
-
-  sortByVote = () => {
-    console.log('sort by vote');
-    const { events } = this.state;
-    const sortedEvents = [...events];
-    sortedEvents.sort((a, b) => b.votes - a.votes);
-    this.setState({ events: sortedEvents, sorted: 'by-vote', modalIsOpen: false });
+  sort = (sortBy) => {
+    const sortedEvents = [...this.state.events];
+    switch (sortBy) {
+      case 'date':
+        sortedEvents.sort((a, b) => new Date(a.data.start_time) - new Date(b.data.start_time));
+        break;
+      case 'vote':
+        sortedEvents.sort((a, b) => b.votes - a.votes);
+        break;
+      default:
+        throw new Error('error attempting to sort');
+    }
+    this.setState({ events: sortedEvents, sortBy, modalIsOpen: false });
   }
 
   deleteEvent = (eventId) => {
@@ -44,7 +43,7 @@ export default class Events extends Component {
   }
 
   render() {
-    const { events, votes, sorted, modalIsOpen } = this.state;
+    const { events, votes, sortBy, modalIsOpen } = this.state;
     const { userId } = this.props;
     return (
       <div className='events-map-and-listings'>
@@ -52,9 +51,9 @@ export default class Events extends Component {
         <div className='events'>
           <h1 className='title'>Events in Barcelona</h1>
           <Modal show={modalIsOpen} title='Sort' onClose={this.toggleModal} >
-            <SortOptions sorted={sorted} sortByVote={this.sortByVote} sortByDate={this.sortByDate} />
+            <SortOptions sort={this.sort} sortBy={sortBy} />
           </Modal>
-          <SortFilterSearchButtons sorted={sorted} toggleModal={this.toggleModal} />
+          <SortFilterSearchButtons sortBy={sortBy} toggleModal={this.toggleModal} />
           <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
         </div> 
       </div>
@@ -62,10 +61,10 @@ export default class Events extends Component {
   }
 }
 
-const SortFilterSearchButtons = ({ sorted, toggleModal }) => {
+const SortFilterSearchButtons = ({ sortBy, toggleModal }) => {
   return (
     <div className='sort-filter-search'>
-      <button onClick={toggleModal}>{ sorted ? sorted : 'Sort' }</button>
+      <button onClick={toggleModal}>{ sortBy ? `By ${sortBy}` : 'Sort' }</button>
       <button>Dates</button>
       <button>Search</button>
     </div>

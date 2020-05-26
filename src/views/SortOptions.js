@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 
 class SortOptions extends Component {
-  state = {
-    selectedOption: this.props.sorted ? this.props.sorted : 'by-date'
-  };
+  state = { selectedOption: this.props.sortBy ? this.props.sortBy : 'date' };
 
   handleChange = (e) => this.setState({ selectedOption: e.target.value });
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { selectedOption } = this.state;
-    const { sortByVote, sortByDate } = this.props;
-    console.log('submit option', selectedOption);
-    if (selectedOption === 'by-date') sortByDate();
-    else sortByVote();
+    this.props.sort(this.state.selectedOption);
   }
 
   render() {
@@ -24,18 +18,18 @@ class SortOptions extends Component {
           <p>By date</p>
           <input
             type='radio'
-            name='by-date'
-            value='by-date'
-            checked={selectedOption === 'by-date'}
+            name='date'
+            value='date'
+            checked={selectedOption === 'date'}
             onChange={this.handleChange}
           />
         </div>
         <div className='sort-option'>
           <p>By vote</p>
           <input type='radio'
-            name='by-vote'
-            value='by-vote'
-            checked={selectedOption === 'by-vote'}
+            name='vote'
+            value='vote'
+            checked={selectedOption === 'vote'}
             onChange={this.handleChange}
           />
         </div>
