@@ -60,7 +60,7 @@ export default class VoteButtons extends Component {
     const { vote, votes } = this.state;
     const { direction } = vote || 0;
     const HIGHLIGHTED =  { color: '#ee2B7a', backgroundColor: 'white' };
-    const NORMAL =  { color: '#020202', backgroundColor: 'white' };
+    const NORMAL =  { color: '#212121', backgroundColor: 'white' };
     const upvoteStyle = direction === 1 ? HIGHLIGHTED : NORMAL;
     const downvoteStyle = direction === -1 ? HIGHLIGHTED : NORMAL;
     return (

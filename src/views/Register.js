@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../context/authContext';
-import { Error } from './'
+// import { Error } from './'
 
 class Register extends Component {
   state = { username: '', password: '' };
@@ -22,7 +22,7 @@ class Register extends Component {
 
   render() {
     const { username, password } = this.state;
-    const { error } = this.props;
+    // const { error } = this.props;
     return (
       <div className='register'>
       <img className='logo' alt='chicha logo' src='/chicha-logo-black.png' />

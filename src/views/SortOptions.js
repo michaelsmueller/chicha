@@ -15,21 +15,30 @@ class SortOptions extends Component {
     return (
       <form className='sort-options' onSubmit={this.handleSubmit} >
         <div className='sort-option'>
-          <p>By date</p>
+          <p>Start date</p>
           <input
             type='radio'
-            name='date'
-            value='date'
-            checked={selectedOption === 'date'}
+            name='start-date'
+            value='start-date'
+            checked={selectedOption === 'start-date'}
             onChange={this.handleChange}
           />
         </div>
         <div className='sort-option'>
-          <p>By vote</p>
+          <p>Upvotes</p>
           <input type='radio'
-            name='vote'
-            value='vote'
-            checked={selectedOption === 'vote'}
+            name='upvotes'
+            value='upvotes'
+            checked={selectedOption === 'upvotes'}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className='sort-option'>
+          <p>Newest</p>
+          <input type='radio'
+            name='recent-added'
+            value='newest'
+            checked={selectedOption === 'newest'}
             onChange={this.handleChange}
           />
         </div>

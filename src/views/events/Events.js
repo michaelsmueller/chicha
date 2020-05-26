@@ -9,15 +9,19 @@ export default class Events extends Component {
 
   sort = (sortBy) => {
     const sortedEvents = [...this.state.events];
+    console.log(this.state.events);
     switch (sortBy) {
-      case 'date':
+      case 'start-date':
         sortedEvents.sort((a, b) => new Date(a.data.start_time) - new Date(b.data.start_time));
         break;
-      case 'vote':
+      case 'upvotes':
         sortedEvents.sort((a, b) => b.votes - a.votes);
         break;
+      case 'newest':
+        sortedEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        break;
       default:
-        throw new Error('error attempting to sort');
+        throw new Error('error in parameter passed to sort function');
     }
     this.setState({ events: sortedEvents, sortBy, modalIsOpen: false });
   }
@@ -50,7 +54,7 @@ export default class Events extends Component {
         <EventsMap events={events} key={events.length} />
         <div className='events'>
           <h1 className='title'>Events in Barcelona</h1>
-          <Modal show={modalIsOpen} title='Sort' onClose={this.toggleModal} >
+          <Modal show={modalIsOpen} title={sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort by'} onClose={this.toggleModal} >
             <SortOptions sort={this.sort} sortBy={sortBy} />
           </Modal>
           <SortFilterSearchButtons sortBy={sortBy} toggleModal={this.toggleModal} />
@@ -64,7 +68,7 @@ export default class Events extends Component {
 const SortFilterSearchButtons = ({ sortBy, toggleModal }) => {
   return (
     <div className='sort-filter-search'>
-      <button onClick={toggleModal}>{ sortBy ? `By ${sortBy}` : 'Sort' }</button>
+      <button onClick={toggleModal}>{ sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort' }</button>
       <button>Dates</button>
       <button>Search</button>
     </div>

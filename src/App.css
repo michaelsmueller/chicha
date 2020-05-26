@@ -29,7 +29,7 @@ a:visited {
 
 button, input, textarea {
   padding: 10px;
-  color: #020202;        
+  color: #212121;        
   border-radius: 20px;
 }
 
@@ -43,7 +43,7 @@ nav {
   height: auto;
   font-size: 10px;
   font-weight: 600;
-  color: #020202;
+  color: #212121;
   /* background: linear-gradient(45deg, #7fd5e6, #59c7de); */
   /* background: linear-gradient(45deg, #f25a97, #ff69a9); */
   /* background: linear-gradient(45deg, #fef200, #ffff57); */
@@ -53,7 +53,7 @@ nav {
 nav ul {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 9px 0;
   list-style-type: none;
 }
 
@@ -64,7 +64,7 @@ nav li {
 
 .material-icons {
   color: rgba(0, 0, 0, 0.70);
-  /* color: #020202; */
+  /* color: #212121; */
 }
 
 nav i {
@@ -74,7 +74,7 @@ nav i {
 nav a {
   font-size: 11px;
   font-weight: 600;
-  color: #020202 !important;
+  color: #212121 !important;
 }
 
 /* home */
@@ -178,7 +178,7 @@ input[type=text], textarea {
   margin: 10px 0;
   font-size: 14px;
   font-weight: 600;
-  color: #020202;
+  color: #212121;
   background: linear-gradient(45deg, #ffff57, #FEF200);
   border: none;
 }
@@ -220,7 +220,7 @@ input[type=text], textarea {
   background-color: #ffff8b;
   /* background-color: #f25a97; */
   background-position: center;
-  /* border: 1px #020202 solid; */
+  /* border: 1px #212121 solid; */
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -255,7 +255,7 @@ input[type=text], textarea {
 
 .mapboxgl-popup-content button {
   border: none;
-  color: #020202;
+  color: #212121;
   background-color: white;
   padding: 0;
 }
@@ -275,7 +275,7 @@ input[type=text], textarea {
 
 .sort-filter-search button {
   margin-bottom: 5px;
-  width: 100px;
+  width: 33.33%;
   font-size: 13px;
   font-weight: 600;
   border: none;
@@ -332,7 +332,7 @@ input[type=text], textarea {
 }
 
 .sort-option {
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 18px;
   display: flex;
   justify-content: space-between;
@@ -345,7 +345,7 @@ input[type=text], textarea {
   bottom: 30px;
   font-size: 14px;
   font-weight: 600;
-  color: #020202;
+  color: #212121;
   background: linear-gradient(45deg, #ffff57, #FEF200);
   border: none;
 }
@@ -364,16 +364,17 @@ input[type=text], textarea {
 
 .event-preview .rank {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 6px;
+  left: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 22px;
   height: 22px;
   font-size: 14px;
-  color: #020202;
-  background-color: white;
+  color: #212121;
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  background-color: #ffff8b;
   border-radius: 50%;
   /* background-color: #ffff8b; */
 }
@@ -406,7 +407,7 @@ input[type=text], textarea {
 }
 
 .events .event-name {
-  color: #020202;
+  color: #212121;
 }
 
 .event-preview .votes {
@@ -422,14 +423,14 @@ input[type=text], textarea {
 }
 
 .votes .vote-total {
-  color: #020202;
+  color: #212121;
 }
 
 .votes button {
   padding: 1px;
   font-size: 20px;
   border: none;
-  color: #020202;
+  color: #212121;
 }
 
 .event-preview .start-time {
