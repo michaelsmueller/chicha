@@ -32,13 +32,24 @@ export default class Events extends Component {
       <div className='events-map-and-listings'>
         <EventsMap events={events} key={events.length} />
         <div className='events'>
-          <h1>Events in Barcelona</h1>
+          <h1 className='title'>Events in Barcelona</h1>
+          <SortFilterSearchButtons />
           <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
         </div> 
       </div>
     )
   }
 }
+
+const SortFilterSearchButtons = () => {
+  return (
+    <div className='sort-filter-search'>
+      <button>Sort</button>
+      <button>Dates</button>
+      <button>Search</button>
+    </div>
+  )
+} 
 
 const EventPreviews = ({ events, userId, votes, deleteEvent }) => {
   return (

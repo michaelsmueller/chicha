@@ -12,7 +12,7 @@ const EventDetailContent = ({ event }) => {
   return (
     <div className='event-detail'>
       <div className='event-image-container'><img alt={name} src={source} /></div>
-      <h1 className='event-name'>{name}</h1>
+      <h1 className='title'>{name}</h1>
       <h2 className='times'>{showLocalDateTime(start_time)} – {showLocalDateTime(end_time)}</h2>
       <h2 className='place'>{place}</h2>
       <p className='street'>{street}</p>

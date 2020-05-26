@@ -24,9 +24,9 @@ class Register extends Component {
     const { username, password } = this.state;
     const { error } = this.props;
     return (
-      <div>
-        <img className='logo' alt='chicha logo' src='/chicha-logo.svg' />
-        <h1>Register</h1>
+      <div className='register'>
+      <img className='logo' alt='chicha logo' src='/chicha-logo-black.png' />
+        <h1 className='title'>Register</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type='text'
@@ -46,8 +46,8 @@ class Register extends Component {
           />
           <button type='submit' value='submit'>Register</button>
         </form>
-        {error && <Error error={error} />}
-        <p>
+        {/* {error && <Error error={error} />} */}
+        <p className='footer-prompt'>
           Already have an account? <Link to='/'>Sign in here</Link>
         </p>
       </div>

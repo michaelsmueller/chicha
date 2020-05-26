@@ -24,10 +24,9 @@ class Home extends Component {
     const { username, password } = this.state;
     const { error } = this.props;
     return (
-      <div>
-        <img className='logo' alt='chicha logo' src='/chicha-logo.svg' />
-        <h1>Home</h1>
-        <p>Please sign in</p>
+      <div class='home'>
+        <img className='logo' alt='chicha logo' src='/chicha-logo-black.png' />
+        <h1 className='title'>Sign in</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type='text'
@@ -47,10 +46,10 @@ class Home extends Component {
           />
           <button type='submit' value='submit'>Sign in</button>
         </form>
-        {error && <Error error={error} />}
-        <p>
+        {/* {error && <Error error={error} />} */}
+        <div className='footer-prompt'>
           Don't have an account? <Link to='/register'>Register here</Link>
-        </p>
+        </div>
       </div>
     );
   }

@@ -34,7 +34,7 @@ const EditDeleteButtons = ({ eventId, deleteEvent }) => {
     if (confirmed) handleDelete();
   };
   return (
-    <div>
+    <div className='edit-delete'>
       <Link to={`/events/${eventId}/edit`}><button>edit</button></Link>
       <button onClick={confirmDelete}>delete</button>
     </div>

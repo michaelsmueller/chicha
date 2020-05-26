@@ -25,7 +25,9 @@ export const addMarkers = (markers, map, history) => {
 export const initalizeMap = (lng, lat, zoom, container) => {
   return new mapboxgl.Map({
     container,
-    style: 'mapbox://styles/mapbox/streets-v11',
+    // style: 'mapbox://styles/mapbox/streets-v11',
+    // style: 'mapbox://styles/mapbox/dark-v10',
+    style: 'mapbox://styles/mapbox/light-v10',
     center: [lng, lat],
     zoom,
     minZoom: 11,

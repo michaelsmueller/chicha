@@ -63,7 +63,7 @@ class EditEventForm extends Component {
     const { name, source, start_time_local, end_time_local, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
     return (
       <div className='edit-event'>
-        <h1>Edit Event</h1>
+        <h1 className='title'>Edit Event</h1>
         <form onSubmit={this.handleSubmit}>
 
           <label htmlFor='name'>Name</label>

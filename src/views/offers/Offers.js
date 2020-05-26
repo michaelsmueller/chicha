@@ -24,7 +24,7 @@ class Offers extends Component {
     const { points } = user || 0;
     return (
       <div className='offers'>
-        <h1>Offers</h1>
+        <h1 className='title'>Offers</h1>
         <h2>{points} points</h2>
         <ContentLoader asyncFunc={apiClient.getOffers}>
           {(data) => <OffersList offers={data.offers} userId={userId} />}

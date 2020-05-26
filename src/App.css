@@ -1,59 +1,165 @@
+
 /* general */
 
 .App {
-  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.layout {
   margin-bottom: 60px;
+}
+
+.title {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
 }
 
 a {
   text-decoration: none;
   font-weight: 600;
-  color: black;
+  color: #ee2B7a;
 }
 
 a:visited {
-  color: black;
+  color: #ee2B7a;
 }
 
 button, input, textarea {
   padding: 10px;
-  background-color: white;
-  border: 1px solid gray;
+  color: #020202;        
   border-radius: 20px;
-}
-
-.logo {
-  width: 40vw;
 }
 
 /* navigation */
 
 nav { 
   position: fixed;
-  width: 90vw;
+  width: 100vw;
   bottom: 0;
   z-index: 10;
-  height: 40px;
-  padding-top: 10px;
-  background-color: white;
+  height: auto;
+  font-size: 10px;
+  font-weight: 600;
+  color: #020202;
+  /* background: linear-gradient(45deg, #7fd5e6, #59c7de); */
+  /* background: linear-gradient(45deg, #f25a97, #ff69a9); */
+  /* background: linear-gradient(45deg, #fef200, #ffff57); */
+  background: linear-gradient(45deg, #fef200, #ffff8b);
 }
 
 nav ul {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  padding: 5spx 0;
   list-style-type: none;
-  font-size: 14px;
-  font-weight: 200;
+}
+
+nav li {
+  width: 20%;
+  text-align: center;
+}
+
+.material-icons {
+  color: rgba(0, 0, 0, 0.70);
+  /* color: #020202; */
+}
+
+nav i {
+  font-size: 24px;
+}
+
+nav a {
+  font-size: 11px;
+  font-weight: 600;
+  color: #020202 !important;
+}
+
+/* home */
+
+.home, .register {
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background: linear-gradient(45deg, #ee2B7a, #fef200);
+}
+
+.home .logo,
+.register .logo {
+  width: 200px;
+}
+
+.home h1,
+.register h1 {
+  font-size: 30px;
+}
+
+.home form,
+.register form {
+  padding: 0 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home input,
+.register input {
+  margin: 10px 0;
+  padding-left: 18px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+}
+
+input:focus, textarea:focus {
+  border: 1px solid #90faff;
+  box-shadow: 0 0 5px #90faff;
+}
+
+.home button,
+.register button {
+  width: 100%;
+  margin: 10px 0;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(45deg, #59C7DE, #7fd5e6);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+}
+
+.home .footer-prompt,
+.register .footer-prompt {
+  width: 100%;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.home a,
+.register a {
+  color: #90faff;
 }
 
 /* forms */
 
-[data-testid='wrapper'] {
-  height: 100vh;
-  margin: -20px;
+input[type=text], textarea {
+  transition: all 0.30s ease-in-out;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
 }
 
-.add-event {
+[data-testid='wrapper'] {
+  height: 100vh;
+  /* margin: -20px; */
+}
+
+.add-event, .edit-event, .profile-update {
   padding: 20px;
 }
 
@@ -63,6 +169,23 @@ nav ul {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.add-event button,
+.edit-event button {
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #020202;
+  background: linear-gradient(45deg, #ffff57, #FEF200);
+  border: none;
+}
+
+.add-event input,
+.edit-event input, .edit-event textarea,
+.profile-update input {
+  border: 1px solid;
+  border-color: rgba(89, 199, 222, 0.5);  
 }
 
 .edit-event textarea {
@@ -78,14 +201,17 @@ nav ul {
   right: 0;
   left: 0;
   bottom: 0;
+  z-index: 10;
 }
 
 .marker {
   background-size: 15px 18px;
   background-repeat: no-repeat;
-  background-color: white;
+  /* background-color: #fef200; */
+  background-color: #ffff8b;
+  /* background-color: #f25a97; */
   background-position: center;
-  border: 1px solid #666;
+  /* border: 1px #020202 solid; */
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -93,23 +219,23 @@ nav ul {
 }
 
 .mapboxgl-popup-content {
-  max-width: 150px;
+  max-width: 200px;
   width: auto;
   padding: 12px;
   text-align: center;
-  border: 1px solid #666;
+  border: none;
   border-radius: 20px;
 }
 
 .mapboxgl-popup-close-button {
   top: 5px;
   right: 5px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .mapboxgl-popup-tip {
-  border-bottom-color: #666 !important;
-  border-top-color: #666 !important;
+  border-bottom-color: #CCC !important;
+  border-top-color: #CCC !important;
 }
 
 .mapboxgl-popup-content img {
@@ -120,13 +246,38 @@ nav ul {
 
 .mapboxgl-popup-content button {
   border: none;
+  color: #020202;
+  background-color: white;
   padding: 0;
 }
 
 /* events */
 
 .events {
+  padding: 20px;
   margin-top: 50vh;
+}
+
+.sort-filter-search {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort-filter-search button {
+  margin-bottom: 5px;
+  width: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
+  border: 2px solid #59C7DE;
+  background-color: white;
+  /* background: linear-gradient(45deg, #fef200, #ffff8b); */
+  /* background: linear-gradient(45deg, #59C7DE, #7fd5e6); */
+  /* background: linear-gradient(45deg, #ff9cda, #ff9cda);
+  background: linear-gradient(45deg, #f25a97, #ff69a9); */
+  /* background-color: #f9b8d2; */
 }
 
 .event-previews {
@@ -136,8 +287,41 @@ nav ul {
 }
 
 .event-preview {
+  position: relative;
   width: 160px;
   margin: 10px 0;
+}
+
+.event-preview .rank {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  color: #020202;
+  background-color: white;
+  border-radius: 50%;
+  /* background-color: #ffff8b; */
+}
+
+
+
+.event-preview .edit-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.event-preview .edit-delete button {
+  color: white;
+  padding: 5px;
+  font-weight: 600;
+  background: none;
+  border: none;
 }
 
 .event-preview img {
@@ -151,19 +335,31 @@ nav ul {
   align-items: center;
 }
 
+.events .event-name {
+  color: #020202;
+}
+
 .event-preview .votes {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 5px;
+  margin-right: 10px;
   font-size: 14px;
 }
 
+.votes {
+  min-width: 20px;
+}
+
+.votes .vote-total {
+  color: #020202;
+}
+
 .votes button {
-  border: none;
-  padding: 3px;
+  padding: 1px;
   font-size: 20px;
-  font-weight: 700;
+  border: none;
+  color: #020202;
 }
 
 .event-preview .start-time {
@@ -176,7 +372,7 @@ nav ul {
 
 .event-preview .event-name {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 20px;
 }
 
@@ -188,15 +384,18 @@ nav ul {
 
 /* event detail */
 
+.event-detail {
+  padding: 20px;
+}
+
 .event-detail img {
   width: 100%;
   border-radius: 10px;
 }
 
-.event-detail .event-name {
+.event-detail .title {
   margin: 10px 0;
   font-size: 24px;
-  font-weight: 500;
 }
 
 .event-detail .times,
@@ -216,7 +415,6 @@ nav ul {
 .event-detail .street {
   margin: 0 0 10px 0;
   font-size: 13px;
-  font-weight: 300;
   line-height: 16px;
   color: #333;
 }
@@ -226,6 +424,10 @@ nav ul {
 }
 
 /* heavyweight */
+
+.heavyweights {
+  padding: 20px;
+}
 
 .heavyweights-list {
   margin-top: 20px;
@@ -251,7 +453,7 @@ nav ul {
 .heavyweight-previews .rank {
   width: 5%;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .heavyweight-preview img {
@@ -267,7 +469,7 @@ nav ul {
 .heavyweight-info .username {
   margin: 10px 0;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .heavyweight-info .bio {
@@ -286,6 +488,10 @@ nav ul {
 }
 
 /* offers */
+
+.offers {
+  padding: 20px;
+}
 
 .offer-previews {
   display: flex;
@@ -312,7 +518,7 @@ nav ul {
 .offer-info .partner {
   margin: 5px 0;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .offer-info .description {
@@ -327,15 +533,18 @@ nav ul {
 
 /* offer detail */
 
+.offer-detail {
+  padding: 20px;
+}
+
 .offer-detail img {
   width: 100%;
   border-radius: 10px;
 }
 
-.offer-detail .offer-partner {
+.offer-detail .title {
   margin: 10px 0;
   font-size: 24px;
-  font-weight: 500;
 }
 
 .offer-detail .cost {
@@ -350,14 +559,17 @@ nav ul {
 
 /* profile */
 
+.profile {
+  padding: 20px;
+}
+
 .profile img {
   width: 100%;
 }
 
-.profile .username {
+.profile .title {
   margin: 10px 0;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 24px;
 }
 
 .profile .bio {
