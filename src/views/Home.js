@@ -24,7 +24,7 @@ class Home extends Component {
     const { username, password } = this.state;
     const { error } = this.props;
     return (
-      <div class='home'>
+      <div className='home'>
         <img className='logo' alt='chicha logo' src='/chicha-logo-black.png' />
         <h1 className='title'>Sign in</h1>
         <form onSubmit={this.handleSubmit}>

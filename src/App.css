@@ -2,11 +2,13 @@
 /* general */
 
 .App {
+  position: relative;
   width: 100vw;
   height: 100vh;
 }
 
 .layout {
+  position: relative;
   margin-bottom: 60px;
 }
 
@@ -51,7 +53,7 @@ nav {
 nav ul {
   display: flex;
   align-items: center;
-  padding: 5spx 0;
+  padding: 10px 0;
   list-style-type: none;
 }
 
@@ -192,6 +194,13 @@ input[type=text], textarea {
   height: 100px;
 }
 
+/* events */
+
+.events {
+  padding: 20px;
+  margin-top: 50vh;
+}
+
 /* map */
 
 .mapContainer {
@@ -255,7 +264,7 @@ input[type=text], textarea {
 
 .events {
   padding: 20px;
-  margin-top: 50vh;
+  margin-top: 48vh;
 }
 
 .sort-filter-search {
@@ -278,6 +287,67 @@ input[type=text], textarea {
   /* background: linear-gradient(45deg, #ff9cda, #ff9cda);
   background: linear-gradient(45deg, #f25a97, #ff69a9); */
   /* background-color: #f9b8d2; */
+}
+
+.modal {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -20px;
+  padding: 20px;
+  height: 50px;
+  border-bottom: 1px #CCC solid;
+}
+
+.modal .close {
+  background-color: white;
+  border: 0;
+  padding: 0;
+  margin-right: auto;
+}
+
+.modal .title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: auto;
+}
+
+.sort-options {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.sort-option {
+  margin-top: 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort-options button {
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #020202;
+  background: linear-gradient(45deg, #ffff57, #FEF200);
+  border: none;
 }
 
 .event-previews {
