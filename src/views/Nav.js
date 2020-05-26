@@ -1,39 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
   return (
     <nav>
       <ul>
         <li>
-          <Link to='/events'>
+          <NavLink to='/events' activeClassName='selected'>
             <i className='material-icons'>event</i>      
             <br />Events
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to='/add-event'>
+          <NavLink to='/add-event' activeClassName='selected'>
             <i className='material-icons'>note_add</i>      
             <br />Add&nbsp;Event
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to='/heavyweights'>
-            <i className='material-icons md-36'>whatshot</i>      
+          <NavLink to='/heavyweights' activeClassName='selected'>
+            <i className='material-icons'>whatshot</i>      
             <br />Heavies
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to='/offers'>
-            <i className='material-icons md-48'>local_offer</i>      
+          <NavLink to='/offers' activeClassName='selected'>
+            <i className='material-icons'>local_offer</i>      
             <br />Offers
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to='/profile'>
+          <NavLink to='/profile' activeClassName='selected'>
             <i className='material-icons'>face</i>      
             <br />Profile
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
