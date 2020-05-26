@@ -7,10 +7,7 @@ export default class Events extends Component {
 
   toggleModal = () => this.setState({ modalIsOpen: !this.state.modalIsOpen })
 
-  onClear = () => {
-    console.log('clear');
-    this.setState({ sortBy: null });
-  }
+  onClear = () => this.setState({ sortBy: null });
 
   sort = (sortBy) => {
     const sortedEvents = [...this.state.events];
@@ -55,10 +52,10 @@ export default class Events extends Component {
     const { userId } = this.props;
     return (
       <div className='events-map-and-listings'>
-        <EventsMap events={events} key={events.length} />
+        <EventsMap events={events} key={`${events.length} + ${sortBy}`} />
         <div className='events'>
           <h1 className='title'>Events in Barcelona</h1>
-          <Modal show={modalIsOpen} title={sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort by'} onClear={this.onClear} onClose={this.toggleModal} >
+          <Modal show={modalIsOpen} onClose={this.toggleModal} title={sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort by'} onClear={this.onClear} >
             <SortOptions sort={this.sort} sortBy={sortBy} onClear={this.onClear} />
           </Modal>
           <SortFilterSearchButtons sortBy={sortBy} toggleModal={this.toggleModal} />

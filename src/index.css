@@ -19,3 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #212121;
 }
+
+input, textarea, select, button {
+  font-family: inherit;
+}
