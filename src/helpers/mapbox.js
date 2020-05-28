@@ -12,7 +12,7 @@ export const addMarkers = (markers, map, history) => {
     const { name, source, place, rank } = marker.properties;
     el.style.backgroundImage = `url(/markers/${rank + 1}.svg)`;
     const popupContainer = document.createElement('div');
-    const popupContents = <button onClick={onClick}><img alt={name} src={source} /><h3>{name}</h3><p>{place}</p></button>;
+    const popupContents = <button className='popup-contents' onClick={onClick}><img alt={name} src={source} /><h3 className='event-name'>{name}</h3><p className='place'>{place}</p></button>;
     ReactDOM.render(popupContents, popupContainer);
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)

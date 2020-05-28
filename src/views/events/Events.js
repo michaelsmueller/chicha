@@ -3,11 +3,14 @@ import apiClient from '../../services/apiClient';
 import { EventsMap, EventPreview, Modal, SortOptions } from '../';
 
 export default class Events extends Component {
-  state = { events: [], votes: [], sortBy: null, modalIsOpen: false,  };
+  state = { events: [], votes: [], sortBy: undefined, modalIsOpen: false,  };
 
   toggleModal = () => this.setState({ modalIsOpen: !this.state.modalIsOpen })
 
-  onClear = () => this.setState({ sortBy: null });
+  onClear = () => {
+    this.sort('upvotes');
+    this.setState({ sortBy: null });
+  }
 
   sort = (sortBy) => {
     const sortedEvents = [...this.state.events];

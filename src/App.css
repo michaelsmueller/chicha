@@ -20,11 +20,14 @@
 a {
   text-decoration: none;
   font-weight: 600;
+  /* color: #2294aa; */
   color: #ee2B7a;
 }
 
 a:visited {
+  font-weight: 600;
   color: #ee2B7a;
+  /* color: #2294aa; */
 }
 
 button, input, textarea {
@@ -208,18 +211,11 @@ input[type=text], textarea {
   height: 100px;
 }
 
-/* events */
-
-.events {
-  padding: 20px;
-  margin-top: 50vh;
-}
-
 /* map */
 
 .mapContainer {
   position: fixed;
-  height: 50vh;
+  height: 43vh;
   top: 0;
   right: 0;
   left: 0;
@@ -242,17 +238,16 @@ input[type=text], textarea {
 }
 
 .mapboxgl-popup-content {
-  max-width: 200px;
+  max-width: 150px;
   width: auto;
-  padding: 12px;
   text-align: center;
   border: none;
   border-radius: 20px;
 }
 
 .mapboxgl-popup-close-button {
-  top: 5px;
-  right: 5px;
+  top: -5px;
+  right: 0;
   font-weight: 600;
 }
 
@@ -262,22 +257,31 @@ input[type=text], textarea {
 }
 
 .mapboxgl-popup-content img {
-  width: 150px;
+  width: 100px;
+  max-height: 100px;
   border-radius: 15px;
   margin-bottom: 5px;
 }
 
-.mapboxgl-popup-content button {
-  border: none;
-  color: #212121;
+.mapboxgl-popup-content .popup-contents {
+  font-family: 'Open Sans';
   padding: 0;
+  font: #212121;
+}
+
+.mapboxgl-popup-content .event-name {
+  font-size: 13px;
+}
+
+.mapboxgl-popup-content .place {
+  font-size: 12px;
 }
 
 /* events */
 
 .events {
   padding: 20px;
-  margin-top: 48vh;
+  margin-top: 41vh;
 }
 
 .sort-filter-search {
@@ -557,8 +561,9 @@ input[type=text], textarea {
 }
 
 .heavyweight-info {
-  width: 50%;
+  width: 60%;
   padding: 5px;
+  overflow-x: hidden;
 }
 
 .heavyweight-info .username {
@@ -574,7 +579,7 @@ input[type=text], textarea {
 
 .heavyweight-info .link {
   margin: 5px 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .heavyweight-preview .points {

@@ -6,7 +6,7 @@ import apiClient from '../../../services/apiClient';
 const Heavyweights = () => {
   return (
     <div className='heavyweights'>
-      <h1 className='title'>Heavyweights</h1>
+      <h1 className='title'>Heavies</h1>
       <ContentLoader asyncFunc={apiClient.getHeavyweights}>
         {({ heavyweights }) => <HeavyweightsList heavyweights={heavyweights} />}
       </ContentLoader>
