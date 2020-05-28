@@ -215,7 +215,7 @@ input[type=text], textarea {
 
 .mapContainer {
   position: fixed;
-  height: 43vh;
+  height: 80vh;
   top: 0;
   right: 0;
   left: 0;
@@ -279,9 +279,16 @@ input[type=text], textarea {
 
 /* events */
 
+.dragger {
+  position: fixed;
+  height: 100%;
+  z-index: 10;
+}
+
 .events {
   padding: 20px;
-  margin-top: 41vh;
+  margin-top: 5px;
+  background-color: white;
 }
 
 .sort-filter-search {
