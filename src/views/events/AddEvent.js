@@ -22,6 +22,8 @@ export default class AddEvent extends Component {
       })
   };
 
+  stopWaiting = () => this.setState({ isWaiting: false });
+
   cleanForm = () => this.setState({ url: '' });
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -29,7 +31,7 @@ export default class AddEvent extends Component {
   render() {
     const { url, isWaiting } = this.state;
     return (
-      <LoadingOverlayWithTimer isActive={isWaiting} key={isWaiting}>
+      <LoadingOverlayWithTimer isActive={isWaiting} stopWaiting={this.stopWaiting} key={isWaiting}>
         <div className='add-event'>
           <h1 className='title'>Add Event</h1>
           <form onSubmit={this.handleSubmit}>

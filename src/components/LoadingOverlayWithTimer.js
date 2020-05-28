@@ -30,22 +30,20 @@ export default class LoadingOverlayWithTimer extends Component {
   }
 
   startCountdown = () => this.setState({
-      timeLeft: true,
+      isTimeLeft: true,
       seconds: LOADING_MESSAGES.length - 1,
       intervalId: setInterval(this.timer, 1000),
   })
 
   stopCountdown = () => {
     clearInterval(this.state.intervalId);
-    this.setState({ timeLeft: false, intervalId: undefined })
+    this.setState({ isTimeLeft: false, seconds: 0, intervalId: undefined });
+    this.props.stopWaiting();
   }
 
   componentDidMount = () => {
     if (this.props.isActive) this.startCountdown();
-    else this.stopCountdown();
   }
-
-  componentWillUnmount = () => this.stopCountdown();
 
   render() {
     const { children, isActive } = this.props;
@@ -54,6 +52,6 @@ export default class LoadingOverlayWithTimer extends Component {
       <LoadingOverlay active={isActive && isTimeLeft} spinner text={LOADING_MESSAGES[seconds]}>
         {children}
       </LoadingOverlay>
-    )
+    );
   }
 }
