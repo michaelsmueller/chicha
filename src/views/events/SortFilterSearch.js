@@ -7,6 +7,7 @@ export default class SortFilterSearch extends Component {
   state = { eventsBackup: [], sortBy: null, filterBy: null, activeModal: null };
 
   openModal = (activeModal) => this.setState({ activeModal })
+  closeModal = () => this.setState({ activeModal: null })
 
   onClear = () => {
     switch (this.state.activeModal) {
