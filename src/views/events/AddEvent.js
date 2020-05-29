@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import apiClient from '../../services/apiClient';
-import LoadingOverlayWithTimer from '../../components/LoadingOverlayWithTimer';
+import { LoadingOverlayWithTimer } from '../../components/';
 
 export default class AddEvent extends Component {
   state = { url: '', isWaiting: false };
