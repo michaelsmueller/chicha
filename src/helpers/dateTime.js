@@ -39,9 +39,7 @@ export const showLocalDateTime = (utcDateTime) => {
   }
 };
 
-const isValidDate = (date) => {
-  return date instanceof Date && !isNaN(date);
-};
+const isValidDate = (date) => date instanceof Date && !isNaN(date);
 
 export const isToday = (date) => {
   try {

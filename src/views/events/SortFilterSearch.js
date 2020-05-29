@@ -7,7 +7,6 @@ export default class SortFilterSearch extends Component {
   state = { eventsBackup: [], sortBy: null, filterBy: null, activeModal: null };
 
   openModal = (activeModal) => this.setState({ activeModal })
-  closeModal = () => this.setState({ activeModal: null })
 
   onClear = () => {
     switch (this.state.activeModal) {
@@ -21,14 +20,12 @@ export default class SortFilterSearch extends Component {
 
   clearSort = () => {
     this.sort('upvotes');
-    this.setState({ sortBy: null });
-    this.closeModal();
+    this.setState({ sortBy: null, activeModal: null });
   }
 
   clearFilter = () => {
     this.props.updateEvents(this.state.eventsBackup);
-    this.setState({ filterBy: null });
-    this.closeModal();
+    this.setState({ filterBy: null, activeModal: null });
   }
 
   sort = (sortBy) => {
@@ -46,13 +43,11 @@ export default class SortFilterSearch extends Component {
       default: return;
     }
     this.props.updateEvents(sortedEvents);
-    this.setState({ sortBy });
-    this.closeModal();
+    this.setState({ sortBy, activeModal: null });
   }
 
   filter = (filterBy) => {
     const { eventsBackup } = this.state;
-    console.log('eventsBackup', eventsBackup);
     const filteredEvents = [];
     switch (filterBy) {
       case 'today':
@@ -67,11 +62,9 @@ export default class SortFilterSearch extends Component {
       default: return;
     }
     this.props.updateEvents(filteredEvents);
-    this.setState({ filterBy });
-    this.closeModal();
+    this.setState({ filterBy, activeModal: null });
   }
 
-  // should this be done with Memoization_
   componentDidMount = () => this.setState({ eventsBackup: this.props.events });
 
   render() {
@@ -93,25 +86,19 @@ export default class SortFilterSearch extends Component {
 
 const modalTitle = (activeModal, sortBy, filterBy) => {
   switch (activeModal) {
-    case 'sort':
-      return sortBy ? getTitle(sortBy) : 'Sort by';
-    case 'date':
-      return filterBy ? getTitle(filterBy) : 'Filter by';
-    default:
-      return 'title';
+    case 'sort': return sortBy ? getTitle(sortBy) : 'Sort by';
+    case 'date': return filterBy ? getTitle(filterBy) : 'Filter by';
+    default: return;
   }
-}
+};
 
 const ModalContent = ({ activeModal, sort, sortBy, clearSort, filter, filterBy, clearFilter }) => {
   switch (activeModal) {
-    case 'sort':
-      return <SortOptions sort={sort} sortBy={sortBy} onClear={clearSort} />
-    case 'date':
-      return <DateFilter filter={filter} filterBy={filterBy} onClear={clearFilter} />
-    default:
-      return <div>default ModalContent</div>
+    case 'sort': return <SortOptions sort={sort} sortBy={sortBy} onClear={clearSort} />
+    case 'date': return <DateFilter filter={filter} filterBy={filterBy} onClear={clearFilter} />
+    default: return;
   }
-}
+};
 
 const SortFilterSearchButtons = ({ sortBy, filterBy, openModal }) => {
   const handleClick = (e) => openModal(e.target.value);
@@ -124,4 +111,4 @@ const SortFilterSearchButtons = ({ sortBy, filterBy, openModal }) => {
       <button>Search</button>
     </div>
   )
-} 
+};
