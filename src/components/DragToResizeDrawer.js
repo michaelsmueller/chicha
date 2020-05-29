@@ -5,7 +5,7 @@ export default class DragToResizeDrawer extends Component {
 
   onTouchStart = (e) => this.setState({ isResizing: true })
   onTouchEnd = (e) => this.setState({ isResizing: false })
-  onTouchMove = (e) => this.setState({ lastTouchY: e.touches[0].clientY})
+  onTouchMove = (e) => this.setState({ lastTouchY: e.touches[0].clientY })
 
   componentDidMount = () => {
     document.addEventListener('onTouchStart', this.onTouchStart);
@@ -27,16 +27,17 @@ export default class DragToResizeDrawer extends Component {
 
   render() {
     const marginTop = this.setTopMargin();
+    const dragHandleStyle = { marginTop };
     const draggerStyle = {
       backgroundColor: 'white',
-      marginTop,
+      marginTop: marginTop + 20,
       overflow: this.state.isResizing ? 'hidden' : 'scroll',
-      paddingBottom: marginTop + 50,
+      paddingBottom: marginTop + 70,
     }
     return (
-      <div className='dragger' style={draggerStyle} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd}>
-        <div className='drag-handle'><i className='material-icons'>drag_handle</i></div>
-        {this.props.children}
+      <div onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd}>
+        <div className='drag-handle' style={dragHandleStyle}><i className='material-icons'>drag_handle</i></div>
+        <div className='dragger' style={draggerStyle}>{this.props.children}</div>
       </div>
     );
   }
