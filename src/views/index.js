@@ -18,6 +18,7 @@ export { default as EventDetailContent } from './events/EventDetailContent';
 export { default as EventsMap } from './events/EventsMap';
 export { default as EventPreview } from './events/EventPreview';
 export { default as Events } from './events/Events';
+export { default as SortFilterSearch } from './events/SortFilterSearch';
 export { default as VoteButtons } from './events/VoteButtons';
 
 // heavyweights
