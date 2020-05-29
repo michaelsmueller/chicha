@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import apiClient from '../../services/apiClient';
 import { EventsMap, EventPreview, Modal, SortOptions } from '../';
+import { DragToResizeDrawer } from '../../components/';
 
 export default class Events extends Component {
-  state = { events: [], votes: [], sortBy: undefined, modalIsOpen: false, isResizing: false, lastTouchY: 350, newHeight: {} };
-
-  onTouchStart = (e) => this.setState({ isResizing: true })
-
-  onTouchEnd = (e) => this.setState({ isResizing: false })
-
-  onTouchMove = (e) => {
-    e.persist();
-    this.setState({ isResizing: true, lastTouchY: e.touches[0].clientY})
-  }
+  state = { events: [], votes: [], sortBy: undefined, modalIsOpen: false };
 
   toggleModal = () => this.setState({ modalIsOpen: !this.state.modalIsOpen })
 
@@ -49,9 +41,6 @@ export default class Events extends Component {
   }
 
   componentDidMount = async () => {
-    document.addEventListener('onTouchStart', this.onTouchStart);
-    document.addEventListener('onTouchMove', this.onTouchMove);
-    document.addEventListener('onTouchEnd', this.onTouchEnd);
     const { events, userId } = this.props;
     try {
       const voteResponse = await apiClient.getVotes(userId);
@@ -62,27 +51,13 @@ export default class Events extends Component {
     }
   }
 
-  componentWillUnmount = () => {
-    document.removeEventListener('onTouchStart', this.onTouchStart);
-    document.removeEventListener('onTouchMove', this.onTouchMove);
-    document.removeEventListener('onTouchEnd', this.onTouchEnd);
-  }
-
   render() {
     const { events, votes, sortBy, modalIsOpen } = this.state;
     const { userId } = this.props;
-    const maxHeight = window.innerHeight * 0.8;  // mapContainer is height 80vh
-    const marginTop = Math.max(0, this.state.lastTouchY < maxHeight ? this.state.lastTouchY : maxHeight );
-    const draggerStyle = {
-      backgroundColor: 'white',
-      marginTop,
-      overflow: this.state.isResizing ? 'hidden' : 'scroll',
-    }
     return (
       <div className='events-map-and-listings'>
         <EventsMap events={events} key={`${events.length} + ${sortBy}`} />
-        <div className='dragger' style={draggerStyle} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd}>
-          <div className='drag-handle'><i className='material-icons'>drag_handle</i></div>
+        <DragToResizeDrawer>
           <div className='events'>
             <h1 className='title'>Events in Barcelona</h1>
             <Modal show={modalIsOpen} onClose={this.toggleModal} title={sortBy ? `By ${sortBy.replace('-', ' ')}` : 'Sort by'} onClear={this.onClear} >
@@ -91,7 +66,7 @@ export default class Events extends Component {
             <SortFilterSearchButtons sortBy={sortBy} toggleModal={this.toggleModal} />
             <EventPreviews events={events} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
           </div>
-        </div>
+        </DragToResizeDrawer>
       </div>
     )
   }
