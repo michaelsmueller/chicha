@@ -40,7 +40,7 @@ class SortOptions extends Component {
         <div className='sort-option'>
           <p>Newest</p>
           <input type='radio'
-            name='recent-added'
+            name='newest'
             value='newest'
             checked={selectedOption === 'newest'}
             onChange={this.handleChange}

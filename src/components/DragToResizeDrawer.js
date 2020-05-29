@@ -31,6 +31,7 @@ export default class DragToResizeDrawer extends Component {
       backgroundColor: 'white',
       marginTop,
       overflow: this.state.isResizing ? 'hidden' : 'scroll',
+      paddingBottom: marginTop + 50,
     }
     return (
       <div className='dragger' style={draggerStyle} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd}>

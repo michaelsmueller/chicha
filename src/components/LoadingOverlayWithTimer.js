@@ -45,6 +45,8 @@ export default class LoadingOverlayWithTimer extends Component {
     if (this.props.isActive) this.startCountdown();
   }
 
+  componentWillUnmount = () => clearInterval(this.state.intervalId);
+
   render() {
     const { children, isActive } = this.props;
     const { isTimeLeft, seconds } = this.state;

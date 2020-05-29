@@ -4,13 +4,9 @@ import { VoteButtons } from '../';
 import { showLocalDateTime } from '../../helpers/dateTime';
 
 const EventPreview = ({ rank, event, userId, vote, deleteEvent }) => {
-  const {
-    _id: eventId, creator,
-    data: {
-      name, start_time,
-      place: { name: place },
-    }
-  } = event || '';
+  const { _id: eventId, creator, data } = event || '';
+  const { name, start_time, place } = data || '';
+  const { name: placeName } = place || '';
   const source = event.data.cover?.source;
   return (
     <div className='event-preview'>
@@ -20,7 +16,7 @@ const EventPreview = ({ rank, event, userId, vote, deleteEvent }) => {
         <div className='event-image-container'><img alt={name} src={source} /></div>
         <div className='event-text-container'>
           <VoteButtons event={event} vote={vote} />
-          <EventInfo start_time={start_time} name={name} place={place} />
+          <EventInfo start_time={start_time} name={name} placeName={placeName} />
         </div>
       </Link>
     </div>
@@ -41,12 +37,12 @@ const EditDeleteButtons = ({ eventId, deleteEvent }) => {
   );
 };
 
-const EventInfo = ({ start_time, name, place }) => {
+const EventInfo = ({ start_time, name, placeName }) => {
   return (
     <div className='event-info'>
       <p className='start-time'>{showLocalDateTime(start_time)}</p>
       <h2 className='event-name'>{name}</h2>
-      <p className='place'>{place}</p>
+      <p className='place'>{placeName}</p>
     </div>
   );
 };
