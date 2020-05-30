@@ -8,8 +8,8 @@ export default class ContentLoader extends Component {
   componentDidMount = () => {
     const { asyncFunc, params } = this.props;
     asyncFunc(params)
-      .then(({ data }) => this.setState({ data, STATUS: 'LOADED', error: null }))
-      .catch((error) => this.setState({ STATUS: 'ERROR', error: error.message }))
+      // .then(({ data }) => this.setState({ data, STATUS: 'LOADED', error: null }))
+      // .catch((error) => this.setState({ STATUS: 'ERROR', error: error.message }))
   }
 
   render() {

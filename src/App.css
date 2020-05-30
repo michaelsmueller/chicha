@@ -38,13 +38,33 @@ button, input, textarea {
   border: none;
 }
 
+/* general views */
+
+.loading {
+  position: fixed;
+  left: 25vh;
+  top: 50vh;
+  height: 5vh;
+  width: 5vh;
+  background: linear-gradient(45deg, rgba(238, 43, 122, 0.8), rgba(254, 242, 0, 0.8));
+  z-index: 10;
+  animation: spin 1s infinite linear;
+  transform-origin: 50% 50%;
+  border-radius: 100%;
+}
+
+@keyframes spin {
+  0%  {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(360deg);}   
+}
+
 /* navigation */
 
 nav { 
   position: fixed;
   width: 100vw;
   bottom: 0;
-  z-index: 10;
+  z-index: 5;
   height: auto;
   font-size: 10px;
   font-weight: 600;
@@ -307,6 +327,11 @@ input[type=text], textarea {
   text-align: left;
 }
 
+
+.sort-filter-search-container {
+  position: relative;
+}
+
 .sort-filter-search {
   margin-top: 5px;
   display: flex;
@@ -336,7 +361,7 @@ input[type=text], textarea {
   width: 100vw;
   height: 100vh;
   padding: 20px;
-  z-index: 20;
+  z-index: 200;
   animation-duration: 0.4s;
   animation-name: slidein;
   overflow: hidden;

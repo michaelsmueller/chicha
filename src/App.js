@@ -21,7 +21,6 @@ const App = () => {
 
 const Layout = () => {
   return <div className='layout'>
-    <Nav />
     <Route exact path='/events' component={EventsContainer} />
     <Route exact path='/events/:id' component={EventDetail} />
     <Route exact path='/events/:id/edit' component={EditEvent} />
@@ -31,6 +30,7 @@ const Layout = () => {
     <Route exact path='/offers/:id' component={OfferDetail} />
     <Route exact path='/profile' component={Profile} />
     <Route exact path='/profile/edit' component={ProfileUpdate} />
+    <Nav />
   </div>
 }
 
