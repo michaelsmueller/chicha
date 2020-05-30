@@ -7,12 +7,13 @@ export const withAuth = (Comp) => {
     render() {
       return (
         <AuthContext.Consumer>
-          {({ STATUS, userId, error, handleRegister, handleSignIn, handleLogout }) => {
+          {({ STATUS, userId, error, handleError, handleRegister, handleSignIn, handleLogout }) => {
             return (
               <Comp
                 STATUS={STATUS}
                 userId={userId}
                 error={error}
+                onError={handleError}
                 onRegister={handleRegister}
                 onSignIn={handleSignIn}
                 onLogout={handleLogout}
@@ -96,6 +97,10 @@ class AuthProvider extends Component {
       })
   };
 
+  handleError = (error) => {
+    this.setState({ STATUS: 'ERROR', error });
+  }
+
   render() {
     const { children } = this.props;
     const { STATUS, userId, error } = this.state;
@@ -105,6 +110,7 @@ class AuthProvider extends Component {
           STATUS,
           userId,
           error,
+          handleError: this.handleError,
           handleRegister: this.handleRegister,
           handleSignIn: this.handleSignIn,
           handleLogout: this.handleLogout,

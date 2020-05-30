@@ -9,10 +9,12 @@ class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    const { onRegister } = this.props;
+    const { onError, onRegister } = this.props;
     if (username !== '' && password !== '') {
       onRegister({ username, password });
       this.cleanForm();
+    } else {
+      onError('Missing username or password');
     }
   };
 

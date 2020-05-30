@@ -9,10 +9,12 @@ class Home extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    const { onSignIn } = this.props;
+    const { onError, onSignIn } = this.props;
     if (username !== '' && password !== '') {
       onSignIn({ username, password });
       this.cleanForm();
+    } else {
+      onError('Missing username or password');
     }
   };
 
