@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import LoadingOverlay from 'react-loading-overlay';
+import { Loading } from '../views/';
 
 const LOADING_MESSAGES = [
   'cleaning up',
   'cleaning up',
-  'cleaning up',
-  'saving event data',
   'saving event data',
   'saving event data',
   'processing event data',
   'processing event data',
-  'processing event data',
   'retrieving event data',
   'retrieving event data',
-  'retrieving event data',
-  'connecting to Facebook',
   'connecting to Facebook',
   'connecting to Facebook',
 ];
@@ -51,7 +47,7 @@ export default class LoadingOverlayWithTimer extends Component {
     const { children, isActive } = this.props;
     const { isTimeLeft, seconds } = this.state;
     return (
-      <LoadingOverlay active={isActive && isTimeLeft} spinner text={LOADING_MESSAGES[seconds]}>
+      <LoadingOverlay active={isActive && isTimeLeft} spinner={<Loading />} text={LOADING_MESSAGES[seconds]}>
         {children}
       </LoadingOverlay>
     );
