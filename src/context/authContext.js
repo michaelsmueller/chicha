@@ -33,8 +33,9 @@ class AuthProvider extends Component {
     apiClient.whoami()
       .then(({ data: { _id } }) => this.setState({ STATUS: 'LOGGED_IN', userId: _id }))
       .catch(({ response }) => {
+        console.log('componentDidMount response', response);
         if (response !== undefined) {
-          switch (response.STATUS) {
+          switch (response.status) {
             case 401:
               this.setState({ STATUS: 'LOGGED_OUT', userId: null, error: null });
               break;
@@ -52,7 +53,7 @@ class AuthProvider extends Component {
       .then(({ data: { _id } }) => this.setState({ STATUS: 'LOGGED_IN', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
-          switch (response.STATUS) {
+          switch (response.status) {
             case 409:
               this.setState({ STATUS: 'LOGGED_OUT', userId: null, error: 'username already exists' });
               break;
@@ -73,7 +74,7 @@ class AuthProvider extends Component {
       .then(({ data: { _id } }) => this.setState({ STATUS: 'LOGGED_IN', userId: _id }))
       .catch(({ response }) => {
         if (response !== undefined) {
-          switch (response.STATUS) {
+          switch (response.status) {
             case 401:
               this.setState({ STATUS: 'LOGGED_OUT', userId: null, error: 'wrong username or password' });
               break;
@@ -89,7 +90,10 @@ class AuthProvider extends Component {
   handleLogout = () => {
     apiClient.logout()
       .then(() => this.setState({ STATUS: 'LOGGED_OUT', userId: null, error: null }))
-      .catch(({ response }) => this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText }));
+      .catch(({ response }) => {
+        if (response !== undefined) this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText });
+        else this.setState({ STATUS: 'ERROR', userId: null, error: 'cannot connect to server' });
+      })
   };
 
   render() {

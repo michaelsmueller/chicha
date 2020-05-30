@@ -58,6 +58,21 @@ button, input, textarea {
   100% { -webkit-transform: rotate(360deg); }
 }
 
+.error {
+  width: 70%;
+  padding: 10px;
+  height: auto;
+  font-size: 15px;
+  border: none;
+  background-color: #2d2d2d;
+  color: white;
+  font-weight: 700;
+  border-left: 6px solid #b00020;
+  /* border-radius: 20px; */
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+  overflow: hidden;
+}
+
 /* navigation */
 
 nav {
@@ -700,6 +715,7 @@ input[type=text], textarea {
   display: flex;
   height: 120px;
   align-items: center;
+  overflow: hidden;
 }
 
 .offer-preview img {
