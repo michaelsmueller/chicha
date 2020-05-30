@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
-  state = { query: '' };
+  state = { query: null };
 
-  handleInput = (e) => {
-    const { value } = e.target;
-    this.setState({ query: value });
-  }
+  handleInput = (e) => this.setState({ query: e.target.value });
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { query } = this.state;
-    console.log('SearchBar submitting search for', query);
-    this.props.search(query);
+    this.props.search(this.state.query);
   };
 
-  handleClick = (e) => {
-    e.preventDefault();
-    console.log('cancel search');
-  }
+  handleClick = (e) => this.props.clearSearch();
 
   render() {
     return (

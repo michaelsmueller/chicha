@@ -21,7 +21,7 @@ class EventsMap extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.events.length) this.renderMap();
+    if (this.props.events) this.renderMap();
   }
 
   render() {

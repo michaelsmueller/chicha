@@ -1,11 +1,13 @@
 import { isToday, isThisWeek, isThisWeekend } from './dateTime';
 
 export const filterEvents = (events, filterBy) => {
-  const filteredEvents = [];
-  events.forEach((event) => {
-    if (passesFilter(event, filterBy)) filteredEvents.push(event);
-  });
-  return filteredEvents;
+  if (events) {
+    const filteredEvents = [];
+    events.forEach((event) => {
+      if (passesFilter(event, filterBy)) filteredEvents.push(event);
+    });
+    return filteredEvents;
+  } else return null;
 };
 
 const passesFilter = (event, filterBy) => {

@@ -3,16 +3,16 @@ import { DateFilter, Modal, SearchBar, SortFilterSearchButtons, SortOptions } fr
 import { getTitle } from '../../helpers/string';
 
 export default class SortFilterSearch extends Component {
-  state = { sortBy: null, activeModal: null };
+  state = { sortBy: null, activeModal: null, isSearchOpen: false };
 
   openModal = (activeModal) => this.setState({ activeModal })
   closeModal = () => this.setState({ activeModal: null })
+  openSearch = () => this.setState({ isSearchOpen: true });
 
   onClear = () => {
     switch (this.state.activeModal) {
       case 'sort': this.clearSort(); break;
       case 'date': this.clearFilter(); break;
-      case 'search': this.clearSearch(); break;
       default: return;
     }
   }
@@ -28,7 +28,8 @@ export default class SortFilterSearch extends Component {
   }
 
   clearSearch = () => {
-    this.props.setSearch(null);
+    this.props.clearSearch();
+    this.setState({ isSearchOpen: false });
   }
 
   sort = (sortBy) => {
@@ -39,7 +40,7 @@ export default class SortFilterSearch extends Component {
       case 'newest': sortedEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); break;
       default: return;
     }
-    this.props.updateEvents(sortedEvents);
+    this.props.saveEvents(sortedEvents);
     this.setState({ sortBy, activeModal: null });
   }
 
@@ -48,14 +49,15 @@ export default class SortFilterSearch extends Component {
     this.setState({ activeModal: null });
   }
 
-  search = (searchBy) => {
-    console.log('SortFilterSearch searching for ', searchBy)
-    this.props.setSearch(searchBy);
+  search = (query) => {
+    this.clearSort();
+    this.clearFilter();
+    this.props.setSearch(query);
   }
 
   render() {
-    const { sortBy, activeModal } = this.state;
-    const { filterBy, searchBy } = this.props;
+    const { sortBy, activeModal, isSearchOpen } = this.state;
+    const { filterBy } = this.props;
     return (
       <div className='sort-filter-search-container'>
         <Modal activeModal={activeModal} onClose={this.closeModal} title={modalTitle(activeModal, sortBy, filterBy)} onClear={this.onClear} >
@@ -65,8 +67,8 @@ export default class SortFilterSearch extends Component {
             filter={this.filter} filterBy={filterBy} clearFilter={this.clearFilter}
           />
         </Modal>
-        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} searchBy={searchBy} openModal={this.openModal} />
-        <SearchBar search={this.search} searchBy={searchBy} />
+        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} openModal={this.openModal} openSearch={this.openSearch} />
+        {isSearchOpen && <SearchBar search={this.search} clearSearch={this.clearSearch} />}
       </div>
     );
   }

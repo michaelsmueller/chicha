@@ -1,9 +1,9 @@
 import React from 'react';
 import { getTitle } from '../../helpers/string';
 
-const SortFilterSearchButtons = ({ sortBy, filterBy, searchBy, openModal }) => {
+const SortFilterSearchButtons = ({ sortBy, filterBy, openModal, openSearch }) => {
   const handleClick = (e) => {
-    if (e.target.value === 'search') console.log('search');
+    if (e.target.value === 'search') openSearch();
     else openModal(e.target.value);
   }
   const sortButtonStyle = { backgroundColor: sortBy ? '#ccfcff' : 'white' };

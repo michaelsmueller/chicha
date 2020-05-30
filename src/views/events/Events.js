@@ -6,18 +6,21 @@ import { DragToResizeDrawer } from '../../components/';
 import { filterEvents } from '../../helpers/filter';
 
 export default class Events extends Component {
-  state = { events: [], votes: [], filterBy: null, searchBy: null, mapKey: null };
+  state = { events: null, votes: null, filterBy: null, query: null, mapKey: null };
 
-  updateEvents = (events) => this.setState({ events, mapKey: generate() });
-  setFilter = (filterBy) => this.setState({ filterBy, mapKey: generate() });
+  saveEvents = (events) => this.setState({ events, mapKey: generate() })
+  setFilter = (filterBy) => this.setState({ filterBy, mapKey: generate() })
 
-  setSearch = (searchBy) => {
-    console.log('Events, setting searchBy', searchBy);
-    this.setState({ searchBy, mapKey: generate() });
-    apiClient.searchEvents(searchBy)
-      .then((response) => {
-        console.log('response', response);
-      })
+  setSearch = (query) => {
+    this.setState({ query, mapKey: generate() });
+    apiClient.searchEvents(query)
+      .then(({ data: { events } }) => this.setState({ events, mapKey: generate() }))
+      .catch((error) => console.log(error))
+  }
+
+  clearSearch = () => {
+    apiClient.getEvents()
+      .then(({ data: { events } }) => this.setState({ events, mapKey: generate() }))
       .catch((error) => console.log(error))
   }
 
@@ -30,39 +33,43 @@ export default class Events extends Component {
       .catch((error) => console.log(error))
   }
 
-  componentDidMount = async () => {
-    const { events, userId } = this.props;
+  getVotes = async () => {
     try {
-      const voteResponse = await apiClient.getVotes(userId);
+      const voteResponse = await apiClient.getVotes(this.props.userId);
       const { votes } = voteResponse.data;
-      this.setState({ events, votes, mapKey: generate() });
-    } catch(error) {
+      this.setState({ votes });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  componentDidMount = async () => {
+    try {
+      await this.getVotes();
+      const { events } = this.props;
+      this.setState({ events, mapKey: generate() });
+    } catch (error) {
       console.log(error);
     }
   }
 
   render() {
-    const { events, votes, filterBy, searchBy, mapKey } = this.state;
+    const { events, votes, filterBy, mapKey } = this.state;
     const { userId } = this.props;
     const filteredEvents = filterEvents(events, filterBy);
-    console.log('Events render, searchBy value', searchBy);
     return (
       <div className='events-map-and-listings'>
         <EventsMap events={filteredEvents} key={mapKey} />
         <DragToResizeDrawer>
           <div className='events'>
             <h1 className='title'>Events in Barcelona</h1>
-            {events.length
-              ? <SortFilterSearch
-                  events={events}
-                  updateEvents={this.updateEvents}
-                  setFilter={this.setFilter}
-                  filterBy={filterBy}
-                  setSearch={this.setSearch}
-                  searchBy={searchBy}
-                />
-              : <Loading />}
-            <EventPreviews events={filteredEvents} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
+            {events
+              ? <>
+                <SortFilterSearch events={events} saveEvents={this.saveEvents} setFilter={this.setFilter} filterBy={filterBy} setSearch={this.setSearch} clearSearch={this.clearSearch} />
+                <EventPreviews events={filteredEvents} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
+                </>
+              : <Loading />
+            }
           </div>
         </DragToResizeDrawer>
       </div>
