@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Modal = ({ show, onClose, title, onClear, children }) => {
-  if (!show) return null;
+const Modal = ({ activeModal, onClose, title, onClear, children }) => {
+  if (!activeModal) return null;
   return (
     <div className='modal'>
       <div className='header'>

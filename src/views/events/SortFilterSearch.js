@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DateFilter, Modal, SortOptions } from '../';
+import { DateFilter, Modal, SearchBar, SortFilterSearchButtons, SortOptions } from '../';
 import { getTitle } from '../../helpers/string';
 
 export default class SortFilterSearch extends Component {
@@ -10,10 +10,9 @@ export default class SortFilterSearch extends Component {
 
   onClear = () => {
     switch (this.state.activeModal) {
-      case 'sort': this.clearSort();
-        break;
-      case 'date': this.clearFilter();
-        break;
+      case 'sort': this.clearSort(); break;
+      case 'date': this.clearFilter(); break;
+      case 'search': this.clearSearch(); break;
       default: return;
     }
   }
@@ -28,18 +27,16 @@ export default class SortFilterSearch extends Component {
     this.setState({ activeModal: null });
   }
 
+  clearSearch = () => {
+    this.props.setSearch(null);
+  }
+
   sort = (sortBy) => {
     const sortedEvents = [...this.props.events];
     switch (sortBy) {
-      case 'start-date':
-        sortedEvents.sort((a, b) => new Date(a.data.start_time) - new Date(b.data.start_time));
-        break;
-      case 'upvotes':
-        sortedEvents.sort((a, b) => b.votes - a.votes);
-        break;
-      case 'newest':
-        sortedEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-        break;
+      case 'start-date': sortedEvents.sort((a, b) => new Date(a.data.start_time) - new Date(b.data.start_time)); break;
+      case 'upvotes': sortedEvents.sort((a, b) => b.votes - a.votes); break;
+      case 'newest': sortedEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); break;
       default: return;
     }
     this.props.updateEvents(sortedEvents);
@@ -51,19 +48,25 @@ export default class SortFilterSearch extends Component {
     this.setState({ activeModal: null });
   }
 
+  search = (searchBy) => {
+    console.log('SortFilterSearch searching for ', searchBy)
+    this.props.setSearch(searchBy);
+  }
+
   render() {
     const { sortBy, activeModal } = this.state;
-    const { filterBy } = this.props;
+    const { filterBy, searchBy } = this.props;
     return (
       <div className='sort-filter-search-container'>
-        <Modal show={activeModal} onClose={this.closeModal} title={modalTitle(activeModal, sortBy, filterBy)} onClear={this.onClear} >
+        <Modal activeModal={activeModal} onClose={this.closeModal} title={modalTitle(activeModal, sortBy, filterBy)} onClear={this.onClear} >
           <ModalContent
-            activeModal={activeModal} 
+            activeModal={activeModal}
             sort={this.sort} sortBy={sortBy} clearSort={this.clearSort}
             filter={this.filter} filterBy={filterBy} clearFilter={this.clearFilter}
           />
         </Modal>
-        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} openModal={this.openModal} />
+        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} searchBy={searchBy} openModal={this.openModal} />
+        <SearchBar search={this.search} searchBy={searchBy} />
       </div>
     );
   }
@@ -83,17 +86,4 @@ const ModalContent = ({ activeModal, sort, sortBy, clearSort, filter, filterBy, 
     case 'date': return <DateFilter filter={filter} filterBy={filterBy} onClear={clearFilter} />
     default: return;
   }
-};
-
-const SortFilterSearchButtons = ({ sortBy, filterBy, openModal }) => {
-  const handleClick = (e) => openModal(e.target.value);
-  const sortButtonStyle = { backgroundColor: sortBy ? '#ccfcff' : 'white' };
-  const filterButtonStyle = { backgroundColor: filterBy ? '#ccfcff' : 'white' };
-  return (
-    <div className='sort-filter-search'>
-      <button style={sortButtonStyle} onClick={handleClick} value='sort'>{ sortBy ? getTitle(sortBy) : 'Sort by' }</button>
-      <button style={filterButtonStyle} onClick={handleClick} value='date'>{ filterBy ? getTitle(filterBy) : 'Filter by' }</button>
-      <button>Search</button>
-    </div>
-  )
 };

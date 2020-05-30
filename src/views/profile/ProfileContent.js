@@ -9,7 +9,7 @@ const ProfileContent = ({ user, deleteUser, onLogout }) => {
 
   const { username, image, bio, url } = user;
   return (
-    <div className='profile'>           
+    <div className='profile'>
       {image && <img alt='portrait' src={image} />}
       <h1 className='title'>{username}</h1>
       {bio && <p className='bio'>{bio}</p>}

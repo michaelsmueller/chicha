@@ -13,7 +13,7 @@ const Nav = () => {
         </li>
         <li>
           <NavLink to='/add-event' activeClassName='selected'>
-            <i className='material-icons'>note_add</i>   
+            <i className='material-icons'>note_add</i>
             <br />Add&nbsp;Event
           </NavLink>
         </li>

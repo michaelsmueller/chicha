@@ -20,6 +20,7 @@ class ApiClient {
   getEvents = () => this.apiClient.get('/events');
   editEvent = (id, body) => this.apiClient.put(`/events/${id}`, body);
   deleteEvent = (id) => this.apiClient.delete(`/events/${id}`);
+  searchEvents = (query) => this.apiClient.get(`/events/search?query=${query}`);
 
   getVotes = () => this.apiClient.get('/votes');
   createVote = (body) => this.apiClient.post('/votes', body);

@@ -32,7 +32,7 @@ a:visited {
 
 button, input, textarea {
   padding: 10px;
-  color: #212121;        
+  color: #212121;
   border-radius: 20px;
   background-color: white;
   border: none;
@@ -54,13 +54,13 @@ button, input, textarea {
 }
 
 @keyframes spin {
-  0%  {-webkit-transform: rotate(0deg);}
-  100% {-webkit-transform: rotate(360deg);}   
+  0%  { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
 
 /* navigation */
 
-nav { 
+nav {
   position: fixed;
   width: 100vw;
   bottom: 0;
@@ -184,6 +184,11 @@ input:focus, textarea:focus {
 
 /* forms */
 
+.search-bar input {
+  width: 100%;
+  background-color: lightgray;
+}
+
 input[type=text], textarea {
   transition: all 0.30s ease-in-out;
   -webkit-transition: all 0.30s ease-in-out;
@@ -224,7 +229,7 @@ input[type=text], textarea {
 .edit-event input, .edit-event textarea,
 .profile-update input {
   border: 1px solid;
-  border-color: rgba(89, 199, 222, 0.5);  
+  border-color: rgba(89, 199, 222, 0.5);
 }
 
 .edit-event textarea {

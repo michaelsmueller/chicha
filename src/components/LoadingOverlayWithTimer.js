@@ -21,7 +21,7 @@ export default class LoadingOverlayWithTimer extends Component {
   timer = () => {
     if (this.state.seconds > 1) this.setState((prevState) => {
       return { seconds: prevState.seconds - 1 };
-    }) 
+    })
     else this.stopCountdown();
   }
 

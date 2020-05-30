@@ -14,7 +14,7 @@ class ProfileUpdateForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password, image, bio, url } = this.state;
-    const user = { username, password, image, bio, url };    
+    const user = { username, password, image, bio, url };
     const id = this.props.user._id;
     apiClient.editUser(id, user)
       .then((response) => this.props.history.push(`/profile`))
@@ -84,7 +84,7 @@ class ProfileUpdateForm extends Component {
         </form>
       </div>
     );
-  }  
+  }
 }
 
 export default withRouter(ProfileUpdateForm);

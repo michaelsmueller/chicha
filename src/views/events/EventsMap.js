@@ -23,7 +23,7 @@ class EventsMap extends Component {
   componentDidMount = () => {
     if (this.props.events.length) this.renderMap();
   }
- 
+
   render() {
     return (
       <div className='events-map'>

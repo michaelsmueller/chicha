@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
-import { generate } from 'shortid';
 import apiClient from '../../services/apiClient';
-import { Loading } from '../';
-import { EventsMap, EventPreview, SortFilterSearch } from '../';
+import { generate } from 'shortid';
+import { Loading, EventsMap, EventPreview, SortFilterSearch } from '../';
 import { DragToResizeDrawer } from '../../components/';
 import { filterEvents } from '../../helpers/filter';
 
 export default class Events extends Component {
-  state = { events: [], votes: [], filterBy: null, mapKey: null };
+  state = { events: [], votes: [], filterBy: null, searchBy: null, mapKey: null };
 
   updateEvents = (events) => this.setState({ events, mapKey: generate() });
-
   setFilter = (filterBy) => this.setState({ filterBy, mapKey: generate() });
+
+  setSearch = (searchBy) => {
+    console.log('Events, setting searchBy', searchBy);
+    this.setState({ searchBy, mapKey: generate() });
+    apiClient.searchEvents(searchBy)
+      .then((response) => {
+        console.log('response', response);
+      })
+      .catch((error) => console.log(error))
+  }
 
   deleteEvent = (eventId) => {
     apiClient.deleteEvent(eventId)
       .then(() => {
         const { events } = this.state;
-        this.setState({ events: events.filterBy((event) => event._id !== eventId) });    
+        this.setState({ events: events.filterBy((event) => event._id !== eventId) });
       })
       .catch((error) => console.log(error))
   }
@@ -34,9 +42,10 @@ export default class Events extends Component {
   }
 
   render() {
-    const { events, votes, filterBy, mapKey } = this.state;
+    const { events, votes, filterBy, searchBy, mapKey } = this.state;
     const { userId } = this.props;
     const filteredEvents = filterEvents(events, filterBy);
+    console.log('Events render, searchBy value', searchBy);
     return (
       <div className='events-map-and-listings'>
         <EventsMap events={filteredEvents} key={mapKey} />
@@ -44,7 +53,14 @@ export default class Events extends Component {
           <div className='events'>
             <h1 className='title'>Events in Barcelona</h1>
             {events.length
-              ? <SortFilterSearch events={events} updateEvents={this.updateEvents} setFilter={this.setFilter} filterBy={filterBy} />
+              ? <SortFilterSearch
+                  events={events}
+                  updateEvents={this.updateEvents}
+                  setFilter={this.setFilter}
+                  filterBy={filterBy}
+                  setSearch={this.setSearch}
+                  searchBy={searchBy}
+                />
               : <Loading />}
             <EventPreviews events={filteredEvents} userId={userId} votes={votes} deleteEvent={this.deleteEvent} />
           </div>

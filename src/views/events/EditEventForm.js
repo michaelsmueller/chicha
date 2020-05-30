@@ -178,7 +178,7 @@ class EditEventForm extends Component {
         </form>
       </div>
     );
-  }  
+  }
 }
 
 export default withRouter(EditEventForm);
