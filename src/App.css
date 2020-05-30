@@ -340,8 +340,8 @@ input[type=text], textarea {
 
 .sort-filter-search button {
   margin-bottom: 5px;
-  padding: 8px;
-  width: 33.33%;
+  padding: 8px 6px;
+  width: 105px;
   font-size: 13px;
   font-weight: 600;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);

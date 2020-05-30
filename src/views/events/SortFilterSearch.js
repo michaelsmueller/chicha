@@ -44,7 +44,7 @@ export default class SortFilterSearch extends Component {
       default: return;
     }
     this.props.updateEvents(sortedEvents);
-    this.setState({ sortBy, activeModal: null });
+    this.setState({ eventsBackup: sortedEvents, sortBy, activeModal: null });
   }
 
   filter = (filterBy) => {

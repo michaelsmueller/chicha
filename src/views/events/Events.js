@@ -8,6 +8,7 @@ export default class Events extends Component {
   state = { events: [], votes: [], mapKey: 'foo' };
 
   updateEvents = (events) => {
+    console.log('update events', events);
     this.setState({ events });
     this.updateMapKey();
   }
