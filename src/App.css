@@ -43,12 +43,12 @@ button, input, textarea {
 .loading {
   position: fixed;
   left: 25vh;
-  top: 50vh;
+  top: 40vh;
   height: 5vh;
   width: 5vh;
   background: linear-gradient(45deg, rgba(238, 43, 122, 0.8), rgba(254, 242, 0, 0.8));
   z-index: 10;
-  animation: spin 1s infinite linear;
+  animation: spin 0.5s infinite linear;
   transform-origin: 50% 50%;
   border-radius: 100%;
 }
