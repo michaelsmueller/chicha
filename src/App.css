@@ -184,11 +184,6 @@ input:focus, textarea:focus {
 
 /* forms */
 
-.search-bar input {
-  width: 100%;
-  background-color: lightgray;
-}
-
 input[type=text], textarea {
   transition: all 0.30s ease-in-out;
   -webkit-transition: all 0.30s ease-in-out;
@@ -234,6 +229,49 @@ input[type=text], textarea {
 
 .edit-event textarea {
   height: 100px;
+}
+
+.search-bar {
+  position: absolute;
+  top: 5px;
+  padding-bottom: 15px;
+  background-color: white;
+  width: 100%;
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.search-bar .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding-left: 35px;
+    margin-bottom: 5px;
+    height: 38px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #59C7DE;
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
+    animation-duration: 0.3s;
+    animation-name: opensearch;
+}
+
+@keyframes opensearch {
+  from { 
+    width: 105px;
+    margin-left: 230px;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* map */
@@ -332,9 +370,9 @@ input[type=text], textarea {
   text-align: left;
 }
 
-
 .sort-filter-search-container {
   position: relative;
+  overflow: hidden;
 }
 
 .sort-filter-search {

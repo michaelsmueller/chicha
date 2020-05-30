@@ -67,8 +67,8 @@ export default class SortFilterSearch extends Component {
             filter={this.filter} filterBy={filterBy} clearFilter={this.clearFilter}
           />
         </Modal>
-        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} openModal={this.openModal} openSearch={this.openSearch} />
         {isSearchOpen && <SearchBar search={this.search} clearSearch={this.clearSearch} />}
+        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} openModal={this.openModal} openSearch={this.openSearch} />
       </div>
     );
   }

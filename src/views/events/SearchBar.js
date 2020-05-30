@@ -14,11 +14,13 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='search-bar'>
-        <i className='material-icons'>search</i>
-        <input type='text' id='query' autoComplete='off' onChange={this.handleInput} />
-        <button type='button' onClick={this.handleClick}><i className='material-icons'>close</i></button>
+      <div className='search-bar'>
+      <form onSubmit={this.handleSubmit}>
+        <input type='text' id='query' autoComplete='off' placeholder='music' onChange={this.handleInput} />
+        <i className='material-icons search-icon'>search</i>
+        <i className='material-icons close-icon' onClick={this.handleClick}>close</i>
       </form>
+      </div>
     );
   }
 }
