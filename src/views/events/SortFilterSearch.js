@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { DateFilter, Modal, SortOptions } from '../';
-import { isToday, isThisWeek, isThisWeekend } from '../../helpers/dateTime';
 import { getTitle } from '../../helpers/string';
 
 export default class SortFilterSearch extends Component {
-  state = { eventsBackup: [], sortBy: null, filterBy: null, activeModal: null };
+  state = { sortBy: null, activeModal: null };
 
   openModal = (activeModal) => this.setState({ activeModal })
   closeModal = () => this.setState({ activeModal: null })
@@ -25,8 +24,8 @@ export default class SortFilterSearch extends Component {
   }
 
   clearFilter = () => {
-    this.props.updateEvents(this.state.eventsBackup);
-    this.setState({ filterBy: null, activeModal: null });
+    this.props.setFilter(null);
+    this.setState({ activeModal: null });
   }
 
   sort = (sortBy) => {
@@ -44,32 +43,17 @@ export default class SortFilterSearch extends Component {
       default: return;
     }
     this.props.updateEvents(sortedEvents);
-    this.setState({ eventsBackup: sortedEvents, sortBy, activeModal: null });
+    this.setState({ sortBy, activeModal: null });
   }
 
   filter = (filterBy) => {
-    const { eventsBackup } = this.state;
-    const filteredEvents = [];
-    switch (filterBy) {
-      case 'today':
-        filteredEvents.push(...eventsBackup.filter((event) => isToday(new Date(event.data?.start_time))));
-        break;
-      case 'this-week':
-        filteredEvents.push(...eventsBackup.filter((event) => isThisWeek(new Date(event.data?.start_time))));
-        break;
-      case 'this-weekend':
-        filteredEvents.push(...eventsBackup.filter((event) => isThisWeekend(new Date(event.data?.start_time))));
-        break;
-      default: return;
-    }
-    this.props.updateEvents(filteredEvents);
-    this.setState({ filterBy, activeModal: null });
+    this.props.setFilter(filterBy);
+    this.setState({ activeModal: null });
   }
 
-  componentDidMount = () => this.setState({ eventsBackup: this.props.events });
-
   render() {
-    const { filterBy, sortBy, activeModal } = this.state;
+    const { sortBy, activeModal } = this.state;
+    const { filterBy } = this.props;
     return (
       <div className='sort-filter-search-container'>
         <Modal show={activeModal} onClose={this.closeModal} title={modalTitle(activeModal, sortBy, filterBy)} onClear={this.onClear} >
@@ -81,7 +65,7 @@ export default class SortFilterSearch extends Component {
         </Modal>
         <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} openModal={this.openModal} />
       </div>
-    )
+    );
   }
 }
 

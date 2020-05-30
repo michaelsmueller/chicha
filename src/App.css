@@ -44,8 +44,8 @@ button, input, textarea {
   position: fixed;
   left: 25vh;
   top: 40vh;
-  height: 5vh;
-  width: 5vh;
+  height: 4vh;
+  width: 4vh;
   background: linear-gradient(45deg, rgba(238, 43, 122, 0.8), rgba(254, 242, 0, 0.8));
   z-index: 10;
   animation: spin 0.5s infinite linear;
@@ -321,7 +321,7 @@ input[type=text], textarea {
 
 .events {
   width: 100vw;
-  margin-top: -30px;
+  margin-top: -25px;
   padding: 20px;
   background-color: white;
   text-align: left;
