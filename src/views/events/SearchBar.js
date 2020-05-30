@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class SearchBar extends Component {
-  state = { query: null };
+const SearchBar = ({ query, setSearch, search, clearSearch }) => {
 
-  handleInput = (e) => this.setState({ query: e.target.value });
+  const handleInput = (e) => setSearch(e.target.value);
 
-  handleSubmit = (e) => {
+  const handleClick = (e) => clearSearch();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.props.search(this.state.query);
+    search(query);
   };
 
-  handleClick = (e) => this.props.clearSearch();
-
-  render() {
-    return (
-      <div className='search-bar'>
-      <form onSubmit={this.handleSubmit}>
-        <input type='text' id='query' autoComplete='off' placeholder='music' onChange={this.handleInput} />
+  return (
+    <div className='search-bar'>
+      <form onSubmit={handleSubmit}>
+        <input type='text' id='query' autoComplete='off' placeholder='music' onChange={handleInput} />
         <i className='material-icons search-icon'>search</i>
-        <i className='material-icons close-icon' onClick={this.handleClick}>close</i>
+        <i className='material-icons close-icon' onClick={handleClick}>close</i>
       </form>
-      </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default SearchBar;

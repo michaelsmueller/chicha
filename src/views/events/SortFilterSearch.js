@@ -3,7 +3,7 @@ import { DateFilter, Modal, SearchBar, SortFilterSearchButtons, SortOptions } fr
 import { getTitle } from '../../helpers/string';
 
 export default class SortFilterSearch extends Component {
-  state = { sortBy: null, activeModal: null, isSearchOpen: false };
+  state = { sortBy: null, query: null, activeModal: null, isSearchOpen: false };
 
   openModal = (activeModal) => this.setState({ activeModal })
   closeModal = () => this.setState({ activeModal: null })
@@ -28,8 +28,8 @@ export default class SortFilterSearch extends Component {
   }
 
   clearSearch = () => {
+    this.setState({ sortBy: null, isSearchOpen: false });
     this.props.clearSearch();
-    this.setState({ isSearchOpen: false });
   }
 
   sort = (sortBy) => {
@@ -49,6 +49,8 @@ export default class SortFilterSearch extends Component {
     this.setState({ activeModal: null });
   }
 
+  setSearch = (query) => this.setState({ query });
+
   search = (query) => {
     this.clearSort();
     this.clearFilter();
@@ -56,7 +58,7 @@ export default class SortFilterSearch extends Component {
   }
 
   render() {
-    const { sortBy, activeModal, isSearchOpen } = this.state;
+    const { sortBy, activeModal, query, isSearchOpen } = this.state;
     const { filterBy } = this.props;
     return (
       <div className='sort-filter-search-container'>
@@ -67,8 +69,8 @@ export default class SortFilterSearch extends Component {
             filter={this.filter} filterBy={filterBy} clearFilter={this.clearFilter}
           />
         </Modal>
-        {isSearchOpen && <SearchBar search={this.search} clearSearch={this.clearSearch} />}
-        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} openModal={this.openModal} openSearch={this.openSearch} />
+        {isSearchOpen && <SearchBar setSearch={this.setSearch} query={query} search={this.search} clearSearch={this.clearSearch} />}
+        <SortFilterSearchButtons sortBy={sortBy} filterBy={filterBy} query={query} search={this.search} isSearchOpen={isSearchOpen} openModal={this.openModal} openSearch={this.openSearch} />
       </div>
     );
   }

@@ -232,22 +232,23 @@ input[type=text], textarea {
 }
 
 .search-bar {
-  position: absolute;
-  top: 5px;
-  padding-bottom: 15px;
+  /* position: absolute; */
+  /* top: 5px; */
+  /* padding-bottom: 15px; */
+  margin-top: 10px;
   background-color: white;
   width: 100%;
 }
 
 .search-bar .search-icon {
   position: absolute;
-  top: 10px;
+  top: 20px;
   left: 10px;
 }
 
 .search-bar .close-icon {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 10px;
 }
 
