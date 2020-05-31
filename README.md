@@ -34,9 +34,9 @@ Crowdsource the best local events from knowledgable locals motivated to share an
 
 **Events - update** - As a user, I want to be able to update the details of an event I have loaded so that I can add or correct information.
 
-**Heavyweights** - As a user, I want to see the users who have recommended the most / best events so that I can find new sources to recommend events to me.
+**Heavies** - As a user, I want to see the users who have recommended the most / best events so that I can find new sources to recommend events to me.
 
-**Heavyweights - detail** - As a user, I want to see the events being recommended by a particular user that I like / think is knowledgable / has good taste so that I can find events I'll enjoy.
+**Heavies - detail** - As a user, I want to see the events being recommended by a particular user that I like / think is knowledgable / has good taste so that I can find events I'll enjoy.
 
 **Offers** - As a user, I want to see my points and a list of offers so that I can choose an offer to redeem.
 
@@ -70,8 +70,8 @@ Other features outside of the MVP scope:
 | Event details           | `/events/:id`           | details on an event     |
 | Add event               | `/events/add`           | add event               |
 | Edit event              | `/events/:id/edit`      | edit event              |
-| Heavyweights            | `/heavyweights`         | list of heavyweights    |
-| Heavyweight details     | `/heavyweights/:id`     | details on a heavyweight|
+| Heavies            | `/heavies`         | list of heavies    |
+| heavy details     | `/heavies/:id`     | details on a heavy|
 | Offers                  | `/offers`               | list of offers          |
 | Offer details           | `/offers/:id`           | details on an offer     |
 | My vouchers             | `/offers/myvouchers`    | list of redeemed offers |

@@ -635,67 +635,67 @@ input[type=text], textarea {
   color: #333;
 }
 
-/* heavyweight */
+/* heavy */
 
-.heavyweights {
+.heavies {
   padding: 20px;
 }
 
-.heavyweights-list {
+.heavies-list {
   margin-top: 20px;
 }
 
-.heavyweight-previews {
+.heavy-previews {
   display: flex;
   flex-direction: column;
   counter-reset: rank;
 }
 
-.heavyweight-preview {
+.heavy-preview {
   display: flex;
   height: 120px;
   align-items: center;
 }
 
-.heavyweight-previews .rank::before {
+.heavy-previews .rank::before {
   counter-increment: rank;
   content: counter(rank) '.';
 }
 
-.heavyweight-previews .rank {
+.heavy-previews .rank {
   width: 5%;
   font-size: 16px;
   font-weight: 600;
 }
 
-.heavyweight-preview img {
+.heavy-preview img {
   width: 25%;
   margin: 0 5px;
 }
 
-.heavyweight-info {
+.heavy-info {
   width: 60%;
   padding: 5px;
   overflow-x: hidden;
 }
 
-.heavyweight-info .username {
+.heavy-info .username {
   margin: 10px 0;
   font-size: 20px;
   font-weight: 600;
 }
 
-.heavyweight-info .bio {
+.heavy-info .bio {
   margin: 10px 0;
   color: #333;
 }
 
-.heavyweight-info .link {
+.heavy-info .link {
   margin: 5px 0;
   font-size: 12px;
 }
 
-.heavyweight-preview .points {
+.heavy-preview .points {
   width: 10%;
   text-align: right;
 }

@@ -24,9 +24,9 @@ export { default as SortFilterSearchButtons } from './events/SortFilterSearchBut
 export { default as SortOptions } from './events/SortOptions';
 export { default as VoteButtons } from './events/VoteButtons';
 
-// heavyweights
-export { default as Heavyweights } from './heavyweights/containers/Heavyweights';
-export { default as HeavyweightsList } from './heavyweights/HeavyweightsList';
+// heavies
+export { default as Heavies } from './heavies/containers/Heavies';
+export { default as HeaviesList } from './heavies/HeaviesList';
 
 // offers
 export { default as OfferDetail } from './offers/containers/OfferDetail';

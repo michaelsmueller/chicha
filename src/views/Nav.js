@@ -18,7 +18,7 @@ const Nav = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/heavyweights' activeClassName='selected'>
+          <NavLink to='/heavies' activeClassName='selected'>
             <i className='material-icons'>whatshot</i>
             <br />Heavies
           </NavLink>
