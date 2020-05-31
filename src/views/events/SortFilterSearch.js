@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { DateFilter, Modal, SearchBar, SortFilterSearchButtons, SortOptions } from '../';
+import { Modal } from '../../components/';
+import { DateFilter, SearchBar, SortFilterSearchButtons, SortOptions } from '../';
 import { getTitle } from '../../helpers/string';
 
 export default class SortFilterSearch extends Component {
@@ -62,8 +63,8 @@ export default class SortFilterSearch extends Component {
     const { filterBy } = this.props;
     return (
       <div className='sort-filter-search-container'>
-        <Modal activeModal={activeModal} onClose={this.closeModal} title={modalTitle(activeModal, sortBy, filterBy)} onClear={this.onClear} >
-          <ModalContent
+        <Modal activeModal={activeModal} onClose={this.closeModal} title={sortFilterModalTitle(activeModal, sortBy, filterBy)} onClear={this.onClear} >
+          <SortFilterModalContent
             activeModal={activeModal}
             sort={this.sort} sortBy={sortBy} clearSort={this.clearSort}
             filter={this.filter} filterBy={filterBy} clearFilter={this.clearFilter}
@@ -76,7 +77,7 @@ export default class SortFilterSearch extends Component {
   }
 }
 
-const modalTitle = (activeModal, sortBy, filterBy) => {
+const sortFilterModalTitle = (activeModal, sortBy, filterBy) => {
   switch (activeModal) {
     case 'sort': return sortBy ? getTitle(sortBy) : 'Sort by';
     case 'date': return filterBy ? getTitle(filterBy) : 'Filter by';
@@ -84,7 +85,7 @@ const modalTitle = (activeModal, sortBy, filterBy) => {
   }
 };
 
-const ModalContent = ({ activeModal, sort, sortBy, clearSort, filter, filterBy, clearFilter }) => {
+const SortFilterModalContent = ({ activeModal, sort, sortBy, clearSort, filter, filterBy, clearFilter }) => {
   switch (activeModal) {
     case 'sort': return <SortOptions sort={sort} sortBy={sortBy} onClear={clearSort} />
     case 'date': return <DateFilter filter={filter} filterBy={filterBy} onClear={clearFilter} />

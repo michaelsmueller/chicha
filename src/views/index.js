@@ -17,7 +17,6 @@ export { default as EventDetailContent } from './events/EventDetailContent';
 export { default as EventsMap } from './events/EventsMap';
 export { default as EventPreview } from './events/EventPreview';
 export { default as Events } from './events/Events';
-export { default as Modal } from './events/Modal';
 export { default as SearchBar } from './events/SearchBar';
 export { default as SortFilterSearch } from './events/SortFilterSearch';
 export { default as SortFilterSearchButtons } from './events/SortFilterSearchButtons';
