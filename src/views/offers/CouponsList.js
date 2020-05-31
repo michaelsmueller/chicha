@@ -3,7 +3,7 @@ import React from 'react';
 const CouponsList = ({ coupons }) => {
   return (
     <div className='coupons-list'>
-      {coupons.length ? <CouponPreviews coupons={coupons}/> :  <div>No coupons to show!</div> }
+      {coupons.length ? <CouponPreviews coupons={coupons}/> : null }
     </div>
   );
 };

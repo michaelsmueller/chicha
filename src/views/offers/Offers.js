@@ -9,7 +9,6 @@ class Offers extends Component {
 
   openModal = (offerId) => this.setState({ activeModal: offerId });
   closeModal = () => this.setState({ activeModal: null });
-
   setShowing = (showing) => this.setState({ showing });
 
   getCoupon = async (offer) => {
@@ -33,20 +32,19 @@ class Offers extends Component {
 
   render() {
     const { user, showing, activeModal } = this.state;
-    const { points } = user || 0;
+    const { balance } = user || 0;
     return (
       <div className='offers'>
         <h1 className='title'>Offers</h1>
-        {points && <h2>{points} points</h2>}
-        <OffersCouponsButtons setShowing={this.setShowing} />
+        {balance && <h2>{balance} points</h2>}
+        <OffersCouponsButtons showing={showing} setShowing={this.setShowing} />
         {showing === 'offers' && <OffersListContainer openModal={this.openModal} />}
         {showing === 'coupons' && <CouponsList coupons={user.coupons} />}
         <Modal activeModal={activeModal} onClose={this.closeModal} title='Offer'>
           <OfferDetail
             offerId={activeModal}
             getCoupon={this.getCoupon}
-            // sort={this.sort} sortBy={sortBy} clearSort={this.clearSort}
-            // filter={this.filter} filterBy={filterBy} clearFilter={this.clearFilter}
+            balance={balance}
           />
         </Modal>
       </div>
@@ -54,14 +52,15 @@ class Offers extends Component {
   }
 }
 
-const OffersCouponsButtons = ({ setShowing }) => {
+const OffersCouponsButtons = ({ showing, setShowing }) => {
   const handleClick = (e) => setShowing(e.target.value);
-  // const sortButtonStyle = { backgroundColor: sortBy ? '#ccfcff' : 'white' };
-  // const filterButtonStyle = { backgroundColor: filterBy ? '#ccfcff' : 'white' };
+  const highlighted = { fontWeight: 600, borderBottom: '2px solid #ee2B7a' };
+  const offersButtonStyle = showing === 'offers' ? highlighted : null;
+  const couponsButtonStyle = showing === 'coupons' ? highlighted : null;
   return (
     <div className='offers-coupons-buttons'>
-      <button onClick={handleClick} value='offers'>Offers</button>
-      <button onClick={handleClick} value='coupons'>My coupons</button>
+      <button style={offersButtonStyle} onClick={handleClick} value='offers'>Offers</button>
+      <button style={couponsButtonStyle} onClick={handleClick} value='coupons'>My coupons</button>
     </div>
   )
 };

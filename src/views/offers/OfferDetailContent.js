@@ -1,15 +1,22 @@
 import React from 'react';
 
-const OfferDetailContent = ({ offer, getCoupon }) => {
+const OfferDetailContent = ({ offer, getCoupon, balance }) => {
   const { partner, image, description, cost } = offer || '';
-  const handleClick = (e) => getCoupon(offer);
+  const enoughPoints = balance >= cost;
+  const buttonStyle = { opacity: enoughPoints ? 1 : 0.4 };
+
+  const handleClick = (e) => {
+    if (enoughPoints) getCoupon(offer);
+  }
+
   return (
     <div className='offer-detail'>
       <div className='offer-image-container'><img alt={partner} src={image} /></div>
       <h1 className='title'>{partner}</h1>
       <h2 className='cost'>{cost} points</h2>
       <p className='description'>{description}</p>
-      <button onClick={handleClick}>Get coupon</button>
+      { !enoughPoints && <div className='not-enough-points'>You need {cost - balance} more points to get this coupon</div>}
+      <button style={buttonStyle} onClick={handleClick}>Get coupon</button>
     </div>
   );
 }

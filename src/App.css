@@ -2,14 +2,13 @@
 /* general */
 
 .App {
-  position: relative;
+  /* position: relative; */
   width: 100vw;
   height: 100vh;
 }
 
 .layout {
   position: relative;
-  margin-bottom: 60px;
 }
 
 .title {
@@ -210,7 +209,6 @@ input[type=text], textarea {
 
 [data-testid='wrapper'] {
   height: 100vh;
-  /* margin: -20px; */
 }
 
 .add-event, .edit-event, .profile-update {
@@ -223,6 +221,7 @@ input[type=text], textarea {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 60px;
 }
 
 .add-event button,
@@ -643,6 +642,7 @@ input[type=text], textarea {
 
 .heavies {
   padding: 20px;
+  margin-bottom: 40px;
 }
 
 .heavies-list {
@@ -675,6 +675,7 @@ input[type=text], textarea {
 .heavy-preview img {
   width: 25%;
   margin: 0 5px;
+  border-radius: 20px;
 }
 
 .heavy-info {
@@ -708,6 +709,33 @@ input[type=text], textarea {
 
 .offers {
   padding: 20px;
+  margin-bottom: 40px;
+}
+
+.offers-coupons-buttons {
+  /* border-bottom: 1px solid #e4e4e4; */
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.offers-coupons-buttons button {
+  margin: 0 5px 10px;
+  padding: 0 1px 5px 0;
+  /* padding: 10px; */
+  font-size: 16px;
+  /* border-bottom: 2px solid #ee2B7a; */
+  /* background-color: #e4e4e4; */
+  /* border-radius: 20px 20px 0 0; */
+  border-radius: 0;
+  /* font-weight: 600; */
+}
+
+.offers-list,
+.coupons-list {
+  min-height: 72vh;
+  margin: 0 -20px;
+  padding: 5px 20px 10px 20px;
+  background-color: rgba(89, 199, 222, 0.2);
 }
 
 .offer-previews,
@@ -722,6 +750,10 @@ input[type=text], textarea {
   height: 120px;
   align-items: center;
   overflow: hidden;
+  background-color: white;
+  margin: 5px 0;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
 
 .offer-preview img,
@@ -784,6 +816,15 @@ input[type=text], textarea {
   color: #333;
 }
 
+.offer-detail .not-enough-points {
+  width: 100%;
+  position: absolute;
+  bottom: 150px;
+  font-style: italic;
+  text-align: center;
+  /* color: red; */
+}
+
 .offer-detail button {
   position: absolute;
   width: 100%;
@@ -800,10 +841,12 @@ input[type=text], textarea {
 
 .profile {
   padding: 20px;
+  margin-bottom: 60px;
 }
 
 .profile img {
   width: 100%;
+  border-radius: 30px;
 }
 
 .profile .title {
