@@ -34,7 +34,6 @@ class AuthProvider extends Component {
     apiClient.whoami()
       .then(({ data: { _id } }) => this.setState({ STATUS: 'LOGGED_IN', userId: _id }))
       .catch(({ response }) => {
-        console.log('componentDidMount response', response);
         if (response !== undefined) {
           switch (response.status) {
             case 401:

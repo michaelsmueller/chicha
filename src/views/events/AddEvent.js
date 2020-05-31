@@ -11,12 +11,10 @@ export default class AddEvent extends Component {
     const { url } = this.state;
     apiClient.addEvent({ url })
       .then(({ data: { _id } }) => {
-        console.log('successful response');
         this.setState({ isWaiting: false });
         this.props.history.push(`/events/${_id}`);
       })
       .catch((error) => {
-        console.log('error');
         this.setState({ isWaiting: false });
         console.log(error);
       })
