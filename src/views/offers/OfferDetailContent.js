@@ -5,8 +5,11 @@ const OfferDetailContent = ({ offer, getCoupon, balance }) => {
   const enoughPoints = balance >= cost;
   const buttonStyle = { opacity: enoughPoints ? 1 : 0.4 };
 
-  const handleClick = (e) => {
-    if (enoughPoints) getCoupon(offer);
+  const handleClick = () => {
+    if (enoughPoints) {
+      const confirmed = window.confirm(`Ok to spend ${cost} points to get coupon?`);
+      if (confirmed) getCoupon(offer);
+    };
   }
 
   return (
