@@ -68,7 +68,6 @@ button.secondary {
   color: white;
   font-weight: 700;
   border-left: 6px solid #fef200;
-  /* border-left: 6px solid #b00020; */
   border-radius: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
   overflow: hidden;
@@ -85,9 +84,6 @@ nav {
   font-size: 10px;
   font-weight: 600;
   color: #212121;
-  /* background: linear-gradient(45deg, #7fd5e6, #59c7de); */
-  /* background: linear-gradient(45deg, #f25a97, #ff69a9); */
-  /* background: linear-gradient(45deg, #fef200, #ffff57); */
   background: linear-gradient(45deg, #fef200, #ffff8b);
 }
 
@@ -104,20 +100,43 @@ nav li {
 }
 
 nav .selected {
-  color: #212121;
-  font-size: 13px;
-  font-weight: 600;
+  animation: selectnav 0.05s forwards;
+}
+
+@keyframes selectnav {
+  from { 
+    color: #565656;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  to {
+    color: #212121;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+.selected .material-icons {
+  animation: selectnavicon 0.05s forwards;
+}
+
+@keyframes selectnavicon {
+  from { 
+    color: #565656;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  to {
+    color: #212121;
+    font-size: 24px;
+    font-weight: 600;
+  }
 }
 
 nav :not(.selected) {
   color: #565656;
   font-size: 12px;
   font-weight: 400;
-}
-
-.selected .material-icons {
-  color: #212121;
-  font-size: 24px;
 }
 
 .material-icons {
@@ -224,13 +243,13 @@ input[type=text], textarea {
 .add-event button,
 .edit-event button,
 .profile-update button {
-  margin-top: 20px;
+  margin: 20px 0;
   height: 50px;
   font-size: 17px;
   font-weight: 600;
   color: #212121;
   background: linear-gradient(45deg, #ffff57, #FEF200);
-  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1); */
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
 }
 
 .add-event input,
@@ -245,9 +264,6 @@ input[type=text], textarea {
 }
 
 .search-bar {
-  /* position: absolute; */
-  /* top: 5px; */
-  /* padding-bottom: 15px; */
   margin-top: 10px;
   background-color: white;
   width: 100%;
@@ -266,16 +282,16 @@ input[type=text], textarea {
 }
 
 .search-bar input {
-    width: 100%;
-    padding-left: 35px;
-    margin-bottom: 5px;
-    height: 38px;
-    font-size: 16px;
-    font-weight: 600;
-    border: 2px solid #59C7DE;
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
-    animation-duration: 0.3s;
-    animation-name: opensearch;
+  width: 100%;
+  padding-left: 35px;
+  margin-bottom: 5px;
+  height: 38px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid #59C7DE;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
+  animation-duration: 0.3s;
+  animation-name: opensearch;
 }
 
 @keyframes opensearch {
@@ -303,11 +319,8 @@ input[type=text], textarea {
 .marker {
   background-size: 15px 18px;
   background-repeat: no-repeat;
-  /* background-color: #fef200; */
   background-color: #ffff8b;
-  /* background-color: #f589b4; */
   background-position: center;
-  /* border: 1px #b2b2b2 solid; */
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
   width: 25px;
   height: 25px;
@@ -404,11 +417,6 @@ input[type=text], textarea {
   font-weight: 600;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
   border: 2px solid #59C7DE;
-  /* background: linear-gradient(45deg, #fef200, #ffff8b); */
-  /* background: linear-gradient(45deg, #59C7DE, #7fd5e6); */
-  /* background: linear-gradient(45deg, #ff9cda, #ff9cda);
-  background: linear-gradient(45deg, #f25a97, #ff69a9); */
-  /* background-color: #f9b8d2; */
 }
 
 .modal {
@@ -488,7 +496,6 @@ input[type=text], textarea {
   font-size: 17px;
   font-weight: 600;
   color: #212121;
-  /* background: linear-gradient(45deg, #ffff57, #FEF200); */
   background: linear-gradient(45deg, #59C7DE, #7fd5e6);
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
@@ -516,12 +523,9 @@ input[type=text], textarea {
   height: 22px;
   font-size: 14px;
   color: #212121;
-  /* border: 1px #b2b2b2 solid; */
-  /* background-color: rgba(255, 255, 255, 0.9); */
   background-color: #ffff8b;
   border-radius: 50%;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
-  /* background-color: #ffff8b; */
 }
 
 .event-preview .edit-delete {
@@ -599,6 +603,7 @@ input[type=text], textarea {
 
 .event-detail {
   padding: 20px;
+  margin-bottom: 60px;
 }
 
 .event-detail img {
@@ -751,11 +756,11 @@ input[type=text], textarea {
 .offer-preview,
 .coupon-preview {
   display: flex;
-  height: 120px;
+  height: 100px;
   align-items: center;
   overflow: hidden;
   background-color: white;
-  margin: 5px 0;
+  margin: 7px 0;
   padding: 5px;
   border-radius: 20px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
@@ -829,7 +834,6 @@ input[type=text], textarea {
   bottom: 150px;
   font-style: italic;
   text-align: center;
-  /* color: red; */
 }
 
 .offer-detail button {
