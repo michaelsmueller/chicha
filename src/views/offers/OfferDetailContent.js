@@ -2,12 +2,7 @@ import React from 'react';
 
 const OfferDetailContent = ({ offer, getCoupon }) => {
   const { partner, image, description, cost } = offer || '';
-
-  const handleClick = (e) => {
-    console.log('click');
-    getCoupon(offer);
-  }
-
+  const handleClick = (e) => getCoupon(offer);
   return (
     <div className='offer-detail'>
       <div className='offer-image-container'><img alt={partner} src={image} /></div>

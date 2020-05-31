@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
 const OffersList = ({ offers, openModal }) => {
   return (
@@ -14,7 +13,7 @@ const OfferPreviews = ({ offers, openModal }) => {
     <div className='offer-previews'>
       {offers.map((offer) => <OfferPreview key={offer._id} offer={offer} openModal={openModal} />)}
     </div>
-  )
+  );
 };
 
 const OfferPreview = ({ offer, openModal }) => {

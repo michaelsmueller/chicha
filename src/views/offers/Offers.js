@@ -7,13 +7,18 @@ import apiClient from '../../services/apiClient';
 class Offers extends Component {
   state = { user: null, showing: 'offers', activeModal: null };
 
-  openModal = (offerId) => {
-    console.log('Offers openModel, offerId', offerId);
-    this.setState({ activeModal: offerId })
-  }
-  closeModal = () => this.setState({ activeModal: null })
+  openModal = (offerId) => this.setState({ activeModal: offerId });
+  closeModal = () => this.setState({ activeModal: null });
 
-  componentDidMount = async () => {
+  setShowing = (showing) => this.setState({ showing });
+
+  getCoupon = async (offer) => {
+    this.setState({ showing: 'coupons', activeModal: null });
+    await apiClient.addCoupon(this.props.userId, offer);
+    this.getUser();
+  }
+
+  getUser = async () => {
     const { userId } = this.props;
     try {
       const userResponse = await apiClient.getUser(userId);
@@ -24,23 +29,7 @@ class Offers extends Component {
     }
   }
 
-  setShowing = (showing) => this.setState({ showing });
-
-  getCoupon = (offer) => {
-    console.log('Offers getCoupon');
-    console.log('offer', offer);
-    apiClient.addCoupon(this.props.userId, offer);
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { username, password, image, bio, url } = this.state;
-    const user = { username, password, image, bio, url };
-    const id = this.props.user._id;
-    apiClient.editUser(id, user)
-      .then((response) => this.props.history.push(`/profile`))
-      .catch((error) => console.log(error))
-  };
+  componentDidMount = this.getUser();
 
   render() {
     const { user, showing, activeModal } = this.state;

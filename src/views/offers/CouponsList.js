@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CouponsList = ({ coupons }) => {
-  console.log('CouponsList', coupons);
   return (
     <div className='coupons-list'>
       {coupons.length ? <CouponPreviews coupons={coupons}/> :  <div>No coupons to show!</div> }
@@ -14,7 +13,7 @@ const CouponPreviews = ({ coupons }) => {
     <div className='coupon-previews'>
       {coupons.map((coupon) => <CouponPreview key={coupon._id} coupon={coupon} />)}
     </div>
-  )
+  );
 };
 
 const CouponPreview = ({ coupon }) => {
