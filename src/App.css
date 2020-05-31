@@ -309,7 +309,8 @@ input[type=text], textarea {
   background-color: #ffff8b;
   /* background-color: #f589b4; */
   background-position: center;
-  /* border: 1px #212121 solid; */
+  /* border: 1px #b2b2b2 solid; */
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -517,9 +518,11 @@ input[type=text], textarea {
   height: 22px;
   font-size: 14px;
   color: #212121;
+  /* border: 1px #b2b2b2 solid; */
   /* background-color: rgba(255, 255, 255, 0.9); */
   background-color: #ffff8b;
   border-radius: 50%;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
   /* background-color: #ffff8b; */
 }
 
