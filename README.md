@@ -42,7 +42,7 @@ Crowdsource the best local events from knowledgable locals motivated to share an
 
 **Offers - detail** - As a user, I want to the details on a particular offer so that I can choose to redeem it.
 
-**Offers - my vouchers** - As a user, I want to see a list of my vouchers so that I can use the offers that I have redeemed at local businesses.
+**Offers - my coupons** - As a user, I want to see a list of my coupons so that I can use the offers that I have redeemed at local businesses.
 
 **Profile** - As a user, I want to update my user profile (change my username, password and profile pic) as well as log out so that no one else can use my account.
 
@@ -74,7 +74,7 @@ Other features outside of the MVP scope:
 | heavy details     | `/heavies/:id`     | details on a heavy|
 | Offers                  | `/offers`               | list of offers          |
 | Offer details           | `/offers/:id`           | details on an offer     |
-| My vouchers             | `/offers/myvouchers`    | list of redeemed offers |
+| My coupons             | `/offers/mycoupons`    | list of redeemed offers |
 | Profile                 | `/profile`              | user profile            |
 | Profile                 | `/profile/edit`         | update user profile     |
 

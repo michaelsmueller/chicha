@@ -24,18 +24,26 @@ export { default as SortFilterSearchButtons } from './events/SortFilterSearchBut
 export { default as SortOptions } from './events/SortOptions';
 export { default as VoteButtons } from './events/VoteButtons';
 
-// heavies
+// heavies container
 export { default as Heavies } from './heavies/containers/Heavies';
+
+// heavies view
 export { default as HeaviesList } from './heavies/HeaviesList';
 
-// offers
+// offers containers
 export { default as OfferDetail } from './offers/containers/OfferDetail';
-export { default as OfferDetailContent } from './offers/OfferDetailContent';
-export { default as Offers } from './offers/Offers';
-export { default as OffersList } from './offers/OffersList';
+export { default as OffersListContainer } from './offers/containers/OffersListContainer';
 
-// profile
+// offers views
+export { default as Offers } from './offers/Offers';
+export { default as OfferDetailContent } from './offers/OfferDetailContent';
+export { default as OffersList } from './offers/OffersList';
+export { default as CouponsList } from './offers/CouponsList';
+
+// profile containers
 export { default as Profile } from './profile/containers/Profile';
 export { default as ProfileUpdate } from './profile/containers/ProfileUpdate';
+
+// profile views
 export { default as ProfileContent } from './profile/ProfileContent';
 export { default as ProfileUpdateForm } from './profile/ProfileUpdateForm';
