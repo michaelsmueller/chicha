@@ -710,41 +710,48 @@ input[type=text], textarea {
   padding: 20px;
 }
 
-.offer-previews {
+.offer-previews,
+.coupon-previews {
   display: flex;
   flex-direction: column;
 }
 
-.offer-preview {
+.offer-preview,
+.coupon-preview {
   display: flex;
   height: 120px;
   align-items: center;
   overflow: hidden;
 }
 
-.offer-preview img {
+.offer-preview img,
+.coupon-preview img {
   width: 30%;
   margin: 0 5px;
   border-radius: 10px;
 }
 
-.offer-info {
+.offer-info,
+.coupon-info {
   width: 50%;
   padding: 5px;
 }
 
-.offer-info .partner {
+.offer-info .partner,
+.coupon-info .partner {
   margin: 5px 0;
   font-size: 20px;
   font-weight: 600;
 }
 
-.offer-info .description {
+.offer-info .description,
+.coupon-info .description {
   margin: 10px 0;
   color: #333;
 }
 
-.offer-preview .cost {
+.offer-preview .cost,
+.coupon-preview .cost {
   width: 10%;
   text-align: right;
 }

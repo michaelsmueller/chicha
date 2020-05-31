@@ -18,7 +18,8 @@ const CouponPreviews = ({ coupons }) => {
 };
 
 const CouponPreview = ({ coupon }) => {
-  const { partner, image, description, cost } = coupon || '';
+  const { offer } = coupon;
+  const { partner, image, description, cost } = offer || '';
   return (
     <div className='coupon-preview'>
         {image && <img alt={partner} src={image} />}

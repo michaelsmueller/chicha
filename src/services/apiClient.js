@@ -9,12 +9,15 @@ class ApiClient {
   signIn = (body) => this.apiClient.post('/signin', body);
   logout = () => this.apiClient.get('/logout');
 
-  register = (body) => this.apiClient.post('/users', body);
+  register = (user) => this.apiClient.post('/users', user);
   getUser = (userId) => this.apiClient.get(`/users/${userId}`);
   editUser = (userId, body) => this.apiClient.put(`/users/${userId}`, body);
   deleteUser = (userId) => this.apiClient.delete(`/users/${userId}`);
   getHeavies = () => this.apiClient.get('/users/heavies');
   addCoupon = (userId, body) => this.apiClient.patch(`/users/${userId}/coupons`, body);
+
+  getOffer = (offerId) => this.apiClient.get(`/offers/${offerId}`);
+  getOffers = () => this.apiClient.get('/offers');
 
   addEvent = (body) => this.apiClient.post('/events', body);
   getEvent = (eventId) => this.apiClient.get(`/events/${eventId}`);
@@ -28,8 +31,6 @@ class ApiClient {
   changeVote = (voteId, body) => this.apiClient.put(`/votes/${voteId}`, body);
   removeVote = (voteId, eventId, direction) => this.apiClient.delete(`/votes/${voteId}?eventid=${eventId}&direction=${direction}`);
 
-  getOffer = (offerId) => this.apiClient.get(`/offers/${offerId}`);
-  getOffers = () => this.apiClient.get('/offers');
 }
 
 const apiClient = new ApiClient();
