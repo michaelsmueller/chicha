@@ -67,8 +67,9 @@ button, input, textarea {
   background-color: #565656;
   color: white;
   font-weight: 700;
-  border-left: 6px solid #b00020;
-  /* border-radius: 20px; */
+  border-left: 6px solid #fef200;
+  /* border-left: 6px solid #b00020; */
+  border-radius: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
   overflow: hidden;
 }
@@ -751,7 +752,9 @@ input[type=text], textarea {
 /* offer detail */
 
 .offer-detail {
-  padding: 20px;
+  margin-top: 20px;
+  height: 100vh;
+  position: relative;
 }
 
 .offer-detail img {
@@ -772,6 +775,18 @@ input[type=text], textarea {
 
 .offer-detail .description {
   color: #333;
+}
+
+.offer-detail button {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  bottom: 80px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #212121;
+  background: linear-gradient(45deg, #59C7DE, #7fd5e6);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
 
 /* profile */

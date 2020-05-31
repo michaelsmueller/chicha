@@ -1,35 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-const OffersList = ({ offers }) => {
+const OffersList = ({ offers, openModal }) => {
   return (
     <div className='offers-list'>
-      <OfferPreviews offers={offers} />
+      <OfferPreviews offers={offers} openModal={openModal} />
     </div>
   );
 };
 
-const OfferPreviews = ({ offers }) => {
+const OfferPreviews = ({ offers, openModal }) => {
   return (
     <div className='offer-previews'>
-      {offers.map((offer) => <OfferPreview key={offer._id} offer={offer} />)}
+      {offers.map((offer) => <OfferPreview key={offer._id} offer={offer} openModal={openModal} />)}
     </div>
   )
 };
 
-const OfferPreview = ({ offer }) => {
+const OfferPreview = ({ offer, openModal }) => {
   const { _id: offerId, partner, image, description, cost } = offer || '';
+  const handleClick = () => openModal(offerId);
   return (
-    <Link to={`/offers/${offerId}`}>
-      <div className='offer-preview'>
-          {image && <img alt={partner} src={image} />}
-          <div className='offer-info'>
-            {partner && <p className='partner'>{partner}</p>}
-            {description && <p className='description'>{description}</p>}
-          </div>
-          <div className='cost'>{cost}</div>
+    <div className='offer-preview' onClick={handleClick}>
+      {image && <img alt={partner} src={image} />}
+      <div className='offer-info'>
+        {partner && <p className='partner'>{partner}</p>}
+        {description && <p className='description'>{description}</p>}
       </div>
-    </Link>
+      <div className='cost'>{cost}</div>
+    </div>
   );
 };
 

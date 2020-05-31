@@ -10,24 +10,25 @@ class ApiClient {
   logout = () => this.apiClient.get('/logout');
 
   register = (body) => this.apiClient.post('/users', body);
-  getUser = (id) => this.apiClient.get(`/users/${id}`);
-  editUser = (id, body) => this.apiClient.put(`/users/${id}`, body);
-  deleteUser = (id) => this.apiClient.delete(`/users/${id}`);
+  getUser = (userId) => this.apiClient.get(`/users/${userId}`);
+  editUser = (userId, body) => this.apiClient.put(`/users/${userId}`, body);
+  deleteUser = (userId) => this.apiClient.delete(`/users/${userId}`);
   getHeavies = () => this.apiClient.get('/users/heavies');
+  addCoupon = (userId, body) => this.apiClient.patch(`/users/${userId}/coupons`, body);
 
   addEvent = (body) => this.apiClient.post('/events', body);
-  getEvent = (id) => this.apiClient.get(`/events/${id}`);
+  getEvent = (eventId) => this.apiClient.get(`/events/${eventId}`);
   getEvents = () => this.apiClient.get('/events');
-  editEvent = (id, body) => this.apiClient.put(`/events/${id}`, body);
-  deleteEvent = (id) => this.apiClient.delete(`/events/${id}`);
+  editEvent = (eventId, body) => this.apiClient.put(`/events/${eventId}`, body);
+  deleteEvent = (eventId) => this.apiClient.delete(`/events/${eventId}`);
   searchEvents = (query) => this.apiClient.get(`/events/search?query=${query}`);
 
   getVotes = () => this.apiClient.get('/votes');
   createVote = (body) => this.apiClient.post('/votes', body);
-  changeVote = (id, body) => this.apiClient.put(`/votes/${id}`, body);
-  removeVote = (id, eventId, direction) => this.apiClient.delete(`/votes/${id}?eventid=${eventId}&direction=${direction}`);
+  changeVote = (voteId, body) => this.apiClient.put(`/votes/${voteId}`, body);
+  removeVote = (voteId, eventId, direction) => this.apiClient.delete(`/votes/${voteId}?eventid=${eventId}&direction=${direction}`);
 
-  getOffer = (id) => this.apiClient.get(`/offers/${id}`);
+  getOffer = (offerId) => this.apiClient.get(`/offers/${offerId}`);
   getOffers = () => this.apiClient.get('/offers');
 }
 

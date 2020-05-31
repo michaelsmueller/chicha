@@ -3,10 +3,10 @@ import { ContentLoader } from '../../../components';
 import { OffersList } from '../../';
 import apiClient from '../../../services/apiClient';
 
-const OffersListContainer = () => {
+const OffersListContainer = ({ openModal }) => {
   return (
     <ContentLoader asyncFunc={apiClient.getOffers} >
-      {({ offers }) => <OffersList offers={offers} />}
+      {({ offers }) => <OffersList offers={offers} openModal={openModal} />}
     </ContentLoader>
   )
 }
