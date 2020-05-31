@@ -32,7 +32,7 @@ export default class Events extends Component {
     apiClient.deleteEvent(eventId)
       .then(() => {
         const { events } = this.state;
-        this.setState({ events: events.filterBy((event) => event._id !== eventId) });
+        this.setState({ events: events.filter((event) => event._id !== eventId), mapKey: generate() });
       })
       .catch((error) => console.log(error))
   }

@@ -2,7 +2,6 @@
 /* general */
 
 .App {
-  /* position: relative; */
   width: 100vw;
   height: 100vh;
 }
@@ -19,14 +18,12 @@
 a {
   text-decoration: none;
   font-weight: 600;
-  /* color: #2294aa; */
   color: #ee2B7a;
 }
 
 a:visited {
   font-weight: 600;
   color: #ee2B7a;
-  /* color: #2294aa; */
 }
 
 button, input, textarea {
@@ -35,6 +32,10 @@ button, input, textarea {
   border-radius: 20px;
   background-color: white;
   border: none;
+}
+
+button.secondary {
+  border: 1px solid #ee2B7a;
 }
 
 /* general views */
@@ -103,7 +104,6 @@ nav li {
 }
 
 nav .selected {
-  /* color: #ee2B7a; */
   color: #212121;
   font-size: 13px;
   font-weight: 600;
@@ -116,7 +116,6 @@ nav :not(.selected) {
 }
 
 .selected .material-icons {
-  /* color: #ee2B7a; */
   color: #212121;
   font-size: 24px;
 }
@@ -124,8 +123,6 @@ nav :not(.selected) {
 .material-icons {
   color: #565656;
   font-size: 18px;
-  /* color: rgba(0, 0, 0, 0.70); */
-  /* color: #212121; */
 }
 
 /* home */
@@ -225,7 +222,8 @@ input[type=text], textarea {
 }
 
 .add-event button,
-.edit-event button {
+.edit-event button,
+.profile-update button {
   margin-top: 20px;
   height: 50px;
   font-size: 17px;
@@ -712,22 +710,28 @@ input[type=text], textarea {
   margin-bottom: 40px;
 }
 
+.offers .balance {
+  margin: 15px 30%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #ee2B7a;
+  border-radius: 30px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
 .offers-coupons-buttons {
-  /* border-bottom: 1px solid #e4e4e4; */
   display: flex;
   justify-content: space-evenly;
 }
 
 .offers-coupons-buttons button {
-  margin: 0 5px 10px;
+  margin: 5px 0 15px 0;
   padding: 0 1px 5px 0;
-  /* padding: 10px; */
-  font-size: 16px;
-  /* border-bottom: 2px solid #ee2B7a; */
-  /* background-color: #e4e4e4; */
-  /* border-radius: 20px 20px 0 0; */
+  font-size: 14px;
   border-radius: 0;
-  /* font-weight: 600; */
 }
 
 .offers-list,
@@ -752,6 +756,7 @@ input[type=text], textarea {
   overflow: hidden;
   background-color: white;
   margin: 5px 0;
+  padding: 5px;
   border-radius: 20px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
@@ -772,13 +777,14 @@ input[type=text], textarea {
 .offer-info .partner,
 .coupon-info .partner {
   margin: 5px 0;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
 }
 
 .offer-info .description,
 .coupon-info .description {
   margin: 10px 0;
+  font-size: 14px;
   color: #333;
 }
 
@@ -786,6 +792,7 @@ input[type=text], textarea {
 .coupon-preview .cost {
   width: 10%;
   text-align: right;
+  font-weight: 600;
 }
 
 /* offer detail */
@@ -861,4 +868,8 @@ input[type=text], textarea {
 
 .profile .link {
   margin: 5px 0;
+}
+
+.profile button {
+  margin-right: 5px;
 }

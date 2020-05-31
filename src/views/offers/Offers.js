@@ -36,7 +36,7 @@ class Offers extends Component {
     return (
       <div className='offers'>
         <h1 className='title'>Offers</h1>
-        {balance && <h2>{balance} points</h2>}
+        <div className='balance'><h2>{balance ? balance : <>&nbsp;</> }</h2><p>points</p></div>
         <OffersCouponsButtons showing={showing} setShowing={this.setShowing} />
         {showing === 'offers' && <OffersListContainer openModal={this.openModal} />}
         {showing === 'coupons' && <CouponsList coupons={user.coupons} />}

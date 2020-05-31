@@ -5,19 +5,19 @@ import { getLocalDateTime, getUtcDateTime } from '../../helpers/dateTime';
 
 class EditEventForm extends Component {
   state = {
-    name: this.props.data.name,
-    source: this.props.data.cover.source,
-    start_time: this.props.data.start_time,
+    name: this.props.data?.name,
+    source: this.props.data?.cover?.source,
+    start_time: this.props.data?.start_time,
     start_time_local: '',
-    end_time: this.props.data.end_time,
+    end_time: this.props.data?.end_time,
     end_time_local: '',
-    description: this.props.data.description,
-    ticket_uri: this.props.data.ticket_uri,
-    place: this.props.data.place.name,
-    street: this.props.data.place.location.street,
-    city: this.props.data.place.location.city,
-    latitude: this.props.data.place.location.latitude,
-    longitude: this.props.data.place.location.longitude,
+    description: this.props.data?.description,
+    ticket_uri: this.props.data?.ticket_uri,
+    place: this.props.data?.place?.name,
+    street: this.props.data?.place?.location?.street,
+    city: this.props.data?.place?.location?.city,
+    latitude: this.props.data?.place?.location?.latitude,
+    longitude: this.props.data?.place?.location?.longitude,
   };
 
   handleSubmit = async (e) => {

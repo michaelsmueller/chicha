@@ -6,8 +6,8 @@ import { getTitle } from '../../helpers/string';
 export default class SortFilterSearch extends Component {
   state = { sortBy: null, query: null, activeModal: null, isSearchOpen: false };
 
-  openModal = (activeModal) => this.setState({ activeModal })
-  closeModal = () => this.setState({ activeModal: null })
+  openModal = (activeModal) => this.setState({ activeModal });
+  closeModal = () => this.setState({ activeModal: null });
   openSearch = () => this.setState({ isSearchOpen: true });
 
   onClear = () => {
