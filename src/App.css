@@ -708,7 +708,7 @@ input[type=text], textarea {
   text-align: right;
 }
 
-/* offers */
+/* offers & coupons */
 
 .offers {
   padding: 20px;
@@ -741,7 +741,6 @@ input[type=text], textarea {
 
 .offers-list,
 .coupons-list {
-  min-height: 72vh;
   margin: 0 -20px;
   padding: 5px 20px 10px 20px;
   background-color: rgba(89, 199, 222, 0.2);
@@ -757,7 +756,6 @@ input[type=text], textarea {
   display: flex;
   height: 100px;
   align-items: center;
-  overflow: hidden;
   background-color: white;
   margin: 7px 0;
   padding: 5px;
@@ -765,50 +763,86 @@ input[type=text], textarea {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
 
-.coupon-preview {
-  display: flex;
-  height: 150px;
-  align-items: center;
-  overflow: hidden;
-  background-color: white;
-  margin: 7px 0;
-  padding: 5px;
-  border-radius: 20px;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
-}
-
-.offer-preview img,
-.coupon-preview img {
+.offer-preview img {
+  align-self: center;
   width: 30%;
   margin: 0 5px;
   border-radius: 10px;
 }
 
-.offer-info,
-.coupon-info {
+.offer-info {
   width: 50%;
   padding: 5px;
 }
 
-.offer-info .partner,
-.coupon-info .partner {
+.offer-info .partner {
   margin: 5px 0;
   font-size: 17px;
   font-weight: 600;
 }
 
-.offer-info .description,
-.coupon-info .description {
+.offer-info .description {
   margin: 10px 0;
   font-size: 14px;
   color: #333;
 }
 
-.offer-preview .cost,
-.coupon-preview .cost {
+.offer-preview .cost {
   width: 10%;
   text-align: right;
   font-weight: 600;
+}
+
+.coupon-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 380px;
+  margin-top: 20px;
+}
+
+.qr-code {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 5;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+.coupon-preview {
+  position: absolute;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 70px 10px 30px 10px;
+  border-radius: 30px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+.coupon-preview .partner {
+  margin: 5px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #59c7de;
+  text-align: center;
+}
+
+.coupon-preview .description {
+  margin: 10px 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.coupon-preview .coupon-id {
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+  color: #838383;
 }
 
 /* offer detail */
