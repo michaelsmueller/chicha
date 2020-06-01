@@ -740,7 +740,9 @@ input[type=text], textarea {
 }
 
 .offers-list,
-.coupons-list {
+.coupons-list,
+.scan-coupon {
+  min-height: 59vh;
   margin: 0 -20px;
   padding: 5px 20px 10px 20px;
   background-color: rgba(89, 199, 222, 0.2);
@@ -843,6 +845,10 @@ input[type=text], textarea {
   font-size: 14px;
   text-align: center;
   color: #838383;
+}
+
+.scan-coupon {
+  padding-top: 25px;
 }
 
 /* offer detail */

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ activeModal, onClose, title, onClear, children }) => {
+const Modal = ({ activeModal, onClose, title, onClear, renderItem }) => {
   if (!activeModal) return null;
   return (
     <div className='modal'>
@@ -9,7 +9,7 @@ const Modal = ({ activeModal, onClose, title, onClear, children }) => {
         <h1 className='title'>{title}</h1>
         {onClear && <button className='clear' onClick={onClear}>Clear</button>}
       </div>
-      {children}
+      {renderItem()}
     </div>
   );
 }

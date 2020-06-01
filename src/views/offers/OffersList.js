@@ -1,24 +1,27 @@
 import React from 'react';
 
-const OffersList = ({ offers, openModal }) => {
+const OffersList = ({ offers, setOffer, openModal }) => {
   return (
     <div className='offers-list'>
-      <OfferPreviews offers={offers} openModal={openModal} />
+      <OfferPreviews offers={offers} setOffer={setOffer} openModal={openModal} />
     </div>
   );
 };
 
-const OfferPreviews = ({ offers, openModal }) => {
+const OfferPreviews = ({ offers, setOffer, openModal }) => {
   return (
     <div className='offer-previews'>
-      {offers.map((offer) => <OfferPreview key={offer._id} offer={offer} openModal={openModal} />)}
+      {offers.map((offer) => <OfferPreview key={offer._id} offer={offer} setOffer={setOffer} openModal={openModal} />)}
     </div>
   );
 };
 
-const OfferPreview = ({ offer, openModal }) => {
+const OfferPreview = ({ offer, setOffer, openModal }) => {
   const { _id: offerId, partner, image, description, cost } = offer || '';
-  const handleClick = () => openModal(offerId);
+  const handleClick = () => {
+    setOffer(offerId);
+    openModal('offer');
+  };
   return (
     <div className='offer-preview' onClick={handleClick}>
       {image && <img alt={partner} src={image} />}
