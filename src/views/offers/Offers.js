@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../../context/authContext';
 import { Modal } from '../../components/';
-import { CouponsList, OfferDetail, OffersListContainer, ScanCoupon, ScannedCouponContainer, ScannedCoupons } from '../'
+import { CouponsList, OfferDetail, OffersListContainer, ScanCoupon, ScannedCouponContainer, RedeemedCoupons } from '../'
 import apiClient from '../../services/apiClient';
 
 class Offers extends Component {
@@ -48,7 +48,7 @@ class Offers extends Component {
         {showing === 'offers' && <OffersListContainer setOffer={this.setOffer} openModal={this.openModal} />}
         {showing === 'coupons' && <CouponsList coupons={user.coupons} />}
         {showing === 'scan' && <ScanCoupon setScanned={this.setScanned} openModal={this.openModal} />}
-        {showing === 'redeemed' && <ScannedCoupons />}
+        {showing === 'redeemed' && <RedeemedCoupons />}
         <Modal activeModal={activeModal} onClose={this.closeModal} title={activeModal}>
           {activeModal === 'offer' && <OfferDetail offerId={activeOfferId} getCoupon={this.getCoupon} balance={balance} />}
           {activeModal === 'scan' && <ScannedCouponContainer couponId={scannedCouponId} redeemCoupon={this.redeemCoupon} />}
