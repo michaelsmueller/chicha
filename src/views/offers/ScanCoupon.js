@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import QrReader from 'react-qr-reader';
+// import QrReader from 'react-qr-reader';
+import QrReader from 'react-qr-scanner';
 
 export default class ScanCoupon extends Component {
   state = { result: null }
@@ -13,13 +14,10 @@ export default class ScanCoupon extends Component {
 
   handleError = (error) => console.log(error);
 
-  openImageDialog = () => this.refs.qrReader1.openImageDialog();
-
   render () {
     return (
       <div className='scan-coupon'>
-        <QrReader ref='qrReader1' delay={300} onError={this.handleError} onScan={this.handleScan} style={{ width: '100%' }} legacyMode />
-        <input type="button" value="Submit QR Code" onClick={this.openImageDialog} />
+        <QrReader delay={300} onError={this.handleError} onScan={this.handleScan} style={{ width: '100%' }} />
       </div>
     );
   };

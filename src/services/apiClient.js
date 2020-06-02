@@ -2,7 +2,11 @@ import axios from 'axios';
 
 class ApiClient {
   constructor() {
-    this.apiClient = axios.create({ baseURL: process.env.REACT_APP_BACKEND_URI, withCredentials: true });
+    this.apiClient = axios.create({
+      baseURL: process.env.REACT_APP_BACKEND_URI,
+      withCredentials: true,
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+    });
   }
 
   whoami = () => this.apiClient.get('/whoami');
