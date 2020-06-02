@@ -482,6 +482,7 @@ input[type=text], textarea {
   font-family: 'Open Sans';
   font-size: 18px;
   font-weight: 600;
+  margin-left: 0;
   margin-right: auto;
 }
 
