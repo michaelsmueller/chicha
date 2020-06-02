@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AnonRoute, PrivateRoute } from './components';
 import AuthProvider from './context/authContext';
-import { AddEvent, EditEvent, EventsContainer, EventDetail, Heavies, Home, Nav, OfferDetail, Offers, Profile, ProfileUpdate, Register } from './views';
+import { AddEvent, BackButton, EditEvent, EventsContainer, EventDetail, Heavies, Home, Nav, OfferDetail, Offers, Profile, ProfileUpdate, Register } from './views';
 import './App.css';
 
 const App = () => {
@@ -21,6 +21,7 @@ const App = () => {
 
 const Layout = () => {
   return <div className='layout'>
+    <BackButton />
     <Route exact path='/events' component={EventsContainer} />
     <Route exact path='/events/:id' component={EventDetail} />
     <Route exact path='/events/:id/edit' component={EditEvent} />

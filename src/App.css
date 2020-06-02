@@ -13,6 +13,7 @@
 .title {
   font-family: 'Roboto Slab', serif;
   font-weight: 600;
+  margin-left: 25px;
 }
 
 a {
@@ -78,6 +79,19 @@ button.secondary {
 }
 
 /* navigation */
+
+.back-button {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 25px;
+  left: 10px;
+  padding: 9px 7px;
+  z-index: 5;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
 
 nav {
   position: fixed;
@@ -402,6 +416,11 @@ input[type=text], textarea {
   text-align: left;
 }
 
+.events .title {
+  margin: 5px;
+  font-size: 26px;
+}
+
 .sort-filter-search-container {
   position: relative;
   overflow: hidden;
@@ -617,7 +636,7 @@ input[type=text], textarea {
 
 .event-detail .title {
   margin: 10px 0;
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .event-detail .times,
@@ -833,7 +852,7 @@ input[type=text], textarea {
 
 .coupon-preview .partner {
   margin: 5px 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: #59c7de;
   text-align: center;
@@ -942,7 +961,7 @@ input[type=text], textarea {
 
 .profile .title {
   margin: 10px 0;
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .profile .bio {
