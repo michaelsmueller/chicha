@@ -12,7 +12,10 @@ const CouponsList = ({ coupons }) => {
 const CouponPreviews = ({ coupons }) => {
   return (
     <div className='coupon-previews'>
-      {coupons.map((coupon) => <CouponPreview key={coupon._id} coupon={coupon} />)}
+      {coupons.map((coupon) => {
+        if (coupon.status === 'valid') return <CouponPreview key={coupon._id} coupon={coupon} />
+        else return null;
+      })}
     </div>
   );
 };
