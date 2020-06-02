@@ -14,8 +14,10 @@ class ApiClient {
   editUser = (userId, body) => this.apiClient.put(`/users/${userId}`, body);
   deleteUser = (userId) => this.apiClient.delete(`/users/${userId}`);
   getHeavies = () => this.apiClient.get('/users/heavies');
+
   addCoupon = (userId, body) => this.apiClient.patch(`/users/${userId}/coupons`, body);
-  getCoupon = (couponId) => this.apiClient.get(`/users?coupon=${couponId}`);
+  getUserWithCoupon = (couponId) => this.apiClient.get(`/users/find?coupon=${couponId}`);
+  redeemCoupon = (userId, couponId) => this.apiClient.patch(`/users/${userId}/coupons/${couponId}`);
 
   getOffer = (offerId) => this.apiClient.get(`/offers/${offerId}`);
   getOffers = () => this.apiClient.get('/offers');

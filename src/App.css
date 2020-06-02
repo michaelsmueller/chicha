@@ -73,6 +73,10 @@ button.secondary {
   overflow: hidden;
 }
 
+.modal .error {
+  margin-top: 50px;
+}
+
 /* navigation */
 
 nav {
@@ -795,7 +799,8 @@ input[type=text], textarea {
   font-weight: 600;
 }
 
-.coupon-preview-container {
+.coupon-preview-container,
+.scanned-coupon {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -849,6 +854,30 @@ input[type=text], textarea {
 
 .scan-coupon {
   padding-top: 25px;
+}
+
+.scanned-coupon {
+  height: 100vh;
+}
+
+.scanned-coupon .redeemed {
+  width: 100%;
+  position: absolute;
+  bottom: 150px;
+  font-style: italic;
+  text-align: center;
+}
+
+.scanned-coupon button {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  bottom: 80px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #212121;
+  background: linear-gradient(45deg, #59C7DE, #7fd5e6);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
 
 /* offer detail */
