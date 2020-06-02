@@ -87,7 +87,7 @@ button.secondary {
   align-items: center;
   top: 25px;
   left: 10px;
-  padding: 9px 7px;
+  padding: 9px 6px;
   z-index: 5;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.9);

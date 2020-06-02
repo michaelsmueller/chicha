@@ -39,7 +39,7 @@ export default class Events extends Component {
 
   getVotes = async () => {
     try {
-      const voteResponse = await apiClient.getVotes(this.props.userId);
+      const voteResponse = await apiClient.getVotes();
       const { votes } = voteResponse.data;
       this.setState({ votes });
     } catch (error) {

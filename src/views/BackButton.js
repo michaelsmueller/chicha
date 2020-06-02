@@ -5,7 +5,7 @@ const BackButton = ({ history }) => {
   const handleClick = () => history.goBack();
   return (
     <button onClick={handleClick} className='back-button'>
-      &nbsp;<i className='material-icons'>arrow_back_ios</i>
+      &nbsp;&nbsp;<i className='material-icons'>arrow_back_ios</i>
     </button>
   );
 };
