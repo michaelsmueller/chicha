@@ -3,8 +3,6 @@ import { Redirect, Route, withRouter } from 'react-router-dom';
 import { withAuth } from '../context/authContext';
 
 const AnonRoute = ({ component: Comp, STATUS, history, ...rest }) => {
-  // console.log('AnonRoute, history.action', history.action);
-  // console.log('AnonRoute, rest', rest);
   let pathname;
   if (history.action === 'REPLACE') pathname = rest.location?.state?.from?.pathname;
   else pathname = '/events';
@@ -18,7 +16,6 @@ const AnonRoute = ({ component: Comp, STATUS, history, ...rest }) => {
           <Redirect
             to={{
               pathname,
-              // pathname: '/events',
               state: { from: props.location },
             }}
           />

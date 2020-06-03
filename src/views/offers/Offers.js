@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../../context/authContext';
 import { Modal } from '../../components/';
-import { CouponsList, OfferDetail, OffersListContainer, ScanCoupon, ScannedCouponContainer, RedeemedCoupons } from '../'
+import { CouponsList, OfferDetail, OffersListContainer, ScanCoupon, ScannedCouponContainer } from '../'
 import apiClient from '../../services/apiClient';
 
 class Offers extends Component {
@@ -21,7 +21,7 @@ class Offers extends Component {
 
   redeemCoupon = async (userId, couponId) => {
     await apiClient.redeemCoupon(userId, couponId);
-    this.setState({ showing: 'redeemed', activeModal: null });
+    this.setState({ showing: 'scan', activeModal: null });
   }
 
   getUser = async () => {
@@ -48,7 +48,6 @@ class Offers extends Component {
         {showing === 'offers' && <OffersListContainer setOffer={this.setOffer} openModal={this.openModal} />}
         {showing === 'coupons' && <CouponsList coupons={user.coupons} />}
         {showing === 'scan' && <ScanCoupon setScanned={this.setScanned} openModal={this.openModal} />}
-        {showing === 'redeemed' && <RedeemedCoupons />}
         <Modal activeModal={activeModal} onClose={this.closeModal} title={activeModal}>
           {activeModal === 'offer' && <OfferDetail offerId={activeOfferId} getCoupon={this.getCoupon} balance={balance} />}
           {activeModal === 'scan' && <ScannedCouponContainer couponId={scannedCouponId} redeemCoupon={this.redeemCoupon} />}
@@ -65,13 +64,11 @@ const TopNav = ({ showing, setShowing, user }) => {
   const offersButtonStyle = showing === 'offers' ? highlighted : null;
   const couponsButtonStyle = showing === 'coupons' ? highlighted : null;
   const scanButtonStyle = showing === 'scan' ? highlighted : null;
-  const redeemedButtonStyle = showing === 'redeemed' ? highlighted : null;
   return (
     <div className='offers-coupons-buttons'>
       <button style={offersButtonStyle} onClick={handleClick} value='offers'>Offers</button>
       <button style={couponsButtonStyle} onClick={handleClick} value='coupons'>My coupons</button>
       {partner && <button style={scanButtonStyle} onClick={handleClick} value='scan'>Scan coupon</button>}
-      {partner && <button style={redeemedButtonStyle} onClick={handleClick} value='redeemed'>Redeemed</button>}
     </div>
   )
 };

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import QrReader from 'react-qr-reader';
-import QrReader from 'react-qr-scanner';
+import QrReader from 'react-qr-reader';
 
 export default class ScanCoupon extends Component {
   state = { result: null }

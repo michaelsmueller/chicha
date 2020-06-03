@@ -5,13 +5,11 @@ import { Loading, EventsMap, EventPreview, SortFilterSearch } from '../';
 import { DragToResizeDrawer } from '../../components/';
 import { filterEvents } from '../../helpers/filter';
 
-// need to refactor this code to make it clearer and simpler how resets work
 export default class Events extends Component {
   state = { events: null, votes: null, filterBy: null, query: null, mapKey: null };
 
   saveEvents = (events) => this.setState({ events, mapKey: generate() })
 
-  // this is used in SortFilterSearch to setFilter(null) i.e. clearFilter
   setFilter = (filterBy) => this.setState({ filterBy, mapKey: generate() })
 
   setSearch = (query) => {
@@ -21,7 +19,6 @@ export default class Events extends Component {
       .catch((error) => console.log(error))
   }
 
-  // this also clears filter
   clearSearch = () => {
     apiClient.getEvents()
       .then(({ data: { events } }) => this.setState({ events, filterBy: null, mapKey: generate() }))

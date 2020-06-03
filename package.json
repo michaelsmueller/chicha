@@ -13,10 +13,10 @@
     "react-dom": "^16.13.1",
     "react-loading-overlay": "^1.0.1",
     "react-qr-reader": "^2.2.1",
-    "react-qr-scanner": "0.0.9",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,5 +38,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "reactotron-apisauce": "^3.0.0",
+    "reactotron-react-js": "^3.3.7"
   }
 }

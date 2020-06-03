@@ -64,7 +64,6 @@ export default class SortFilterSearch extends Component {
     return (
       <div className='sort-filter-search-container'>
         <Modal activeModal={activeModal} onClose={this.closeModal} title={sortFilterModalTitle(activeModal, sortBy, filterBy)} onClear={this.onClear}>
-          {/* this should be a render prop here instead of passing in all the possibilities right ? */}
           <SortFilterModalContent
             activeModal={activeModal}
             sort={this.sort} sortBy={sortBy} clearSort={this.clearSort}
