@@ -3,8 +3,8 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 import { withAuth } from '../context/authContext';
 
 const PrivateRoute = ({ component: Comp, STATUS, history, ...rest }) => {
-  console.log('PrivateRoute, history.action', history.action);
-  console.log('PrivateRoute, rest', rest);
+  // console.log('PrivateRoute, history.action', history.action);
+  // console.log('PrivateRoute, rest', rest);
   return (
     <Route
       {...rest}

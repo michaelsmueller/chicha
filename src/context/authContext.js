@@ -30,6 +30,8 @@ export const withAuth = (Comp) => {
 class AuthProvider extends Component {
   state = { STATUS: 'LOADING', userId: null, error: null };
 
+  resetErrorMessage = () => setTimeout(() => this.setState({ error: null }), 3000);
+
   componentDidMount = () => {
     console.log('AuthProvider componentDidMount');
     apiClient.whoami()
@@ -42,9 +44,11 @@ class AuthProvider extends Component {
               break;
             default:
               this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText });
+              this.resetErrorMessage();
           }
         } else {
           this.setState({ STATUS: 'ERROR', userId: null, error: 'cannot connect to server' });
+          this.resetErrorMessage();
         }
       })
   }
@@ -63,9 +67,11 @@ class AuthProvider extends Component {
               break;
             default:
               this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText });
+              this.resetErrorMessage();
           }
         } else {
           this.setState({ STATUS: 'ERROR', userId: null, error: 'cannot connect to server' });
+          this.resetErrorMessage();
         }
       })
   };
@@ -81,9 +87,11 @@ class AuthProvider extends Component {
               break;
             default:
               this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText });
+              this.resetErrorMessage();
           }
         } else {
           this.setState({ STATUS: 'ERROR', userId: null, error: 'cannot connect to server' });
+          this.resetErrorMessage();
         }
       })
   };
@@ -94,11 +102,13 @@ class AuthProvider extends Component {
       .catch(({ response }) => {
         if (response !== undefined) this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText });
         else this.setState({ STATUS: 'ERROR', userId: null, error: 'cannot connect to server' });
+        this.resetErrorMessage();
       })
   };
 
   handleError = (error) => {
     this.setState({ STATUS: 'ERROR', error });
+    this.resetErrorMessage();
   }
 
   render() {
