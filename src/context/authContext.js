@@ -61,9 +61,11 @@ class AuthProvider extends Component {
           switch (response.status) {
             case 409:
               this.setState({ STATUS: 'LOGGED_OUT', userId: null, error: 'username already exists' });
+              this.resetErrorMessage();
               break;
             case 422:
               this.setState({ STATUS: 'LOGGED_OUT', userId: null, error: 'problem validating form data' });
+              this.resetErrorMessage();
               break;
             default:
               this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText });
@@ -84,6 +86,7 @@ class AuthProvider extends Component {
           switch (response.status) {
             case 401:
               this.setState({ STATUS: 'LOGGED_OUT', userId: null, error: 'wrong username or password' });
+              this.resetErrorMessage();
               break;
             default:
               this.setState({ STATUS: 'ERROR', userId: null, error: response.statusText });

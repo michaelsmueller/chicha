@@ -10,15 +10,9 @@ class Home extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     const { onError, onSignIn } = this.props;
-    if (username !== '' && password !== '') {
-      onSignIn({ username, password });
-      this.cleanForm();
-    } else {
-      onError('Missing username or password');
-    }
+    if (username && password) onSignIn({ username, password });
+    else onError('please fill out both username and password');
   };
-
-  cleanForm = () => this.setState({ username: '', password: '' });
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 

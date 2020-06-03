@@ -11,8 +11,8 @@ class Register extends Component {
     e.preventDefault();
     const { onError, onRegister } = this.props;
     const { username, password, passwordStrength } = this.state;
-    if (!username || !password) onError('Please fill out both username and password')
-    else if (passwordStrength < 3) onError('Password is too easy to guess, please strengthen')
+    if (!username || !password) onError('please fill out both username and password')
+    else if (passwordStrength < 3) onError('password is too easy to guess, please strengthen')
     else onRegister({ username, password });
   };
 

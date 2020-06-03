@@ -1,33 +1,69 @@
 import React, { Component } from 'react';
 import apiClient from '../../services/apiClient';
+import { Error } from '../';
 import { LoadingOverlayWithTimer } from '../../components/';
+import { isValidFbEvent, getFbEventId } from '../../helpers/validate';
 
 export default class AddEvent extends Component {
-  state = { url: '', isWaiting: false };
+  state = { url: '', isWaiting: false, error: null };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({ isWaiting: true });
-    const { url } = this.state;
-    apiClient.addEvent({ url })
+  resetErrorMessage = () => setTimeout(() => this.setState({ error: null }), 3000);
+
+  addEvent = (validUrl) => {
+    apiClient.addEvent({ url: validUrl })
       .then(({ data: { _id } }) => {
         this.setState({ isWaiting: false });
         this.props.history.push(`/events/${_id}`);
       })
-      .catch((error) => {
+      .catch(({ response }) => {
         this.setState({ isWaiting: false });
-        console.log(error);
+        if (response !== undefined) {
+          switch (response.status) {
+            case 409:
+              this.setState({ error: 'we already have this event in our database' });
+              this.resetErrorMessage();
+              break;
+            default:
+              this.setState({ error: 'there was a problem trying to add this event' });
+              this.resetErrorMessage();
+          }
+        } else {
+          this.setState({ error: 'cannot connect to server' });
+          this.resetErrorMessage();
+        }
       })
+  }
+
+  validateEvent = () => {
+    const { url } = this.state;
+    if (!url) {
+      this.setState({ error: 'please copy and paste a Facebook event link', isWaiting: false });
+      this.resetErrorMessage();
+    } else {
+      if (isValidFbEvent(url)) {
+        const fbEventId = getFbEventId(url);
+        const validUrl = `https://facebook.com/events/${fbEventId}`;
+        this.addEvent(validUrl);
+      }
+      else {
+        this.setState({ error: 'link is not a valid Facebook event', isWaiting: false });
+        this.resetErrorMessage();
+      }
+    }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ isWaiting: true });
+    this.validateEvent();
   };
 
   stopWaiting = () => this.setState({ isWaiting: false });
 
-  cleanForm = () => this.setState({ url: '' });
-
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { url, isWaiting } = this.state;
+    const { url, error, isWaiting } = this.state;
     return (
       <LoadingOverlayWithTimer isActive={isWaiting} stopWaiting={this.stopWaiting} key={isWaiting}>
         <div className='add-event'>
@@ -44,6 +80,7 @@ export default class AddEvent extends Component {
             />
             <button type='submit' value='submit'>Add event</button>
           </form>
+          {error && <Error error={error} />}
         </div>
       </LoadingOverlayWithTimer>
     );
