@@ -636,7 +636,7 @@ input[type=text], textarea {
 }
 
 .event-detail .title {
-  margin: 10px 0;
+  /* margin: 10px 0; */
   font-size: 26px;
 }
 

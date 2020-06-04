@@ -27,9 +27,8 @@ class ProfileUpdateForm extends Component {
     const { username, password, image, bio, url } = this.state;
     return (
       <div className='profile-update'>
-        <h1>Edit Profile</h1>
-        <form onSubmit={this.handleSubmit}>
-
+        <h1 className='title'>Edit Profile</h1>
+        <form onSubmit={this.handleSubmit} autoComplete='off'>
           <label htmlFor='name'>Username</label>
           <input
             type='text'

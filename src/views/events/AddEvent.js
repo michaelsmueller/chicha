@@ -68,7 +68,7 @@ export default class AddEvent extends Component {
       <LoadingOverlayWithTimer isActive={isWaiting} stopWaiting={this.stopWaiting} key={isWaiting}>
         <div className='add-event'>
           <h1 className='title'>Add Event</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} autoComplete='off'>
             <label htmlFor='event-url'>Facebook event link</label>
             <input
               type='text'

@@ -23,7 +23,7 @@ class Home extends Component {
       <div className='home'>
         <img className='logo' alt='chicha logo' src='/chicha-logo-black.png' />
         <h1 className='title'>Sign in</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} autoComplete='off'>
           <input
             type='text'
             name='username'

@@ -35,7 +35,7 @@ class Register extends Component {
       <div className='register'>
       <img className='logo' alt='chicha logo' src='/chicha-logo-black.png' />
         <h1 className='title'>Register</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} autoComplete='off'>
           <input
             type='text'
             name='username'

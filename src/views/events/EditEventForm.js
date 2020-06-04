@@ -64,8 +64,7 @@ class EditEventForm extends Component {
     return (
       <div className='edit-event'>
         <h1 className='title'>Edit Event</h1>
-        <form onSubmit={this.handleSubmit}>
-
+        <form onSubmit={this.handleSubmit} autoComplete='off'>
           <label htmlFor='name'>Name</label>
           <input
             type='text'
