@@ -1,18 +1,101 @@
 # Chicha
 
-## Instructions on how to start
+## How to start
 
-Start app with `npm start`.
+Create an `.env` file following the example `.env.sample`. You'll need to first sign up with Mapbox GL and get a public API token (it's free).
 
-go to **http://localhost:3000**
+Start frontend app with `npm start`.
+
+Go to **http://localhost:5000** (or whatever port configured in `.env`)
 
 ## Description
 
-Find, share and upvote your favorite things to do in Barcelona.
+Discover the city's best events!
 
 ## Motivation
 
-Crowdsource the best local events from knowledgable locals motivated to share and also get rewards from local businesses.
+Every day thousands of people search for "**things to do near me**" in search engines. Chicha is a **better way** for users to find great local things to do, while at the same time **supporting local** creators and businesses.
+
+Chicha connects users, tastemakers and local businesses: 
+- **Users** view, sort and filter a list of events as well as add and vote on events.
+- **Tastemakers** such as artists, bloggers and promoters ("heavies") who share the most gain visibility and influence.
+- **Local businesses** attract more customers through coupons that users and tastemakers earn on the platform.
+
+## Points
+
+- Gain 10 points for adding a unique event
+- Gain 1 point for voting (either up or down)
+- Gain +/- 1 point if an event you added has been up/downvoted (you can vote on your own event)
+
+If you remove your vote or delete an event you added, your point balance will be reduced.
+
+If you purchase a coupon your point balance will be reduced. However, Heavies are ranked according to lifetime points earned ("Chicha") so you don't lose your Heavies standing for buying coupons with your points.
+
+## Test users
+
+Test user:
+- Username: **User**
+- Password: **Ironhack1**
+
+We've started the test User off with 100 points to spend on offers.
+
+Test partner:
+- Username: **Partner**
+- Password: **Ironhack1**
+
+Partners can use the system like a regular User except they also can scan coupon QR codes on the Offers tab.
+
+## Instructions
+
+**This MVC has been optimized for mobile device view (select iPhone 6/7/8 in Developer tools) in Chrome desktop.**
+
+**Register**
+
+- register leaving some fields blank
+- register with a weak password.
+
+**Home**
+
+- login leaving some fields blank
+- login with incorrect information
+
+**Events**
+
+The default view is by most upvoted events, with only events from today onwards shown.
+
+- Sort by start date or recently added
+- Filter by this week or this weekend
+- Search for something
+- Vote on an event, then check your point balance in Offers.
+- Remove your vote, then check your point balance
+- Move the drag handle up and down.
+- Interact with the map … click on an event.
+
+**Add Event**
+
+- Leave the field blank and submit
+- Paste an invalid event URL
+- Paste a valid event
+- After adding an event check your point balance
+- Go back to the Events list and click on the Pencil icon on your event to Edit Event
+- Click on the trash icon on your event to delete it. Then check your point balance.
+
+**Heavies**
+
+- See who's been sharing the most
+
+**Offers**
+
+- Click on an offer and get the coupon
+- Use your phone to login and view the coupon, or take a picture of the coupon QR code with your phone
+- Then, login with the Partner (on your computer) and navigate to Scan coupon … hold up your phone (showing the coupon QR code)
+- Try to scan the code again
+
+**Profile**
+
+- Edit your profile
+- Delete your profile, just click cancel not OK in the prompt!
+- Logout
 
 ## User Stories
 
@@ -32,7 +115,7 @@ Crowdsource the best local events from knowledgable locals motivated to share an
 
 **Events - add** - As a user, I want to create an event so that this information can be seen by others, I gain visibility and I earn rewards.
 
-**Events - update** - As a user, I want to be able to update the details of an event I have loaded so that I can add or correct information.
+**Events - edit** - As a user, I want to be able to update the details of an event I have loaded so that I can add or correct information.
 
 **Heavies** - As a user, I want to see the users who have recommended the most / best events so that I can find new sources to recommend events to me.
 
@@ -44,11 +127,19 @@ Crowdsource the best local events from knowledgable locals motivated to share an
 
 **Offers - my coupons** - As a user, I want to see a list of my coupons so that I can use the offers that I have redeemed at local businesses.
 
+**Offers - redeem** - As a local business partner, I want to be able to redeem a coupon.
+
 **Profile** - As a user, I want to update my user profile (change my username, password and profile pic) as well as log out so that no one else can use my account.
 
 ## Backlog
 
 Other features outside of the MVP scope:
+
+**Responsive CSS** test and adapt to various mobile device views, then add tablet and desktop.
+
+**Heavies detail**: add list of each individual heavy's recommendations
+
+**Dark mode**: add ability to switch to dark mode
 
 **Onboarding**: create a screen when user logs in to explain how the app works
 
@@ -79,16 +170,25 @@ Other features outside of the MVP scope:
 | Profile                 | `/profile/edit`         | update user profile     |
 
 
-
 ## Links
 
 ### Deployment
 
-[Netlify](https://chicha.netlify.app)
+[API – Heroku](https://chicha-api.herokuapp.com)
 
-### Trello
+[Frontend - Netlify](https://chicha.netlify.app)
 
-[Trello board](https://trello.com/b/O8DhDgcu/chicha)
+### Presentation
+
+[Google Slides](https://docs.google.com/presentation/d/1ZDxZknsIUCLrHTaYEsYjcc_06KRAZxgNZ9bg7SMssiY/edit#slide=id.p)
+
+### Design
+
+[Wireframes - Figma](https://www.figma.com/file/BsoiB5w5Bs3kwC1vOBkCv1/Chicha-Wireframes?node-id=0%3A1)
+
+[Colors - Trello](https://trello.com/c/vI9AoIQY/38-colors)
+
+[Color inspiration - Figma](https://www.figma.com/file/3nKA7yEvj6A0MT0WW8CxWF/Colors?node-id=0%3A1)
 
 ### Git
 

@@ -33,7 +33,6 @@ class AuthProvider extends Component {
   resetErrorMessage = () => setTimeout(() => this.setState({ error: null }), 3000);
 
   componentDidMount = () => {
-    console.log('AuthProvider componentDidMount');
     apiClient.whoami()
       .then(({ data: { _id } }) => this.setState({ STATUS: 'LOGGED_IN', userId: _id }))
       .catch(({ response }) => {
