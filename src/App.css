@@ -241,6 +241,10 @@ input[type=text], textarea {
   -o-transition: all 0.30s ease-in-out;
 }
 
+label {
+  margin: 10px 0 5px 10px;
+}
+
 [data-testid='wrapper'] {
   height: 100vh;
 }
@@ -278,7 +282,12 @@ input[type=text], textarea {
 }
 
 .edit-event textarea {
-  height: 100px;
+  height: 200px;
+}
+
+.edit-event textarea {
+  font-family: 'Open-Sans';
+  line-height: 20px;
 }
 
 .search-bar {
@@ -647,7 +656,8 @@ input[type=text], textarea {
 }
 
 .event-detail .times,
-.event-detail .ticket-link {
+.event-detail .ticket-link,
+.event-detail .fb-link {
   margin: 10px 0;
   font-size: 16px;
   font-weight: 600;

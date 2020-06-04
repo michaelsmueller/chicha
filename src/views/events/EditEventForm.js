@@ -108,7 +108,6 @@ class EditEventForm extends Component {
             type='text'
             name='description'
             id='description'
-            placeholder={description}
             value={description || ''}
             onChange={this.handleChange}
           />
