@@ -554,15 +554,21 @@ input[type=text], textarea {
 
 .event-preview .edit-delete {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 6px;
+  right: 6px;
 }
 
-.event-preview .edit-delete button {
-  color: white;
-  background: none;
+.event-preview .edit-delete i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  margin-bottom: 5px;
   padding: 5px;
-  font-weight: 600;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
 }
 
 .event-preview img {
@@ -636,7 +642,7 @@ input[type=text], textarea {
 }
 
 .event-detail .title {
-  /* margin: 10px 0; */
+  margin: 10px 0;
   font-size: 26px;
 }
 

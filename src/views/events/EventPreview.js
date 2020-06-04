@@ -31,8 +31,8 @@ const EditDeleteButtons = ({ eventId, deleteEvent }) => {
   };
   return (
     <div className='edit-delete'>
-      <Link to={`/events/${eventId}/edit`}><button>edit</button></Link>
-      <button onClick={confirmDelete}>delete</button>
+      <Link to={`/events/${eventId}/edit`}><i className='material-icons'>create</i></Link>
+      <i onClick={confirmDelete} className='material-icons'>delete</i>
     </div>
   );
 };
