@@ -4,10 +4,12 @@
 .App {
   width: 100vw;
   height: 100vh;
+  background-color: inherit;
 }
 
 .layout {
   position: relative;
+  background-color: inherit;
 }
 
 .title {
@@ -397,6 +399,14 @@ label {
 
 /* events */
 
+.events-map-and-listings {
+  background-color: inherit;
+}
+
+.drag-to-resize-container {
+  background-color: inherit;
+}
+
 .dragger {
   position: fixed;
   height: 100%;
@@ -410,18 +420,22 @@ label {
   z-index: 4;
   text-align: center;
   border-radius: 10px;
-  background-color: white;
+  background-color: inherit;
 }
 
 .drag-handle .material-icons {
   color: #212121;
 }
 
+.dragger {
+  background-color: inherit;
+}
+
 .events {
   width: 100vw;
   margin-top: -25px;
   padding: 20px;
-  background-color: white;
+  background-color: inherit;
   text-align: left;
 }
 

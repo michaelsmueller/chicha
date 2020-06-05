@@ -17,11 +17,21 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #212121;
+
 }
 
-.root {
-  height: 500px;
+body.light {
+  color: #212121;
+  background-color: white;
+}
+
+body.dark {
+  color: white ;
+  background-color: #212121;
+}
+
+#root {
+  background-color: inherit;
 }
 
 input, textarea, select, button {

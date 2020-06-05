@@ -29,13 +29,12 @@ export default class DragToResizeDrawer extends Component {
     const marginTop = this.setTopMargin();
     const dragHandleStyle = { marginTop };
     const draggerStyle = {
-      backgroundColor: 'white',
       marginTop: marginTop + 20,
       overflow: this.state.isResizing ? 'hidden' : 'scroll',
       paddingBottom: marginTop + 70,
     }
     return (
-      <div onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd}>
+      <div className='drag-to-resize-container' onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd}>
         <div className='drag-handle' style={dragHandleStyle}><i className='material-icons'>drag_handle</i></div>
         <div className='dragger' style={draggerStyle}>{this.props.children}</div>
       </div>
