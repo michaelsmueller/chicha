@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* overflow-x: hidden; */
 }
 
 *:focus {
@@ -14,29 +13,44 @@
 }
 
 :root {
+  --near-black: #212121;
+  --gray-primary: #565656;
+  --gray-lighter: #b2b2b2;
   --yellow-primary: #fef200;
   --yellow-lighter: #ffff8b;
+  --pink-primary: #ee2B7a;
+  --blue-primary: #59c7de;
+  --blue-primary-faded: rgba(89, 199, 222, 0.2);
+  --blue-lighter-faded: rgba(127, 213, 230, 0.6);
+  --near-white: rgba(255, 255, 255, 0.9);
+}
+
+body.light {
+  --bg-color: white;
+  --text-color: var(--near-black);
+  --text-gray: var(--gray-primary);
+  --button-bg: white;
+  --control-bg: rgba(255, 255, 255, 0.8);
+  --blue-bg: var(--blue-primary-faded);
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+body.dark {
+  --bg-color: var(--near-black);
+  --text-color: var(--near-white);
+  --text-gray: var(--gray-lighter);
+  --button-bg: var(--near-white);
+  --control-bg: rgba(255, 255, 255, 0.7);
+  --blue-bg: var(--blue-lighter-faded);
+  --shadow: rgba(255, 255, 255, 0.2);
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-}
-
-body.light {
-  color: #212121;
-  background-color: white;
-  --text-color: #212121;
-}
-
-body.dark {
-  color: white ;
-  /* background-color: #191a1a; */
-  background-color: #343433;
-  --text-color: white;
-
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 #root {

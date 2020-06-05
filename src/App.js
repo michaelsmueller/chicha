@@ -8,10 +8,7 @@ import './App.css';
 
 class App extends Component {
   state = { theme: 'light' }
-  changeTheme = () => {
-    console.log('changing theme');
-    this.setState({ theme: this.state.theme === 'dark' ? 'light' : 'dark' });
-  };
+  changeTheme = () => this.setState({ theme: this.state.theme === 'dark' ? 'light' : 'dark' });
   render() {
     return (
       <AuthProvider>

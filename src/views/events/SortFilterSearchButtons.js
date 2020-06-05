@@ -8,14 +8,14 @@ const SortFilterSearchButtons = ({ sortBy, filterBy, query, search, isSearchOpen
       else openSearch();
     } else openModal(e.target.value);
   }
-  const sortButtonStyle = { backgroundColor: sortBy ? '#ccfcff' : 'white' };
-  const filterButtonStyle = { backgroundColor: filterBy ? '#ccfcff' : 'white' };
-  const searchButtonStyle = { backgroundColor: isSearchOpen ? '#ccfcff' : 'white' };
+  const sortButtonStyle = sortBy ? 'highlighted' : 'normal';
+  const filterButtonStyle = filterBy ? 'highlighted' : 'normal';
+  const searchButtonStyle = isSearchOpen ? 'highlighted' : 'normal';
   return (
     <div className='sort-filter-search'>
-      <button style={sortButtonStyle} onClick={handleClick} value='sort'>{ sortBy ? getTitle(sortBy) : 'Sort by' }</button>
-      <button style={filterButtonStyle} onClick={handleClick} value='date'>{ filterBy ? getTitle(filterBy) : 'Filter by' }</button>
-      <button style={searchButtonStyle} onClick={handleClick} value='search'>Search</button>
+      <button className={sortButtonStyle} onClick={handleClick} value='sort'>{ sortBy ? getTitle(sortBy) : 'Sort by' }</button>
+      <button className={filterButtonStyle} onClick={handleClick} value='date'>{ filterBy ? getTitle(filterBy) : 'Filter by' }</button>
+      <button className={searchButtonStyle} onClick={handleClick} value='search'>Search</button>
     </div>
   )
 };

@@ -15,7 +15,7 @@
 .title {
   font-family: 'Roboto Slab', serif;
   font-weight: 600;
-  margin-left: 25px;
+  margin-left: 26px;
 }
 
 a {
@@ -32,14 +32,14 @@ a:visited {
 button, input, textarea {
   padding: 10px;
   color: #212121;
-  border-radius: 20px;
-  background-color: white;
   border: none;
+  border-radius: 20px;
+  background-color: var(--button-bg);
+  box-shadow: 0 4px 6px 0 var(--shadow);
 }
 
 button.secondary {
   border: 1px solid #ee2B7a;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
 }
 
 /* general views */
@@ -88,12 +88,12 @@ button.secondary {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 25px;
+  top: 28px;
   left: 10px;
-  padding: 9px 6px;
+  padding: 6px 2px 6px 3px;
   z-index: 5;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--control-bg);
 }
 
 nav {
@@ -274,7 +274,6 @@ label {
   font-weight: 600;
   color: #212121;
   background: linear-gradient(45deg, #ffff57, #FEF200);
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
 }
 
 .add-event input,
@@ -295,7 +294,6 @@ label {
 
 .search-bar {
   margin-top: 10px;
-  background-color: white;
   width: 100%;
 }
 
@@ -319,7 +317,7 @@ label {
   font-size: 16px;
   font-weight: 600;
   border: 2px solid #59C7DE;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 4px 6px 0 var(--shadow);
   animation-duration: 0.3s;
   animation-name: opensearch;
 }
@@ -346,12 +344,26 @@ label {
   z-index: 1;
 }
 
+.mapboxgl-ctrl a {
+  position: fixed !important;
+  top: -50px;
+}
+
+.mapboxgl-ctrl {
+  background: transparent;
+}
+
+.mapboxgl-ctrl-geolocate, .mapboxgl-ctrl-icon {
+  position: relative;
+  background-color: var(--control-bg);
+}
+
 .marker {
   background-size: 15px 18px;
   background-repeat: no-repeat;
   background-color: #ffff8b;
   background-position: center;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -364,12 +376,14 @@ label {
   text-align: center;
   border: none;
   border-radius: 20px;
+  background-color: var(--bg-color);
 }
 
 .mapboxgl-popup-close-button {
   top: -5px;
   right: 0;
   font-weight: 600;
+  color: var(--text-color);
 }
 
 .mapboxgl-popup-tip {
@@ -387,7 +401,9 @@ label {
 .mapboxgl-popup-content .popup-contents {
   font-family: 'Open Sans';
   padding: 0;
-  font: #212121;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  box-shadow: none;
 }
 
 .mapboxgl-popup-content .event-name {
@@ -425,7 +441,7 @@ label {
 }
 
 .drag-handle .material-icons {
-  color: #212121;
+  color: var(--text-color);
 }
 
 .dragger {
@@ -462,8 +478,15 @@ label {
   width: 105px;
   font-size: 13px;
   font-weight: 600;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
   border: 2px solid #59C7DE;
+}
+
+.sort-filter-search button.normal {
+  background-color: var(--button-bg);
+}
+
+.sort-filter-search button.highlighted {
+  background-color: #ccfcff;
 }
 
 .modal {
@@ -545,7 +568,6 @@ label {
   font-weight: 600;
   color: #212121;
   background: linear-gradient(45deg, #59C7DE, #7fd5e6);
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
 
 .event-previews {
@@ -624,20 +646,26 @@ label {
 }
 
 .votes .vote-total {
-  color: #212121;
+  color: var(--text-color);
 }
 
 .votes button {
   padding: 1px;
   font-size: 20px;
-  color: #212121;
+  background-color: transparent;
+  color: var(--text-color);
+  box-shadow: none;
+}
+
+.votes button.highlighted {
+  color: var(--pink-primary);
 }
 
 .event-preview .start-time {
   font-size: 10px;
   font-weight: 600;
   padding: 5px 0;
-  color: #666;
+  color: var(--text-gray);
   text-transform: uppercase;
 }
 
@@ -650,7 +678,7 @@ label {
 .event-preview .place {
   font-size: 11px;
   padding: 5px 0;
-  color: #666;
+  color: var(--text-gray);
 }
 
 /* event detail */
@@ -689,11 +717,11 @@ label {
   margin: 0 0 10px 0;
   font-size: 13px;
   line-height: 16px;
-  color: #333;
+  color: var(--text-gray);
 }
 
 .event-detail .description {
-  color: #333;
+  color: var(--text-gray);
 }
 
 /* heavy */
@@ -750,7 +778,7 @@ label {
 
 .heavy-info .bio {
   margin: 10px 0;
-  color: #333;
+  color: var(--text-gray);
 }
 
 .heavy-info .link {
@@ -779,7 +807,7 @@ label {
   align-items: center;
   border: 2px solid #ee2B7a;
   border-radius: 30px;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 4px 6px 0 var(--shadow);
 }
 
 .offers-coupons-buttons {
@@ -788,10 +816,13 @@ label {
 }
 
 .offers-coupons-buttons button {
+  background: none;
+  color: var(--text-color);
   margin: 5px 0 15px 0;
   padding: 0 1px 5px 0;
   font-size: 14px;
   border-radius: 0;
+  box-shadow: none;
 }
 
 .offers-list,
@@ -800,7 +831,8 @@ label {
   min-height: 59vh;
   margin: 0 -20px;
   padding: 5px 20px 10px 20px;
-  background-color: rgba(89, 199, 222, 0.2);
+  background-color: var(--blue-bg);
+  border-radius: 20px 20px 0 0;
 }
 
 .offer-previews,
@@ -813,11 +845,11 @@ label {
   display: flex;
   height: 100px;
   align-items: center;
-  background-color: white;
+  background-color: var(--bg-color);
   margin: 7px 0;
   padding: 5px;
   border-radius: 20px;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
+  box-shadow: 0 4px 6px 0 var(--shadow);
 }
 
 .offer-preview img {
@@ -841,7 +873,7 @@ label {
 .offer-info .description {
   margin: 10px 0;
   font-size: 14px;
-  color: #333;
+  color: var(--text-gray);
 }
 
 .offer-preview .cost {
@@ -861,11 +893,11 @@ label {
 }
 
 .qr-code {
-  background-color: white;
+  background-color: var(--bg-color);
   padding: 20px;
   border-radius: 20px;
   z-index: 5;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
+  box-shadow: 0 4px 6px 0 var(--shadow);
 }
 
 .coupon-preview {
@@ -876,10 +908,11 @@ label {
   align-items: center;
   align-items: center;
   width: 100%;
-  background-color: white;
+  background-color: var(--bg-color);
   padding: 70px 10px 30px 10px;
   border-radius: 30px;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
+  box-shadow: 0 4px 6px 0 var(--shadow);
+
 }
 
 .coupon-preview .partner {
@@ -928,7 +961,6 @@ label {
   font-weight: 600;
   color: #212121;
   background: linear-gradient(45deg, #59C7DE, #7fd5e6);
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
 
 /* offer detail */
@@ -956,7 +988,7 @@ label {
 }
 
 .offer-detail .description {
-  color: #333;
+  color: var(--text-gray);
 }
 
 .offer-detail .not-enough-points {
@@ -976,7 +1008,6 @@ label {
   font-weight: 600;
   color: #212121;
   background: linear-gradient(45deg, #59C7DE, #7fd5e6);
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15);
 }
 
 /* profile */
@@ -998,7 +1029,7 @@ label {
 
 .profile .bio {
   margin: 10px 0;
-  color: #333;
+  color: var(--text-gray);
 }
 
 .profile .link {
@@ -1016,8 +1047,7 @@ label {
   display: flex;
   align-items: center;
   border-radius: 20px;
-  /* border: 1px solid #ee2B7a; */
-  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15); */
+  box-shadow: 0 4px 6px 0 var(--shadow);
 }
 
 .dark-mode-switch label {
@@ -1026,7 +1056,7 @@ label {
 
 .dark-mode-switch .label-text {
   margin: 5px 10px 5px 0;
-  font-size: 13.33px;
+  font-size: 13.3px;
   white-space: nowrap;
 }
 

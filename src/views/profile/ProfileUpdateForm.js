@@ -44,7 +44,7 @@ class ProfileUpdateForm extends Component {
             type='password'
             name='password'
             id='password'
-            placeholder={password}
+            placeholder='•••••••'
             value={password || ''}
             onChange={this.handleChange}
           />

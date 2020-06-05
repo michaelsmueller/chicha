@@ -39,11 +39,11 @@ class Offers extends Component {
 
   render() {
     const { user, showing, activeOfferId, scannedCouponId, activeModal } = this.state;
-    const { balance } = user || 0;
+    const balance = user?.balance;
     return (
       <div className='offers'>
         <h1 className='title'>Offers</h1>
-        <div className='balance'><h2>{balance ? balance : <>&nbsp;</> }</h2><p>points</p></div>
+        <div className='balance'><h2>{balance !== undefined ? balance : <>&nbsp;</> }</h2><p>points</p></div>
         <TopNav showing={showing} setShowing={this.setShowing} user={user} />
         {showing === 'offers' && <OffersListContainer setOffer={this.setOffer} openModal={this.openModal} />}
         {showing === 'coupons' && <CouponsList coupons={user.coupons} />}

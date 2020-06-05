@@ -59,15 +59,13 @@ export default class VoteButtons extends Component {
   render() {
     const { vote, votes } = this.state;
     const { direction } = vote || 0;
-    const HIGHLIGHTED =  { color: '#ee2B7a', backgroundColor: 'white' };
-    const NORMAL =  { color: '#212121', backgroundColor: 'white' };
-    const upvoteStyle = direction === 1 ? HIGHLIGHTED : NORMAL;
-    const downvoteStyle = direction === -1 ? HIGHLIGHTED : NORMAL;
+    const upvoteStyle = direction === 1 ? 'highlighted' : 'normal';
+    const downvoteStyle = direction === -1 ? 'highlighted' : 'normal';
     return (
       <div className='votes'>
-        <button style={upvoteStyle} onClick={this.handleUpvote}>↑</button>
+        <button className={upvoteStyle} onClick={this.handleUpvote}>↑</button>
         <div className='vote-total'>{votes}</div>
-        <button style={downvoteStyle} onClick={this.handleDownvote}>↓</button>
+        <button className={downvoteStyle} onClick={this.handleDownvote}>↓</button>
       </div>
     );
   }
