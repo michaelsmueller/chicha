@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AnonRoute, PrivateRoute } from './components';
 import AuthProvider from './context/authContext';
-import { Theme, themes } from "./context/themeContext";
+import { Theme } from "./context/themeContext";
 import { AddEvent, BackButton, EditEvent, EventsContainer, EventDetail, Heavies, Home, Nav, OfferDetail, Offers, Profile, ProfileUpdate, Register } from './views';
 import './App.css';
 
 class App extends Component {
-  state = { theme: themes.dark }
+  state = { theme: 'light' }
   changeTheme = () => {
     console.log('changing theme');
-    this.setState({ theme: this.state.theme.name === 'dark' ? themes.light : themes.dark });
+    this.setState({ theme: this.state.theme === 'dark' ? 'light' : 'dark' });
   };
   render() {
     return (
@@ -34,7 +34,7 @@ class Layout extends Component {
     return (
       <Theme.Consumer>
         {({ theme }) => {
-          document.body.setAttribute('class', theme.name);
+          document.body.setAttribute('class', theme);
           return (
             <div className='layout'>
               <BackButton />

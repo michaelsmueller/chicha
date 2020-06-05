@@ -39,6 +39,7 @@ button, input, textarea {
 
 button.secondary {
   border: 1px solid #ee2B7a;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
 }
 
 /* general views */
@@ -70,7 +71,7 @@ button.secondary {
   background-color: #565656;
   color: white;
   font-weight: 700;
-  border-left: 6px solid #fef200;
+  border-left: 6px solid var(--yellow-primary);
   border-radius: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
   overflow: hidden;
@@ -104,7 +105,7 @@ nav {
   font-size: 10px;
   font-weight: 600;
   color: #212121;
-  background: linear-gradient(45deg, #fef200, #ffff8b);
+  background: linear-gradient(45deg, var(--yellow-primary), var(--yellow-lighter));
 }
 
 nav ul {
@@ -173,7 +174,7 @@ nav :not(.selected) {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background: linear-gradient(45deg, #ee2B7a, #fef200);
+  background: linear-gradient(45deg, #ee2B7a, var(--yellow-primary));
 }
 
 .home .logo,
@@ -606,7 +607,7 @@ label {
 }
 
 .events .event-name {
-  color: #212121;
+  color: var(--text-color);
   overflow: hidden;
 }
 
@@ -1006,4 +1007,43 @@ label {
 
 .profile button {
   margin-right: 5px;
+}
+
+.dark-mode-switch {
+  margin: 10px 0;
+  height: 40px;
+  width: min-content;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  /* border: 1px solid #ee2B7a; */
+  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.15); */
+}
+
+.dark-mode-switch label {
+  margin: 5px 10px;
+}
+
+.dark-mode-switch .label-text {
+  margin: 5px 10px 5px 0;
+  font-size: 13.33px;
+  white-space: nowrap;
+}
+
+.dark-mode-switch input[type='checkbox'] {
+  display: none;
+  padding: 0;
+}
+
+.dark-mode-switch input + label {
+  background-image: url('/toggle-off-gray.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+  width: 42px;
+  height: 21px;
+}
+
+.dark-mode-switch input:checked + label {
+  background-image: url('/toggle-on-pink.png');
 }

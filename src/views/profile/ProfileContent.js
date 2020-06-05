@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Theme } from "../../context/themeContext";
+import { DarkModeSwitch } from '../';
 
 const ProfileContent = ({ user, deleteUser, onLogout }) => {
   const confirmDelete = () => {
@@ -16,7 +18,7 @@ const ProfileContent = ({ user, deleteUser, onLogout }) => {
       {url && <div className='link'><a href={url}>{url}</a></div>}
       <p className='chicha'>Lifetime Chicha: {points}</p>
       <p className='balance'>Balance to spend: {balance}</p>
-      <br />
+      <Theme.Consumer>{({ theme, changeTheme }) => <DarkModeSwitch theme={theme} changeTheme={changeTheme} />}</Theme.Consumer>
       <Link to='/profile/edit'><button className='secondary'>Edit profile</button></Link>
       <button className='secondary' onClick={confirmDelete}>Delete profile</button>
       <button className='secondary' onClick={onLogout}>Logout</button>

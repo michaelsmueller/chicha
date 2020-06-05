@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import apiClient from '../../services/apiClient';
 import { generate } from 'shortid';
+import { Theme } from "../../context/themeContext";
 import { Loading, EventsMap, EventPreview, SortFilterSearch } from '../';
 import { DragToResizeDrawer } from '../../components/';
 import { filterEvents } from '../../helpers/filter';
@@ -60,7 +61,7 @@ export default class Events extends Component {
     const filteredEvents = filterEvents(events, filterBy);
     return (
       <div className='events-map-and-listings'>
-        <EventsMap events={filteredEvents} key={mapKey} />
+        <Theme.Consumer>{({ theme }) => <EventsMap events={filteredEvents} key={mapKey} theme={theme} />}</Theme.Consumer>
         <DragToResizeDrawer>
           <div className='events'>
             <h1 className='title'>Events in Barcelona</h1>

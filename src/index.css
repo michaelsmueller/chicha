@@ -13,6 +13,11 @@
   outline: none;
 }
 
+:root {
+  --yellow-primary: #fef200;
+  --yellow-lighter: #ffff8b;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,11 +28,15 @@ body {
 body.light {
   color: #212121;
   background-color: white;
+  --text-color: #212121;
 }
 
 body.dark {
   color: white ;
-  background-color: #212121;
+  /* background-color: #191a1a; */
+  background-color: #343433;
+  --text-color: white;
+
 }
 
 #root {

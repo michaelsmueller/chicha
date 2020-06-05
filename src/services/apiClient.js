@@ -9,7 +9,7 @@ class ApiClient {
     });
 
     this.apiClient.interceptors.request.use((request) => {
-      console.log('Starting Request', request);
+      console.log('Starting request', request);
       return request;
     });
     

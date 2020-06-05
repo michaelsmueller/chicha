@@ -50,3 +50,4 @@ export { default as ProfileUpdate } from './profile/containers/ProfileUpdate';
 // profile views
 export { default as ProfileContent } from './profile/ProfileContent';
 export { default as ProfileUpdateForm } from './profile/ProfileUpdateForm';
+export { default as DarkModeSwitch } from './profile/DarkModeSwitch';

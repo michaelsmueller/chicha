@@ -22,11 +22,10 @@ export const addMarkers = (markers, map, history) => {
   })
 };
 
-export const initalizeMap = (lng, lat, zoom, container) => {
+export const initalizeMap = (lng, lat, zoom, container, theme) => {
   return new mapboxgl.Map({
     container,
-    // style: 'mapbox://styles/mapbox/dark-v10',
-    style: 'mapbox://styles/mapbox/light-v10',
+    style: theme === 'light' ? 'mapbox://styles/mapbox/light-v10' : 'mapbox://styles/mapbox/dark-v10',
     center: [lng, lat],
     zoom,
     minZoom: 11,
