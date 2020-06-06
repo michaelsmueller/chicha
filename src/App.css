@@ -21,12 +21,12 @@
 a {
   text-decoration: none;
   font-weight: 600;
-  color: #ee2B7a;
+  color: var(--pink-primary);
 }
 
 a:visited {
   font-weight: 600;
-  color: #ee2B7a;
+  color: var(--pink-primary);
 }
 
 button, input, textarea {
@@ -39,7 +39,7 @@ button, input, textarea {
 }
 
 button.secondary {
-  border: 1px solid #ee2B7a;
+  border: 1px solid var(--pink-primary);
 }
 
 /* general views */
@@ -174,7 +174,7 @@ nav :not(.selected) {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background: linear-gradient(45deg, #ee2B7a, var(--yellow-primary));
+  background: linear-gradient(45deg, var(--pink-primary), var(--yellow-primary));
 }
 
 .home .logo,
@@ -202,6 +202,7 @@ nav :not(.selected) {
   height: 50px;
   font-size: 20px;
   border: none;
+  background-color: white;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
 }
 
@@ -262,7 +263,7 @@ label {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 .add-event button,
@@ -491,7 +492,7 @@ label {
 
 .modal {
   position: fixed;
-  background-color: white;
+  background-color: var(--bg-color);
   top: 0;
   left: 0;
   width: 100vw;
@@ -519,10 +520,12 @@ label {
 }
 
 .modal .close {
-  background-color: white;
   border: 0;
   padding: 0;
   margin-right: auto;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  box-shadow: none;
 }
 
 .modal .title {
@@ -538,6 +541,9 @@ label {
   font-size: 18px;
   font-weight: 600;
   text-decoration: underline;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  box-shadow: none;
 }
 
 .sort-options,
@@ -684,8 +690,7 @@ label {
 /* event detail */
 
 .event-detail {
-  padding: 20px;
-  margin-bottom: 60px;
+  padding: 20px 20px 80px 20px;
 }
 
 .event-detail img {
@@ -727,8 +732,7 @@ label {
 /* heavy */
 
 .heavies {
-  padding: 20px;
-  margin-bottom: 40px;
+  padding: 20px 20px 80px 20px;
 }
 
 .heavies-list {
@@ -794,8 +798,7 @@ label {
 /* offers & coupons */
 
 .offers {
-  padding: 20px;
-  margin-bottom: 40px;
+  padding: 20px 20px 50px 20px;
 }
 
 .offers .balance {
@@ -805,7 +808,7 @@ label {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #ee2B7a;
+  border: 2px solid var(--pink-primary);
   border-radius: 30px;
   box-shadow: 0 4px 6px 0 var(--shadow);
 }
@@ -828,9 +831,9 @@ label {
 .offers-list,
 .coupons-list,
 .scan-coupon {
-  min-height: 59vh;
+  min-height: 60vh;
   margin: 0 -20px;
-  padding: 5px 20px 10px 20px;
+  padding: 5px 20px 30px 20px;
   background-color: var(--blue-bg);
   border-radius: 20px 20px 0 0;
 }
@@ -1013,8 +1016,7 @@ label {
 /* profile */
 
 .profile {
-  padding: 20px;
-  margin-bottom: 60px;
+  padding: 20px 20px 100px 20px;
 }
 
 .profile img {
@@ -1061,7 +1063,7 @@ label {
 }
 
 .dark-mode-switch input[type='checkbox'] {
-  display: none;
+  /* display: none; */
   padding: 0;
 }
 
