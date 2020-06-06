@@ -16,13 +16,18 @@
   --near-black: #212121;
   --gray-primary: #565656;
   --gray-lighter: #b2b2b2;
+  --gray-lightest: #e4e4e4;
   --yellow-primary: #fef200;
   --yellow-lighter: #ffff8b;
   --pink-primary: #ee2B7a;
   --blue-primary: #59c7de;
   --blue-primary-faded: rgba(89, 199, 222, 0.2);
+  --blue-lighter: #7fd5e6;
   --blue-lighter-faded: rgba(127, 213, 230, 0.6);
+  --blue-lightest: #ccfcff;
   --near-white: rgba(255, 255, 255, 0.9);
+  --light-shadow: rgba(0, 0, 0, 0.15);
+  --heavy-shadow: rgba(0, 0, 0, 0.4);
 }
 
 body.light {
@@ -32,7 +37,8 @@ body.light {
   --button-bg: white;
   --control-bg: rgba(255, 255, 255, 0.8);
   --blue-bg: var(--blue-primary-faded);
-  --shadow: rgba(0, 0, 0, 0.2);
+  --light-line: var(--gray-lightest);
+  --shadow: var(--light-shadow);
 }
 
 body.dark {
@@ -40,9 +46,10 @@ body.dark {
   --text-color: var(--near-white);
   --text-gray: var(--gray-lighter);
   --button-bg: var(--near-white);
-  --control-bg: rgba(255, 255, 255, 0.7);
+  --control-bg: rgba(255, 255, 255, 0.6);
   --blue-bg: var(--blue-lighter-faded);
-  --shadow: rgba(255, 255, 255, 0.2);
+  --light-line: var(--gray-primary);
+  --shadow: rgba(255, 255, 255, 0.15);
 }
 
 body {

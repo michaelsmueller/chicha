@@ -11,11 +11,11 @@ export default class DarkModeSwitch extends Component {
       <div className='dark-mode-switch'>
         <input type='checkbox'
           name='dark-mode'
-          id='dark-mode'
+          id='dark-mode-checkbox'
           checked={this.state.darkMode}
           onChange={this.handleChange}
         />
-        <label htmlFor='dark-mode'></label>
+        <label htmlFor='dark-mode-checkbox'></label>
         <div className='label-text'>Dark mode</div>
       </div>
     );

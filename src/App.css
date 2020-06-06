@@ -31,7 +31,7 @@ a:visited {
 
 button, input, textarea {
   padding: 10px;
-  color: #212121;
+  color: var(--near-black);
   border: none;
   border-radius: 20px;
   background-color: var(--button-bg);
@@ -50,7 +50,7 @@ button.secondary {
   top: 40vh;
   height: 4vh;
   width: 4vh;
-  background: linear-gradient(45deg, rgba(238, 43, 122, 0.8), rgba(254, 242, 0, 0.8));
+  background: linear-gradient(45deg, var(--pink-primary), var(--yellow-primary));
   z-index: 10;
   animation: spin 0.5s infinite linear;
   transform-origin: 50% 50%;
@@ -68,12 +68,12 @@ button.secondary {
   height: auto;
   font-size: 15px;
   border: none;
-  background-color: #565656;
+  background-color: var(--gray-primary);
   color: white;
   font-weight: 700;
   border-left: 6px solid var(--yellow-primary);
   border-radius: 5px;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+  box-shadow: 0 4px 6px 0 var(--light-shadow);
   overflow: hidden;
 }
 
@@ -104,7 +104,7 @@ nav {
   height: auto;
   font-size: 10px;
   font-weight: 600;
-  color: #212121;
+  color: var(--near-black);
   background: linear-gradient(45deg, var(--yellow-primary), var(--yellow-lighter));
 }
 
@@ -126,12 +126,12 @@ nav .selected {
 
 @keyframes selectnav {
   from { 
-    color: #565656;
+    color: var(--gray-primary);
     font-size: 12px;
     font-weight: 400;
   }
   to {
-    color: #212121;
+    color: var(--near-black);
     font-size: 13px;
     font-weight: 600;
   }
@@ -143,25 +143,25 @@ nav .selected {
 
 @keyframes selectnavicon {
   from { 
-    color: #565656;
+    color: var(--gray-primary);
     font-size: 18px;
     font-weight: 400;
   }
   to {
-    color: #212121;
+    color: var(--near-black);
     font-size: 24px;
     font-weight: 600;
   }
 }
 
 nav :not(.selected) {
-  color: #565656;
+  color: var(--gray-primary);
   font-size: 12px;
   font-weight: 400;
 }
 
 .material-icons {
-  color: #565656;
+  color: var(--gray-primary);
   font-size: 18px;
 }
 
@@ -203,12 +203,12 @@ nav :not(.selected) {
   font-size: 20px;
   border: none;
   background-color: white;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+  box-shadow: 0 4px 6px 0 var(--heavy-shadow);
 }
 
-input:focus, textarea:focus {
-  border: 1px solid #90faff;
-  box-shadow: 0 0 5px #90faff;
+input:focus, .search-bar input:focus, textarea:focus {
+  border: 3px solid var(--blue-lighter);
+  box-shadow: 0 0 5px var(--blue-lighter);
 }
 
 .home button,
@@ -218,8 +218,8 @@ input:focus, textarea:focus {
   height: 50px;
   font-size: 17px;
   font-weight: 600;
-  background: linear-gradient(45deg, #59C7DE, #7fd5e6);
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+  background: linear-gradient(45deg, var(--blue-primary), var(--blue-lighter));
+  box-shadow: 0 4px 6px 0 var(--heavy-shadow);
 }
 
 .home .footer-prompt,
@@ -232,7 +232,7 @@ input:focus, textarea:focus {
 
 .home a,
 .register a {
-  color: #90faff;
+  color: var(--blue-lightest);
 }
 
 /* forms */
@@ -273,15 +273,15 @@ label {
   height: 50px;
   font-size: 17px;
   font-weight: 600;
-  color: #212121;
-  background: linear-gradient(45deg, #ffff57, #FEF200);
+  color: var(--near-black);
+  background: linear-gradient(45deg, var(--yellow-lighter), var(--yellow-primary));
 }
 
 .add-event input,
 .edit-event input, .edit-event textarea,
 .profile-update input {
   border: 1px solid;
-  border-color: rgba(89, 199, 222, 0.5);
+  border-color: var(--blue-primary-faded);
 }
 
 .edit-event textarea {
@@ -317,7 +317,7 @@ label {
   height: 38px;
   font-size: 16px;
   font-weight: 600;
-  border: 2px solid #59C7DE;
+  border: 2px solid var(--blue-primary);
   box-shadow: 0 4px 6px 0 var(--shadow);
   animation-duration: 0.3s;
   animation-name: opensearch;
@@ -362,9 +362,8 @@ label {
 .marker {
   background-size: 15px 18px;
   background-repeat: no-repeat;
-  background-color: #ffff8b;
+  background-color: var(--yellow-lighter);
   background-position: center;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -385,11 +384,12 @@ label {
   right: 0;
   font-weight: 600;
   color: var(--text-color);
+  box-shadow: none;
 }
 
 .mapboxgl-popup-tip {
-  border-bottom-color: #CCC !important;
-  border-top-color: #CCC !important;
+  border-bottom-color: var(--gray-lighter) !important;
+  border-top-color: var(--gray-lighter) !important;
 }
 
 .mapboxgl-popup-content img {
@@ -479,7 +479,7 @@ label {
   width: 105px;
   font-size: 13px;
   font-weight: 600;
-  border: 2px solid #59C7DE;
+  border: 2px solid var(--blue-primary);
 }
 
 .sort-filter-search button.normal {
@@ -487,7 +487,7 @@ label {
 }
 
 .sort-filter-search button.highlighted {
-  background-color: #ccfcff;
+  background-color: var(--blue-lightest);
 }
 
 .modal {
@@ -516,16 +516,19 @@ label {
   margin: -20px;
   padding: 20px;
   height: 50px;
-  border-bottom: 0.5px #EEE solid;
+  border-bottom: 0.5px var(--light-line) solid;
 }
 
 .modal .close {
   border: 0;
   padding: 0;
   margin-right: auto;
-  color: var(--text-color);
   background-color: var(--bg-color);
   box-shadow: none;
+}
+
+.modal .close .material-icons {
+  color: var(--text-color);
 }
 
 .modal .title {
@@ -572,8 +575,8 @@ label {
   bottom: 100px;
   font-size: 17px;
   font-weight: 600;
-  color: #212121;
-  background: linear-gradient(45deg, #59C7DE, #7fd5e6);
+  color: var(--near-black);
+  background: linear-gradient(45deg, var(--blue-primary), var(--blue-lighter));
 }
 
 .event-previews {
@@ -598,10 +601,10 @@ label {
   width: 22px;
   height: 22px;
   font-size: 14px;
-  color: #212121;
-  background-color: #ffff8b;
+  color: var(--near-black);
+  background-color: var(--yellow-lighter);
   border-radius: 50%;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+  box-shadow: 0 4px 6px 0 var(--light-shadow);
 }
 
 .event-preview .edit-delete {
@@ -619,8 +622,8 @@ label {
   margin-bottom: 5px;
   padding: 5px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+  background-color: var(--near-white);
+  box-shadow: 0 4px 6px 0 var(--heavy-shadow);
 }
 
 .event-preview img {
@@ -729,7 +732,7 @@ label {
   color: var(--text-gray);
 }
 
-/* heavy */
+/* heavies */
 
 .heavies {
   padding: 20px 20px 80px 20px;
@@ -922,7 +925,7 @@ label {
   margin: 5px 0;
   font-size: 20px;
   font-weight: 600;
-  color: #59c7de;
+  color: var(--blue-primary);
   text-align: center;
 }
 
@@ -936,7 +939,7 @@ label {
   margin-top: 5px;
   font-size: 14px;
   text-align: center;
-  color: #838383;
+  color: var(--gray-lighter);
 }
 
 .scan-coupon {
@@ -962,8 +965,8 @@ label {
   bottom: 80px;
   font-size: 17px;
   font-weight: 600;
-  color: #212121;
-  background: linear-gradient(45deg, #59C7DE, #7fd5e6);
+  color: var(--near-black);
+  background: linear-gradient(45deg, var(--blue-primary), var(--blue-lighter));
 }
 
 /* offer detail */
@@ -1009,8 +1012,8 @@ label {
   bottom: 80px;
   font-size: 17px;
   font-weight: 600;
-  color: #212121;
-  background: linear-gradient(45deg, #59C7DE, #7fd5e6);
+  color: var(--near-black);
+  background: linear-gradient(45deg, var(--blue-primary), var(--blue-lighter));
 }
 
 /* profile */
@@ -1063,7 +1066,7 @@ label {
 }
 
 .dark-mode-switch input[type='checkbox'] {
-  /* display: none; */
+  display: none;
   padding: 0;
 }
 
