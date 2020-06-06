@@ -17,6 +17,7 @@
   --gray-primary: #565656;
   --gray-lighter: #b2b2b2;
   --gray-lightest: #e4e4e4;
+  --near-white: rgba(255, 255, 255, 0.9);
   --yellow-primary: #fef200;
   --yellow-lighter: #ffff8b;
   --pink-primary: #ee2B7a;
@@ -25,9 +26,9 @@
   --blue-lighter: #7fd5e6;
   --blue-lighter-faded: rgba(127, 213, 230, 0.6);
   --blue-lightest: #ccfcff;
-  --near-white: rgba(255, 255, 255, 0.9);
-  --light-shadow: rgba(0, 0, 0, 0.15);
   --heavy-shadow: rgba(0, 0, 0, 0.4);
+  --light-shadow: rgba(0, 0, 0, 0.15);
+  --white-shadow: rgba(255, 255, 255, 0.15);
 }
 
 body.light {
@@ -35,7 +36,7 @@ body.light {
   --text-color: var(--near-black);
   --text-gray: var(--gray-primary);
   --button-bg: white;
-  --control-bg: rgba(255, 255, 255, 0.8);
+  --control-bg: var(--near-white);
   --blue-bg: var(--blue-primary-faded);
   --light-line: var(--gray-lightest);
   --shadow: var(--light-shadow);
@@ -46,10 +47,10 @@ body.dark {
   --text-color: var(--near-white);
   --text-gray: var(--gray-lighter);
   --button-bg: var(--near-white);
-  --control-bg: rgba(255, 255, 255, 0.6);
+  --control-bg: var(--near-white);
   --blue-bg: var(--blue-lighter-faded);
   --light-line: var(--gray-primary);
-  --shadow: rgba(255, 255, 255, 0.15);
+  --shadow: var(--white-shadow);
 }
 
 body {
