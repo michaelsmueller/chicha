@@ -77,8 +77,9 @@ button.secondary {
   overflow: hidden;
 }
 
-.modal .error {
-  margin-top: 50px;
+.modal .error,
+.edit-event-container .error {
+  margin: 100px 20px;
 }
 
 /* navigation */

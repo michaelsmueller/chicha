@@ -36,7 +36,6 @@ class ApiClient {
   getVotes = () => this.apiClient.get('/votes');
   changeVote = (voteId, body) => this.apiClient.put(`/votes/${voteId}`, body);
   removeVote = (voteId, eventId, direction) => this.apiClient.delete(`/votes/${voteId}?eventid=${eventId}&direction=${direction}`);
-
 }
 
 const apiClient = new ApiClient();
