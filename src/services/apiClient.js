@@ -7,16 +7,6 @@ class ApiClient {
       withCredentials: true,
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
     });
-
-    this.apiClient.interceptors.request.use((request) => {
-      console.log('Starting request', request);
-      return request;
-    });
-    
-    this.apiClient.interceptors.response.use((response) => {
-      console.log('Response:', response);
-      return response;
-    });
   }
 
   whoami = () => this.apiClient.get('/whoami');
