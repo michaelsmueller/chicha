@@ -3,9 +3,26 @@ import React, { Component } from 'react';
 export default class DragToResizeDrawer extends Component {
   state = { isResizing: false, lastTouchY: 350 };
 
-  onTouchStart = (e) => this.setState({ isResizing: true })
+  isTouchOnHandle = (clientY) => {
+    const distanceFromHandle = Math.abs(clientY - this.state.lastTouchY);
+    if (distanceFromHandle < 30) return true;
+    else return false;
+  }
+
+  onTouchStart = (e) => {
+    const { clientY } = e.touches[0];
+    const touchIsOnHandle = this.isTouchOnHandle(clientY);
+    if (touchIsOnHandle) this.setState({ isResizing: true })
+  }
+
   onTouchEnd = (e) => this.setState({ isResizing: false })
-  onTouchMove = (e) => this.setState({ lastTouchY: e.touches[0].clientY })
+
+  onTouchMove = (e) => {
+    const { isResizing } = this.state;
+    const { clientY } = e.touches[0];
+    const touchIsOnHandle = this.isTouchOnHandle(clientY);
+    if (isResizing & touchIsOnHandle) this.setState({ lastTouchY: clientY });
+  }
 
   componentDidMount = () => {
     document.addEventListener('onTouchStart', this.onTouchStart);
@@ -19,14 +36,14 @@ export default class DragToResizeDrawer extends Component {
     document.removeEventListener('onTouchEnd', this.onTouchEnd);
   }
 
-  setTopMargin = () => {
+  calculateTopMargin = () => {
     const { lastTouchY } = this.state;
     const maxTopMargin = window.innerHeight * 0.8;  // mapContainer is height 80vh
     return Math.max(0, lastTouchY < maxTopMargin ? lastTouchY : maxTopMargin );
   }
 
   render() {
-    const marginTop = this.setTopMargin();
+    const marginTop = this.calculateTopMargin();
     const dragHandleStyle = { marginTop };
     const draggerStyle = {
       marginTop: marginTop + 20,
