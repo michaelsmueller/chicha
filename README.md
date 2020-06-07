@@ -23,13 +23,17 @@ Chicha connects users, tastemakers and local businesses:
 
 ## Points
 
+Points motivate users and heavies to interact with and add events to the system. They can also be used to buy coupons that are redeemed at local businesses.
+
+Gain points as follows:
+
 - Gain 10 points for adding a unique event
 - Gain 1 point for voting (either up or down)
 - Gain +/- 1 point if an event you added has been up/downvoted (you can vote on your own event)
 
 If you remove your vote or delete an event you added, your point balance will be reduced.
 
-If you purchase a coupon your point balance will be reduced. However, Heavies are ranked according to lifetime points earned ("Chicha") so you don't lose your Heavies standing for buying coupons with your points.
+If you purchase a coupon your point balance will be reduced. Heavies are ranked by lifetime points earned ("Chicha") so you don't lose your Heavies standing for buying coupons with your points.
 
 ## Test users
 
@@ -61,7 +65,7 @@ Partners can use the system like a regular User except they also can scan coupon
 
 **Events**
 
-The default view is by most upvoted events, with only events from today onwards shown.
+The default view is ordered by most upvoted events, with only events from today onwards shown.
 
 - Sort by start date or recently added
 - Filter by this week or this weekend

@@ -23,8 +23,10 @@ class EditEventForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     await this.setUtcDateTimes();
+    const { id, creator } = this.props;
     const { name, source, start_time, end_time, description, ticket_uri, place, street, city, latitude, longitude } = this.state;
     const event = {
+      creator,
       data: {
         name,
         cover: { source },
@@ -35,7 +37,6 @@ class EditEventForm extends Component {
         place: { name: place, location: { street, city, country: 'Spain', latitude, longitude } },
      },
     };
-    const { id } = this.props;
     apiClient.editEvent(id, event)
       .then((response) => this.props.history.push(`/events/${id}`))
       .catch((error) => console.log(error))

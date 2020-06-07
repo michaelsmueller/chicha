@@ -18,7 +18,6 @@ class ApiClient {
   editUser = (userId, body) => this.apiClient.put(`/users/${userId}`, body);
   deleteUser = (userId) => this.apiClient.delete(`/users/${userId}`);
   getHeavies = () => this.apiClient.get('/users/heavies');
-
   addCoupon = (userId, body) => this.apiClient.patch(`/users/${userId}/coupons`, body);
   getUserWithCoupon = (couponId) => this.apiClient.get(`/users/find?coupon=${couponId}`);
   redeemCoupon = (userId, couponId) => this.apiClient.patch(`/users/${userId}/coupons/${couponId}`);
@@ -33,8 +32,8 @@ class ApiClient {
   deleteEvent = (eventId) => this.apiClient.delete(`/events/${eventId}`);
   searchEvents = (query) => this.apiClient.get(`/events/search?query=${query}`);
 
-  getVotes = () => this.apiClient.get('/votes');
   createVote = (body) => this.apiClient.post('/votes', body);
+  getVotes = () => this.apiClient.get('/votes');
   changeVote = (voteId, body) => this.apiClient.put(`/votes/${voteId}`, body);
   removeVote = (voteId, eventId, direction) => this.apiClient.delete(`/votes/${voteId}?eventid=${eventId}&direction=${direction}`);
 
