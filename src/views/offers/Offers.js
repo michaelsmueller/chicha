@@ -66,9 +66,11 @@ const TopNav = ({ showing, setShowing, user }) => {
   const scanButtonStyle = showing === 'scan' ? highlighted : null;
   return (
     <div className='offers-coupons-buttons'>
+      <button>Add</button>
       <button style={offersButtonStyle} onClick={handleClick} value='offers'>Offers</button>
-      <button style={couponsButtonStyle} onClick={handleClick} value='coupons'>My coupons</button>
-      {partner && <button style={scanButtonStyle} onClick={handleClick} value='scan'>Scan coupon</button>}
+      <button style={couponsButtonStyle} onClick={handleClick} value='coupons'>Coupons</button>
+      {partner && <button style={scanButtonStyle} onClick={handleClick} value='scan'>Scan</button>}
+      <button>Redeemed</button>
     </div>
   )
 };
