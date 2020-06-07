@@ -90,9 +90,11 @@ The default view is by most upvoted events, with only events from today onwards 
 - Use your phone to login and view the coupon, or take a picture of the coupon QR code with your phone
 - Then, login with the Partner (on your computer) and navigate to Scan coupon … hold up your phone (showing the coupon QR code)
 - Try to scan the code again
+- NOTE: scanning works on desktop or Android with any browser, but on iOS you must use Safari since Apple only allows access to the WebRTC `getUserMedia()` API on Safari (as a fallback, for other browsers on iOS we can implement the QR Code reader in legacy mode which simply requires taking a photo)
 
 **Profile**
 
+- Turn dark mode on, then check out some of the other screens
 - Edit your profile
 - Delete your profile, just click cancel not OK in the prompt!
 - Logout
@@ -119,8 +121,6 @@ The default view is by most upvoted events, with only events from today onwards 
 
 **Heavies** - As a user, I want to see the users who have recommended the most / best events so that I can find new sources to recommend events to me.
 
-**Heavies - detail** - As a user, I want to see the events being recommended by a particular user that I like / think is knowledgable / has good taste so that I can find events I'll enjoy.
-
 **Offers** - As a user, I want to see my points and a list of offers so that I can choose an offer to redeem.
 
 **Offers - detail** - As a user, I want to the details on a particular offer so that I can choose to redeem it.
@@ -139,8 +139,6 @@ Other features outside of the MVP scope:
 
 **Heavies detail**: add list of each individual heavy's recommendations
 
-**Dark mode**: add ability to switch to dark mode
-
 **Onboarding**: create a screen when user logs in to explain how the app works
 
 **Facebook Login**: login with Facebook, use profile photo of user
@@ -153,22 +151,21 @@ Other features outside of the MVP scope:
 
 ## Views
 
-| View (Component)        | Path                    | Description             |
-| ----------------------- | ----------------------- | ----------------------- |
-| Home                    | `/`                     | home / sign in          |
-| Register                | `/register`             | register page           |
-| Events                  | `/events`               | list of events          |
-| Event details           | `/events/:id`           | details on an event     |
-| Add event               | `/events/add`           | add event               |
-| Edit event              | `/events/:id/edit`      | edit event              |
-| Heavies            | `/heavies`         | list of heavies    |
-| heavy details     | `/heavies/:id`     | details on a heavy|
-| Offers                  | `/offers`               | list of offers          |
-| Offer details           | `/offers/:id`           | details on an offer     |
-| My coupons             | `/offers/mycoupons`    | list of redeemed offers |
-| Profile                 | `/profile`              | user profile            |
-| Profile                 | `/profile/edit`         | update user profile     |
+| View (Component)        | Path                    | Description              |
+| ----------------------- | ----------------------- | -----------------------  |
+| Home                    | `/`                     | home / sign in           |
+| Register                | `/register`             | register user            |
+| Events                  | `/events`               | map & list of events     |
+| Event details           | `/events/:id`           | details on an event      |
+| Edit event              | `/events/:id/edit`      | update an event          |
+| Add event               | `/events/add`           | create event             |
+| Edit event              | `/events/:id/edit`      | update event             |
+| Heavies                 | `/heavies`              | list of heavies          |
+| Offers                  | `/offers`               | list of offers / coupons |
+| Profile                 | `/profile`              | user profile             |
+| Edit profile            | `/profile/edit`         | update user profile      |
 
+In addition there is information displayed in modal or component views that are toggled, such as the Sort and Filter modal views on the Events page as well as the Offers detail and Scanned coupon modal views on the Offers page.
 
 ## Links
 

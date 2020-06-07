@@ -36,6 +36,7 @@ export default class DragToResizeDrawer extends Component {
     document.removeEventListener('onTouchMove', this.onTouchMove);
     document.removeEventListener('onTouchEnd', this.onTouchEnd);
   }
+
   render() {
     const { marginTop } = this.state;
     const dragHandleStyle = { marginTop };

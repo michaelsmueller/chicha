@@ -475,7 +475,7 @@ label {
 }
 
 .sort-filter-search button {
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   padding: 8px 6px;
   width: 105px;
   font-size: 13px;
@@ -566,6 +566,11 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.sort-option input,
+.filter-option input {
+  box-shadow: none;
 }
 
 .sort-options button,
@@ -973,7 +978,7 @@ label {
 /* offer detail */
 
 .offer-detail {
-  margin-top: 20px;
+  margin-top: 35px;
   height: 100vh;
   position: relative;
 }
