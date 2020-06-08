@@ -33,6 +33,7 @@ export { default as HeaviesList } from './heavies/HeaviesList';
 // offers containers
 export { default as OfferDetail } from './offers/containers/OfferDetail';
 export { default as OffersListContainer } from './offers/containers/OffersListContainer';
+export { default as RedeemedCoupons } from './offers/containers/RedeemedCoupons';
 export { default as ScannedCouponContainer } from './offers/containers/ScannedCouponContainer';
 
 // offers views
@@ -40,6 +41,7 @@ export { default as CouponsList } from './offers/CouponsList';
 export { default as OfferDetailContent } from './offers/OfferDetailContent';
 export { default as Offers } from './offers/Offers';
 export { default as OffersList } from './offers/OffersList';
+export { default as RedeemedCouponsList } from './offers/RedeemedCouponsList';
 export { default as ScanCoupon } from './offers/ScanCoupon';
 export { default as ScannedCoupon } from './offers/ScannedCoupon';
 

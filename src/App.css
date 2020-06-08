@@ -840,7 +840,8 @@ label {
 
 .offers-list,
 .coupons-list,
-.scan-coupon {
+.scan-coupon,
+.redeemed-coupons-list {
   min-height: 60vh;
   margin: 0 -20px;
   padding: 5px 20px 30px 20px;
@@ -974,6 +975,37 @@ label {
   font-weight: 600;
   color: var(--near-black);
   background: linear-gradient(45deg, var(--blue-primary), var(--blue-lighter));
+}
+
+.redeemed-coupon-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  margin: 15px 0;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px 0 var(--shadow);
+}
+
+.redeemed-coupon-info .customer {
+  margin: 5px 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.redeemed-coupon-info .description {
+  margin: 5px;
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.redeemed-coupon-info .redeemed-on {
+  margin: 5px 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-gray);
 }
 
 /* offer detail */
