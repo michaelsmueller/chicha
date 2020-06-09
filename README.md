@@ -90,7 +90,7 @@ The default view is ordered by most upvoted events, with only events from today 
 
 **Offers**
 
-- Click on an offer and get the coupon
+- Click on an offer for Espai Joliu and get the coupon
 - Use your phone to login and view the coupon, or take a picture of the coupon QR code with your phone
 - Then, login with the Partner (on your computer) and navigate to Scan coupon … hold up your phone (showing the coupon QR code)
 - Try to scan the code again
