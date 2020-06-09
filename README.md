@@ -133,6 +133,8 @@ The default view is ordered by most upvoted events, with only events from today 
 
 **Offers - redeem** - As a local business partner, I want to be able to redeem a coupon.
 
+**Offers - redeemed coupons** - As a local business partner, I want to be able to see a list of the coupons I have redeemed by users at my establishment.
+
 **Profile** - As a user, I want to update my user profile (change my username, password and profile pic) as well as log out so that no one else can use my account.
 
 ## Backlog
@@ -140,8 +142,6 @@ The default view is ordered by most upvoted events, with only events from today 
 Other features outside of the MVP scope:
 
 **Responsive CSS** test and adapt to various mobile device views, then add tablet and desktop.
-
-**Heavies detail**: add list of each individual heavy's recommendations
 
 **Onboarding**: create a screen when user logs in to explain how the app works
 
@@ -169,7 +169,7 @@ Other features outside of the MVP scope:
 | Profile                 | `/profile`              | user profile             |
 | Edit profile            | `/profile/edit`         | update user profile      |
 
-In addition there is information displayed in modal or component views that are toggled, such as the Sort and Filter modal views on the Events page as well as the Offers detail and Scanned coupon modal views on the Offers page.
+In addition there is information displayed in modal or component views that are toggled, such as the Sort and Filter modal views on the Events page as well as the Offers detail and Scanned coupon modal views on the Offers page. Last users who have `partner: true` set are able to see a Scan coupon and Redeemed coupon tabs in the Offers view.
 
 ## Links
 
