@@ -9,7 +9,7 @@ const ScannedCoupon = ({ userId, coupon, redeemCoupon }) => {
   const handleClick = (e) => {
     if (isValid) {
       const confirmed = window.confirm(`Ok to use coupon now?`);
-      if (confirmed) redeemCoupon(userId, couponId);;
+      if (confirmed) redeemCoupon(userId, couponId);
     }
   }
   return (
